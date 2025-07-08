@@ -1328,7 +1328,7 @@ const About = () => {
                             viewport={{ once: true }}
                         >
                             <ImageWrapper>
-                                <Image src="/me4.png" alt="Profile" />
+                                <Image src="./me4.png" alt="Profile" />
                             </ImageWrapper>
 
                             <StatsContainer>

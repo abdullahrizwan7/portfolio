@@ -1269,7 +1269,7 @@ const Home = () => {
                     </CTAButton>
                     
                     <SecondaryButton
-                        href="/resume.pdf"
+                        href="./resume.pdf"
                         target="_blank"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}

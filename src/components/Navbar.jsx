@@ -277,7 +277,7 @@ const Navbar = () => {
           ))}
           
           <ResumeButton
-            href="/resume.pdf"
+            href="./resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
@@ -316,7 +316,7 @@ const Navbar = () => {
             </MobileNavLinks>
             
             <ResumeButton
-              href="/resume.pdf"
+              href="./resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
