@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { shouldDisableHeavyEffects, getOptimizedFrameRate } from '../utils/performanceOptimizer';
 
 const GradientBackground = () => {
   const canvasRef = useRef(null);
@@ -7,6 +8,19 @@ const GradientBackground = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     let animationFrameId;
+    
+    // Skip heavy effects on mobile
+    if (shouldDisableHeavyEffects()) {
+      // Static gradient for mobile
+      const gradient = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
+      gradient.addColorStop(0, `hsl(220, 80%, 20%)`);
+      gradient.addColorStop(0.5, `hsl(280, 80%, 40%)`);
+      gradient.addColorStop(1, `hsl(340, 80%, 20%)`);
+      
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+      return;
+    }
     
     // Set canvas dimensions
     const setCanvasDimensions = () => {
@@ -20,9 +34,16 @@ const GradientBackground = () => {
     // Gradient parameters
     const gradientSpeed = 0.002;
     let hue = 0;
+    let lastTime = 0;
+    const targetFPS = getOptimizedFrameRate();
+    const interval = 1000 / targetFPS;
     
     // Animation function
-    const animate = () => {
+    const animate = (currentTime) => {
+      animationFrameId = requestAnimationFrame(animate);
+      
+      if (currentTime - lastTime < interval) return;
+      
       // Clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
@@ -40,9 +61,7 @@ const GradientBackground = () => {
       
       // Update hue for next frame
       hue = (hue + gradientSpeed) % 360;
-      
-      // Continue animation
-      animationFrameId = requestAnimationFrame(animate);
+      lastTime = currentTime;
     };
     
     animate();

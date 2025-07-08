@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import { getOptimizedParticleCount, shouldDisableHeavyEffects, getOptimizedFrameRate } from '../utils/performanceOptimizer';
 
 const ParticleBackground = () => {
   const containerRef = useRef(null);
@@ -7,18 +8,27 @@ const ParticleBackground = () => {
   useEffect(() => {
     if (!containerRef.current) return;
     
+    // Skip heavy effects on low-performance devices
+    if (shouldDisableHeavyEffects()) {
+      return;
+    }
+    
     // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    const renderer = new THREE.WebGLRenderer({ 
+      alpha: true, 
+      antialias: window.innerWidth > 768, // Disable antialiasing on mobile
+      powerPreference: 'high-performance'
+    });
     
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio
     containerRef.current.appendChild(renderer.domElement);
     
     // Create particles (optimized count)
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = window.innerWidth < 768 ? 500 : window.innerWidth < 1200 ? 800 : 1200;
+    const particlesCount = getOptimizedParticleCount(1200);
     
     const posArray = new Float32Array(particlesCount * 3);
     const colorsArray = new Float32Array(particlesCount * 3);
@@ -50,18 +60,16 @@ const ParticleBackground = () => {
     
     camera.position.z = 2;
     
-    // Animation with performance optimization
+    // Animation with optimized frame rate
     let lastTime = 0;
+    const targetFPS = getOptimizedFrameRate();
+    const interval = 1000 / targetFPS;
+    
     const animate = (currentTime) => {
       requestAnimationFrame(animate);
       
-      // Throttle animation on mobile
-      const isMobile = window.innerWidth < 768;
-      const targetFPS = isMobile ? 30 : 60;
-      const interval = 1000 / targetFPS;
-      
       if (currentTime - lastTime >= interval) {
-        const rotationSpeed = isMobile ? 0.0003 : 0.0005;
+        const rotationSpeed = targetFPS === 30 ? 0.0003 : 0.0005;
         particlesMesh.rotation.x += rotationSpeed;
         particlesMesh.rotation.y += rotationSpeed;
         

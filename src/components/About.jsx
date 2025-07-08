@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fadeIn, textVariant } from '../animations';
 import { FaCode, FaServer, FaDatabase, FaTools, FaMobileAlt, FaCloud, FaGraduationCap, FaBriefcase, FaUser, FaRocket, FaAward, FaTrophy, FaProjectDiagram, FaStar } from 'react-icons/fa';
+import { usePerformanceOptimization } from '../hooks/usePerformanceOptimization';
 
 // Keyframes for animations
 const float = keyframes`
@@ -1057,6 +1058,9 @@ const TypewriterText = ({ text, delay = 0 }) => {
 const About = () => {
     const [activeTab, setActiveTab] = useState('overview');
     const [isInView, setIsInView] = useState(false);
+    
+    // Performance optimization
+    const { shouldDisableEffects, getOptimizedVariants, isMobile } = usePerformanceOptimization();
 
     const skills = [
         { icon: <FaCode />, title: 'Frontend', description: 'React, Vue, TypeScript, Next.js', level: 95 },
@@ -1124,36 +1128,40 @@ const About = () => {
 
     return (
         <>
-            <MouseTrail />
+            {!shouldDisableEffects && <MouseTrail />}
             <AboutSection id="about">
-                <ParticleSystem />
-                <ShootingStars />
+                {!shouldDisableEffects && <ParticleSystem />}
+                {!shouldDisableEffects && <ShootingStars />}
 
-                {/* Floating Elements */}
-                <FloatingElement
-                    style={{ top: '10%', right: '15%' }}
-                    size="30px"
-                    duration="8s"
-                    delay="0s"
-                >
-                    <FaRocket />
-                </FloatingElement>
-                <FloatingElement
-                    style={{ top: '60%', left: '10%' }}
-                    size="25px"
-                    duration="10s"
-                    delay="2s"
-                >
-                    <FaCode />
-                </FloatingElement>
-                <FloatingElement
-                    style={{ top: '30%', right: '5%' }}
-                    size="35px"
-                    duration="12s"
-                    delay="4s"
-                >
-                    <FaDatabase />
-                </FloatingElement>
+                {/* Floating Elements - only on desktop */}
+                {!isMobile && (
+                    <>
+                        <FloatingElement
+                            style={{ top: '10%', right: '15%' }}
+                            size="30px"
+                            duration="8s"
+                            delay="0s"
+                        >
+                            <FaRocket />
+                        </FloatingElement>
+                        <FloatingElement
+                            style={{ top: '60%', left: '10%' }}
+                            size="25px"
+                            duration="10s"
+                            delay="2s"
+                        >
+                            <FaCode />
+                        </FloatingElement>
+                        <FloatingElement
+                            style={{ top: '30%', right: '5%' }}
+                            size="35px"
+                            duration="12s"
+                            delay="4s"
+                        >
+                            <FaDatabase />
+                        </FloatingElement>
+                    </>
+                )}
                 <FloatingElement
                     style={{ bottom: '20%', left: '20%' }}
                     size="28px"
