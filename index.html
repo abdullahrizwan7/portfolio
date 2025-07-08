@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>My Portfolio</title>
+  <style>
+  body {
+   /* cursor: ;  Hide the default cursor */
+  }
+
+  /* Enhanced custom cursor elements */
+  .custom-cursor-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #64ffda;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    mix-blend-mode: difference; /* Makes cursor visible on any background */
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+  }
+
+  .custom-cursor-outline {
+    width: 30px;
+    height: 30px;
+    border: 1.5px solid rgba(100, 255, 218, 0.5);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+    mix-blend-mode: exclusion; /* Creates interesting color effects */
+  }
+
+  /* Pulse animation for the outline */
+  @keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+    50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.5; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+  }
+
+  .pulse {
+    animation: pulse 2s infinite ease-in-out;
+  }
+
+  /* Interactive elements hover effects 
+  a, button, .clickable, input, textarea, select, [role="button"] {
+    cursor:none;
+  }*/
+
+  /* Class for active state */
+  .cursor-active-dot {
+    transform: translate(-50%, -50%) scale(1.5) !important;
+    background-color: #ff6b6b !important;
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.7) !important;
+  }
+
+  .cursor-active-outline {
+    width: 70px !important;
+    height: 70px !important;
+    border-color: rgba(255, 107, 107, 0.8) !important;
+    border-width: 3px !important;
+  }
+
+  /* Text hover effect */
+  h1:hover ~ .custom-cursor-dot,
+  h2:hover ~ .custom-cursor-dot,
+  h3:hover ~ .custom-cursor-dot,
+  p:hover ~ .custom-cursor-dot {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0.5;
+  }
+
+  /* Image hover effect */
+  img:hover ~ .custom-cursor-outline,
+  .image-container:hover ~ .custom-cursor-outline {
+    width: 100px;
+    height: 100px;
+    border-style: dashed;
+    border-width: 50px;
+    opacity: 0.8;
+  }
+
+  /* Cursor states for different elements - optimized */
+  .cursor-view {
+    position: relative;
+  }
+
+  .cursor-view::after {
+    content: 'View';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+
+  .cursor-view:hover::after {
+    opacity: 1;
+  }
+  
+  /* Disable cursor effects on mobile for performance */
+  @media (max-width: 768px) {
+    .custom-cursor-dot,
+    .custom-cursor-outline {
+      display: none;
+    }
+  }
+</style>
+
+</head>
+<body>
+  <div class="custom-cursor-dot"></div>
+<div class="custom-cursor-outline"></div>
+
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+ <script>
+  // Add this to your existing script for magnetic effect on buttons
+  document.addEventListener('DOMContentLoaded', () => {
+    // Magnetic effect for buttons
+    const buttons = document.querySelectorAll('button, .btn, .button, [role="button"]');
+    
+    buttons.forEach(button => {
+      button.addEventListener('mousemove', (e) => {
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const distanceX = x - centerX;
+        const distanceY = y - centerY;
+        
+        // Move button slightly towards cursor (magnetic effect)
+        button.style.transform = `translate(${distanceX / 10}px, ${distanceY / 10}px)`;
+      });
+      
+      button.addEventListener('mouseleave', () => {
+        // Reset position with a smooth transition
+        button.style.transition = 'transform 0.5s ease';
+        button.style.transform = 'translate(0, 0)';
+        setTimeout(() => {
+          button.style.transition = '';
+        }, 500);
+      });
+    });
+    
+    // Add cursor trail effect
+    const createTrailDot = () => {
+      const trail = document.createElement('div');
+      trail.className = 'cursor-trail';
+      document.body.appendChild(trail);
+      
+      setTimeout(() => {
+        trail.remove();
+      }, 500);
+      
+      return trail;
+    };
+    
+    // Add trail style
+    const trailStyle = document.createElement('style');
+    trailStyle.innerHTML = `
+      .cursor-trail {
+        position: fixed;
+        width: 5px;
+        height: 5px;
+        background: rgba(100, 255, 218, 0.5);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9996;
+        animation: trail-fade 0.5s linear forwards;
+      }
+      
+      @keyframes trail-fade {
+        0% { opacity: 0.7; transform: scale(1); }
+        100% { opacity: 0; transform: scale(0.3); }
+      }
+    `;
+    document.head.appendChild(trailStyle);
+    
+    // Create trail dots on fast mouse movement
+    let lastX = 0;
+    let lastY = 0;
+    let lastTimestamp = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+      const now = Date.now();
+      const dx = e.clientX - lastX;
+      const dy = e.clientY - lastY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      const timeDiff = now - lastTimestamp;
+      
+      // Only create trail if mouse is moving fast enough
+      if (distance > 20 && timeDiff > 50) {
+        const trail = createTrailDot();
+        trail.style.left = `${e.clientX}px`;
+        trail.style.top = `${e.clientY}px`;
+        
+        lastX = e.clientX;
+        lastY = e.clientY;
+        lastTimestamp = now;
+      }
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cursorDot = document.querySelector('.custom-cursor-dot');
+    const cursorOutline = document.querySelector('.custom-cursor-outline');
+    
+    // Add pulse animation to outline
+    cursorOutline.classList.add('pulse');
+    
+    // Variables for cursor physics
+    let mouseX = 0;
+    let mouseY = 0;
+    let outlineX = 0;
+    let outlineY = 0;
+    let dotX = 0;
+    let dotY = 0;
+    let speed = 0.2; // Cursor smoothness (lower = smoother)
+    
+    // Track mouse movement with physics (throttled for performance)
+    let mouseMoveThrottle = false;
+    document.addEventListener('mousemove', (e) => {
+      if (!mouseMoveThrottle) {
+        mouseMoveThrottle = true;
+        requestAnimationFrame(() => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          mouseMoveThrottle = false;
+        });
+      }
+    });
+    
+    // Smooth cursor animation using requestAnimationFrame
+    const animate = () => {
+      // Smooth movement for dot
+      dotX += (mouseX - dotX) * speed;
+      dotY += (mouseY - dotY) * speed;
+      
+      // Even smoother movement for outline
+      outlineX += (mouseX - outlineX) * (speed * 0.5);
+      outlineY += (mouseY - outlineY) * (speed * 0.5);
+      
+      // Apply positions
+      cursorDot.style.left = `${dotX}px`;
+      cursorDot.style.top = `${dotY}px`;
+      cursorOutline.style.left = `${outlineX}px`;
+      cursorOutline.style.top = `${outlineY}px`;
+      
+      requestAnimationFrame(animate);
+    };
+    
+    animate();
+    
+    // Enhanced interactive elements detection
+    const interactiveElements = document.querySelectorAll('a, button, .clickable, input[type="button"], input[type="submit"], input[type="checkbox"], input[type="radio"], select, [role="button"]');
+    
+    interactiveElements.forEach(element => {
+      element.addEventListener('mouseenter', () => {
+        cursorDot.classList.add('cursor-active-dot');
+        cursorOutline.classList.add('cursor-active-outline');
+        // Stop pulse animation on hover
+        cursorOutline.classList.remove('pulse');
+      });
+      
+      element.addEventListener('mouseleave', () => {
+        cursorDot.classList.remove('cursor-active-dot');
+        cursorOutline.classList.remove('cursor-active-outline');
+        // Resume pulse animation
+        cursorOutline.classList.add('pulse');
+      });
+    });
+    
+    // Add special effects for images
+    const images = document.querySelectorAll('img, .image-container');
+    
+    images.forEach(image => {
+      image.addEventListener('mouseenter', () => {
+        cursorDot.innerHTML = '<span style="font-size: 8px; color: white;">👁️</span>';
+        cursorDot.style.backgroundColor = 'transparent';
+        cursorDot.style.width = '20px';
+        cursorDot.style.height = '20px';
+        image.classList.add('cursor-view');
+      });
+      
+      image.addEventListener('mouseleave', () => {
+        cursorDot.innerHTML = '';
+        cursorDot.style.backgroundColor = '#64ffda';
+        cursorDot.style.width = '8px';
+        cursorDot.style.height = '8px';
+        image.classList.remove('cursor-view');
+      });
+    });
+    
+    // Enhanced click animation
+    document.addEventListener('mousedown', () => {
+      cursorDot.style.transform = 'translate(-50%, -50%) scale(0.5)';
+      cursorOutline.style.transform = 'translate(-50%, -50%) scale(0.7)';
+      
+      // Add ripple effect
+      const ripple = document.createElement('div');
+      ripple.className = 'cursor-ripple';
+      ripple.style.left = `${mouseX}px`;
+      ripple.style.top = `${mouseY}px`;
+      document.body.appendChild(ripple);
+      
+      // Remove ripple after animation
+      setTimeout(() => {
+        ripple.remove();
+      }, 1000);
+    });
+    
+    document.addEventListener('mouseup', () => {
+      cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+      cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+    
+    // Add ripple style
+    const style = document.createElement('style');
+    style.innerHTML = `
+      .cursor-ripple {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background: rgba(100, 255, 218, 0.4);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9997;
+        pointer-events: none;
+        animation: ripple 1s linear forwards;
+      }
+      
+      @keyframes ripple {
+        0% { width: 0; height: 0; opacity: 0.5; }
+        100% { width: 100px; height: 100px; opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    // Hide cursor when leaving window
+    document.addEventListener('mouseleave', () => {
+      cursorDot.style.opacity = '0';
+      cursorOutline.style.opacity = '0';
+    });
+    
+    document.addEventListener('mouseenter', () => {
+      cursorDot.style.opacity = '1';
+      cursorOutline.style.opacity = '1';
+    });
+    
+    // Change cursor color based on background color
+    const changeCursorColorBasedOnBackground = () => {
+      const elements = document.elementsFromPoint(mouseX, mouseY);
+      let bgColor = window.getComputedStyle(elements[0]).backgroundColor;
+      
+      // Only change if background is not transparent
+      if (bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'transparent') {
+        // Extract RGB values
+        const rgb = bgColor.match(/\d+/g);
+        if (rgb && rgb.length >= 3) {
+          // Calculate brightness
+          const brightness = (parseInt(rgb[0]) * 299 + parseInt(rgb[1]) * 587 + parseInt(rgb[2]) * 114) / 1000;
+          
+          // Change cursor color based on background brightness
+          if (brightness > 125) {
+            // Dark cursor for light backgrounds
+            cursorDot.style.backgroundColor = '#333333';
+            cursorOutline.style.borderColor = 'rgba(51, 51, 51, 0.5)';
+          } else {
+            // Light cursor for dark backgrounds
+            cursorDot.style.backgroundColor = '#64ffda';
+            cursorOutline.style.borderColor = 'rgba(100, 255, 218, 0.5)';
+          }
+        }
+      }
+    };
+    
+    // Check background color periodically
+    setInterval(changeCursorColorBasedOnBackground, 500);
+  });
+</script>
+
+
+</body>
+</html>
