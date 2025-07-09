@@ -71,3 +71,4 @@ git clone https://github.com/abdullahrizwan7/portfolio.git
 cd portfolio
 npm install
 npm run dev
+---
