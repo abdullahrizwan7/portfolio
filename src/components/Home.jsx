@@ -1255,8 +1255,9 @@ const Home = () => {
                 </TypewriterContainer>
                 
                 <Description variants={itemVariants}>
-                    I'm a junior software engineer specializing in building exceptional digital experiences. 
-                    Currently focused on building accessible, human-centered products with modern technologies.
+                    I'm a passionate Computer Science student and an enthusiastic developer in the making. 
+                    While I'm still learning the ropes academically,I actively apply my skills by building real-world projects that blend creativity with code.
+                     
                 </Description>
                 
                 <ButtonContainer variants={itemVariants}>

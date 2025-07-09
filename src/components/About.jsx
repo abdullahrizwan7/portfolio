@@ -765,7 +765,7 @@ const Image = styled.img`
   border-radius: 50%;
   
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.15);
   }
 `;
 
@@ -1072,8 +1072,8 @@ const About = () => {
     ];
 
     const stats = [
-        { number: '50+', label: 'Projects', icon: <FaProjectDiagram /> },
-        { number: '5+', label: 'Years Exp', icon: <FaRocket /> },
+        { number: '4+', label: 'Projects', icon: <FaProjectDiagram /> },
+        { number: '3+', label: 'Years Exp', icon: <FaRocket /> },
         { number: '20+', label: 'Clients', icon: <FaTrophy /> },
         { number: '10+', label: 'Awards', icon: <FaAward /> },
     ];
@@ -1086,38 +1086,50 @@ const About = () => {
     ];
 
     const experiences = [
-        {
-            title: 'Senior Frontend Developer',
-            company: 'Tech Innovations Inc.',
-            duration: '2021 - Present',
-            description: 'Led development of flagship SaaS product using React and TypeScript. Implemented CI/CD pipeline and mentored junior developers.'
-        },
-        {
-            title: 'Full Stack Developer',
-            company: 'Digital Solutions LLC',
-            duration: '2019 - 2021',
-            description: 'Developed full-stack applications using MERN stack. Created RESTful APIs and implemented real-time features with WebSockets.'
-        },
-        {
-            title: 'Frontend Developer',
-            company: 'Creative Agency Co.',
-            duration: '2018 - 2019',
-            description: 'Built responsive websites for clients using modern CSS techniques. Collaborated with designers to create intuitive user interfaces.'
-        }
+      {
+        title: 'Full Stack Developer',
+        company: (
+          <a
+            href="https://www.lpu.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#64ffda', textDecoration: 'underline' }}
+          >
+            Lovely Professional University (LPU)
+          </a>
+        ),
+        duration: '2024 - 2025',
+        description: 'Gained hands-on experience in Full Stack Web Development, working with both frontend and backend technologies. Built responsive web applications using HTML, CSS, JavaScript, React, and Tailwind CSS on the frontend, and Node.js, Express, and MongoDB on the backend. Focused on creating clean UI, RESTful APIs, authentication systems, and deploying projects using platforms like GitHub Pages and Vercel. Emphasized performance optimization, scalability, and real-world problem-solving through personal and collaborative projects.'
+      },
+      {
+        title: 'Frontend Developer',
+        company: (
+          <a
+            href="https://www.digitalwebsolutions.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#64ffda', textDecoration: 'underline' }}
+          >
+            Digital Web Solution pvt. ltd.
+          </a>
+        ),
+        duration: '2023 - 2024',
+        description: 'Built responsive websites for clients using modern CSS techniques. Collaborated with designers to create intuitive user interfaces.'
+      }
     ];
 
     const qualifications = [
         {
-            title: 'Master of Computer Science',
-            institution: 'Stanford University',
-            duration: '2020 - 2022',
-            description: 'Specialized in AI and Web Technologies with focus on modern development practices.'
+            title: 'Diploma in Computer Science Engineering (CSE)',
+            institution: 'Lovely Professional University (LPU)',
+            duration: '2022 - 2025',
+            description: 'Completed a 3-year Diploma in Computer Science Engineering focused on fundamental concepts of programming, data structures, computer networks, and software development. Gained practical knowledge through lab work and basic project development.'
         },
         {
-            title: 'Bachelor of Software Engineering',
-            institution: 'MIT',
-            duration: '2016 - 2020',
-            description: 'Comprehensive software engineering education with emphasis on full-stack development.'
+            title: '10th',
+            institution: 'S.Raza High School',
+            duration: '2020 - 2021',
+            description: 'Completed secondary education (CBSE) from S.Raza High School'
         }
     ];
 
