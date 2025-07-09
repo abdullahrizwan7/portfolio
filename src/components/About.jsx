@@ -1203,7 +1203,7 @@ const About = () => {
                             <Subtitle>Full-Stack Developer & Problem Solver</Subtitle>
 
                             <Description>
-                                I'm a passionate <Highlight>full-stack developer</Highlight> with 5+ years of experience
+                                I'm a passionate <Highlight>full-stack developer</Highlight> with 3+ years of experience
                                 creating beautiful, functional, and user-centered digital experiences. I specialize in
                                 <Highlight> React, Node.js, and modern web technologies</Highlight>, always staying
                                 current with industry trends and best practices.
