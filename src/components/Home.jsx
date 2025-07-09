@@ -1255,7 +1255,7 @@ const Home = () => {
                 </TypewriterContainer>
                 
                 <Description variants={itemVariants}>
-                    I'm a software engineer specializing in building exceptional digital experiences. 
+                    I'm a junior software engineer specializing in building exceptional digital experiences. 
                     Currently focused on building accessible, human-centered products with modern technologies.
                 </Description>
                 
