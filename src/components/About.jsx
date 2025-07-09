@@ -1064,7 +1064,7 @@ const About = () => {
 
     const skills = [
         { icon: <FaCode />, title: 'Frontend', description: 'React, Vue, TypeScript, Next.js', level: 95 },
-        { icon: <FaServer />, title: 'Backend', description: 'Node.js, Python, Express, Django', level: 90 },
+        { icon: <FaServer />, title: 'Backend', description: 'Node.js, Python, Express, Django', level: 80 },
         { icon: <FaDatabase />, title: 'Database', description: 'MongoDB, PostgreSQL, Redis', level: 85 },
         { icon: <FaCloud />, title: 'Cloud', description: 'AWS, Docker, Kubernetes', level: 80 },
         { icon: <FaMobileAlt />, title: 'Mobile', description: 'React Native, Flutter', level: 75 },

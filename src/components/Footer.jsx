@@ -21,7 +21,7 @@ const Footer = () => {
         <FooterSection>
           <FooterTitle>Connect</FooterTitle>
           <SocialLinks>
-            <SocialLink href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+            <SocialLink href="https://github.com/ayazmallick007" target="_blank" rel="noopener noreferrer">
               GitHub
             </SocialLink>
             <SocialLink href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">

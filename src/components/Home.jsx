@@ -1234,7 +1234,7 @@ const Home = () => {
                 </Greeting>
                 
                 <Name variants={itemVariants}>
-                    Ayaz Mallick.
+                    Abdullah Rizwan
                 </Name>
                 
                 <TypewriterContainer>
