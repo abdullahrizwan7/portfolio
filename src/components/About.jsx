@@ -1099,7 +1099,8 @@ const About = () => {
           </a>
         ),
         duration: '2024 - 2025',
-        description: 'Gained hands-on experience in Full Stack Web Development, working with both frontend and backend technologies. Built responsive web applications using HTML, CSS, JavaScript, React, and Tailwind CSS on the frontend, and Node.js, Express, and MongoDB on the backend. Focused on creating clean UI, RESTful APIs, authentication systems, and deploying projects using platforms like GitHub Pages and Vercel. Emphasized performance optimization, scalability, and real-world problem-solving through personal and collaborative projects.'
+        description: 'Proactively learned Full Stack Web Development alongside academic studies. Developed dynamic and responsive web applications using HTML, CSS, JavaScript, React, and Tailwind CSS on the frontend, and Node.js, Express, and MongoDB on the backend. Built and deployed full-stack projects incorporating RESTful APIs, authentication, and real-time data handling, using platforms like GitHub Pages and Vercel.Focused on clean UI/UX, performance optimization, and scalable architecture, applying knowledge through solo and collaborative projects to solve real-world problems. Committed to continuous learning and staying updated with modern development practices.'
+
       },
       {
         title: 'Frontend Developer',
@@ -1119,18 +1120,36 @@ const About = () => {
     ];
 
     const qualifications = [
-        {
-            title: 'Diploma in Computer Science Engineering (CSE)',
-            institution: 'Lovely Professional University (LPU)',
-            duration: '2022 - 2025',
-            description: 'Completed a 3-year Diploma in Computer Science Engineering focused on fundamental concepts of programming, data structures, computer networks, and software development. Gained practical knowledge through lab work and basic project development.'
-        },
-        {
-            title: '10th',
-            institution: 'S.Raza High School',
-            duration: '2020 - 2021',
-            description: 'Completed secondary education (CBSE) from S.Raza High School'
-        }
+      {
+        title: 'Diploma in Computer Science Engineering (CSE)',
+        institution: (
+          <a
+            href="https://www.lpu.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#64ffda', textDecoration: 'underline' }}
+          >
+            Lovely Professional University (LPU)
+          </a>
+        ),
+        duration: '2022 - 2025',
+        description: 'Completed a 3-year Diploma in Computer Science Engineering focused on fundamental concepts of programming, data structures, computer networks, and software development. Gained practical knowledge through lab work and basic project development.'
+      },
+      {
+        title: '10th',
+        institution: (
+          <a
+            href="https://razaglobalschool.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#64ffda', textDecoration: 'underline' }}
+          >
+            S.Raza High School
+          </a>
+        ),
+        duration: '2020 - 2021',
+        description: 'Completed secondary education (CBSE) from S.Raza High School'
+      }
     ];
 
     const tabVariants = {

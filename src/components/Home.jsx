@@ -1282,7 +1282,7 @@ const Home = () => {
                 
                 <SocialLinks variants={itemVariants}>
                     <SocialIcon 
-                        href="https://github.com/yourusername" 
+                        href="https://github.com/abdullahrizwan7" 
                         target="_blank"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
