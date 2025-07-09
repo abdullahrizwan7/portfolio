@@ -67,7 +67,7 @@ my-portfolio/
 Clone & run it locally:
 
 ```bash
-git clone https://github.com/ayazmallick007/my-portfolio.git
-cd my-portfolio
+git clone https://github.com/abdullahrizwan7/portfolio.git
+cd portfolio
 npm install
 npm run dev
