@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { fadeIn, staggerContainer, textVariant } from '../animations';
 import ProjectCard from './ProjectCard';
+
+// Helper for motion preference
+const prefersReducedMotion = () => {
+  return typeof window !== 'undefined' 
+    ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    : false;
+};
 
 const ProjectsSection = styled.section`
   min-height: 100vh;
@@ -36,7 +43,7 @@ const ProjectsSection = styled.section`
       radial-gradient(2px 2px at 120px 200px, rgba(79, 172, 254, 0.6), transparent);
     background-repeat: repeat;
     background-size: 400px 200px;
-    animation: twinkle 4s ease-in-out infinite alternate;
+    animation: ${({ $reduceMotion }) => $reduceMotion ? 'none' : 'twinkle 4s ease-in-out infinite alternate'};
     pointer-events: none;
     z-index: 1;
   }
@@ -55,46 +62,28 @@ const ProjectsSection = styled.section`
       radial-gradient(ellipse at 50% 10%, rgba(147, 51, 234, 0.1) 0%, transparent 40%),
       radial-gradient(ellipse at 80% 20%, rgba(255, 20, 147, 0.08) 0%, transparent 45%),
       radial-gradient(ellipse at 20% 80%, rgba(0, 255, 255, 0.06) 0%, transparent 35%);
-    animation: float 20s ease-in-out infinite;
+    animation: ${({ $reduceMotion }) => $reduceMotion ? 'none' : 'float 20s ease-in-out infinite'};
     pointer-events: none;
     z-index: 1;
   }
   
   @keyframes float {
     0%, 100% { 
-      transform: translateY(0px) rotate(0deg) scale(1); 
+      transform: translateY(0px);
       opacity: 0.8;
     }
-    33% { 
-      transform: translateY(-15px) rotate(120deg) scale(1.05); 
+    50% { 
+      transform: translateY(-15px);
       opacity: 1;
-    }
-    66% { 
-      transform: translateY(10px) rotate(240deg) scale(0.95); 
-      opacity: 0.9;
     }
   }
 
   @keyframes twinkle {
     0%, 100% { 
-      opacity: 0.4; 
-      transform: scale(1); 
-      filter: brightness(1);
-    }
-    25% { 
-      opacity: 0.8; 
-      transform: scale(1.3); 
-      filter: brightness(1.2);
+      opacity: 0.4;
     }
     50% { 
-      opacity: 1; 
-      transform: scale(1.5); 
-      filter: brightness(1.5);
-    }
-    75% { 
-      opacity: 0.7; 
-      transform: scale(1.2); 
-      filter: brightness(1.1);
+      opacity: 1;
     }
   }
   
@@ -112,11 +101,11 @@ const ProjectsSection = styled.section`
     
     &::before {
       background-size: 300px 150px;
-      animation: twinkle 3s ease-in-out infinite alternate;
+      animation: ${({ $reduceMotion }) => $reduceMotion ? 'none' : 'twinkle 3s ease-in-out infinite alternate'};
     }
     
     &::after {
-      animation: float 15s ease-in-out infinite;
+      animation: ${({ $reduceMotion }) => $reduceMotion ? 'none' : 'float 15s ease-in-out infinite'};
     }
   }
   
@@ -143,7 +132,7 @@ const FloatingShape = styled.div`
   right: ${props => props.right || 'auto'};
   bottom: ${props => props.bottom || 'auto'};
   z-index: 1;
-  animation: floating ${props => props.duration || '15s'} ease-in-out infinite alternate;
+  animation: ${({ $reduceMotion }) => $reduceMotion ? 'none' : `floating ${props => props.duration || '15s'} ease-in-out infinite alternate`};
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.15),
     0 4px 16px rgba(0, 0, 0, 0.1),
@@ -183,7 +172,7 @@ const FloatingShape = styled.div`
       rgba(255, 255, 255, 0.05) 50%,
       transparent 70%
     );
-    animation: shimmer 3s ease-in-out infinite;
+    animation: ${({ $reduceMotion }) => $reduceMotion ? 'none' : 'shimmer 3s ease-in-out infinite'};
     pointer-events: none;
     border-radius: inherit;
   }
@@ -204,26 +193,13 @@ const FloatingShape = styled.div`
   
   @keyframes floating {
     0% {
-      transform: translate(0, 0) rotate(0deg) scale(1);
-      filter: brightness(1) saturate(1);
-    }
-    25% {
-      transform: translate(${props => props.moveX || '20px'}, ${props => props.moveY || '20px'}) 
-                 rotate(${props => props.rotate || '10deg'}) scale(1.02);
-      filter: brightness(1.1) saturate(1.1);
+      transform: translate(0, 0);
     }
     50% {
-      transform: translate(${props => props.moveX2 || '-20px'}, ${props => props.moveY2 || '-10px'}) 
-                 rotate(${props => props.rotate2 || '-10deg'}) scale(0.98);
-      filter: brightness(0.9) saturate(1.2);
-    }
-    75% {
-      transform: translate(10px, -15px) rotate(5deg) scale(1.01);
-      filter: brightness(1.05) saturate(1.05);
+      transform: translate(${props => props.moveX2 || '-20px'}, ${props => props.moveY2 || '-10px'});
     }
     100% {
-      transform: translate(0, 0) rotate(0deg) scale(1);
-      filter: brightness(1) saturate(1);
+      transform: translate(0, 0);
     }
   }
   
@@ -241,7 +217,7 @@ const FloatingShape = styled.div`
     height: ${props => props.size ? `calc(${props.size} * 0.7)` : '70px'};
     
     &::after {
-      animation: shimmer 2s ease-in-out infinite;
+      animation: ${({ $reduceMotion }) => $reduceMotion ? 'none' : 'shimmer 2s ease-in-out infinite'};
     }
   }
   
@@ -252,7 +228,7 @@ const FloatingShape = styled.div`
     height: ${props => props.size ? `calc(${props.size} * 0.5)` : '50px'};
     
     &::after {
-      animation: shimmer 1.5s ease-in-out infinite;
+      animation: ${({ $reduceMotion }) => $reduceMotion ? 'none' : 'shimmer 1.5s ease-in-out infinite'};
     }
   }
 `;
@@ -329,7 +305,7 @@ const ProjectsContainer = styled(motion.div)`
       rgba(255, 255, 255, 0.08) 50%,
       transparent 70%
     );
-    animation: containerShimmer 6s ease-in-out infinite;
+    animation: ${({ $reduceMotion }) => $reduceMotion ? 'none' : 'containerShimmer 6s ease-in-out infinite'};
     pointer-events: none;
     border-radius: 32px;
     z-index: 0;
@@ -361,7 +337,7 @@ const ProjectsContainer = styled(motion.div)`
     }
     
     &::after {
-      animation: containerShimmer 5s ease-in-out infinite;
+      animation: ${({ $reduceMotion }) => $reduceMotion ? 'none' : 'containerShimmer 5s ease-in-out infinite'};
       border-radius: 28px;
     }
   }
@@ -379,7 +355,7 @@ const ProjectsContainer = styled(motion.div)`
     }
     
     &::after {
-      animation: containerShimmer 4s ease-in-out infinite;
+      animation: ${({ $reduceMotion }) => $reduceMotion ? 'none' : 'containerShimmer 4s ease-in-out infinite'};
       border-radius: 20px;
     }
   }
@@ -396,7 +372,7 @@ const ProjectsContainer = styled(motion.div)`
     }
     
     &::after {
-      animation: containerShimmer 3s ease-in-out infinite;
+      animation: ${({ $reduceMotion }) => $reduceMotion ? 'none' : 'containerShimmer 3s ease-in-out infinite'};
       border-radius: 16px;
     }
   }
@@ -410,7 +386,7 @@ const SectionTitle = styled(motion.h2)`
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradientText 4s linear infinite;
+  animation: ${({ $reduceMotion }) => $reduceMotion ? 'none' : 'gradientText 4s linear infinite'};
   text-shadow: 0 0 15px rgba(100, 255, 218, 0.4);
   letter-spacing: 1.5px;
   text-align: center;
@@ -483,7 +459,7 @@ const ProjectsGrid = styled(motion.div)`
   }
 `;
 
-const Projects = () => {
+const Projects = ({ $reduceMotion }) => {
     const projects = [
         {
             id: 1,
@@ -515,87 +491,78 @@ const Projects = () => {
     ];
 
     return (
-        <ProjectsSection id="projects">
+        <ProjectsSection id="projects" $reduceMotion={$reduceMotion}>
             {/* Floating background shapes */}
-            <FloatingShape
-                size="180px"
-                bg="rgba(100, 255, 218, 0.05)"
-                radius="60% 40% 30% 70% / 60% 30% 70% 40%"
-                top="15%"
-                left="5%"
-                duration="22s"
-                moveX="35px"
-                moveY="45px"
-                rotate="20deg"
-                moveX2="-25px"
-                moveY2="-35px"
-                rotate2="-15deg"
-            />
-            <FloatingShape
-                size="220px"
-                bg="rgba(138, 43, 226, 0.04)"
-                radius="30% 70% 70% 30% / 30% 30% 70% 70%"
-                bottom="5%"
-                right="8%"
-                duration="28s"
-                moveX="-45px"
-                moveY="25px"
-                rotate="-25deg"
-                moveX2="35px"
-                moveY2="-45px"
-                rotate2="20deg"
-            />
-            <FloatingShape
-                size="120px"
-                bg="rgba(25, 118, 210, 0.04)"
-                radius="50%"
-                top="55%"
-                left="12%"
-                duration="20s"
-                moveX="30px"
-                moveY="-30px"
-                rotate="35deg"
-                moveX2="-20px"
-                moveY2="40px"
-                rotate2="-30deg"
-            />
-            <FloatingShape
-                size="160px"
-                bg="rgba(255, 20, 147, 0.03)"
-                radius="40% 60% 60% 40% / 40% 40% 60% 60%"
-                top="80%"
-                right="25%"
-                duration="24s"
-                moveX="25px"
-                moveY="-20px"
-                rotate="15deg"
-                moveX2="-30px"
-                moveY2="25px"
-                rotate2="-20deg"
-            />
-            <FloatingShape
-                size="140px"
-                bg="rgba(0, 255, 255, 0.03)"
-                radius="70% 30% 30% 70% / 70% 70% 30% 30%"
-                top="35%"
-                right="5%"
-                duration="26s"
-                moveX="-35px"
-                moveY="30px"
-                rotate="-30deg"
-                moveX2="25px"
-                moveY2="-35px"
-                rotate2="25deg"
-            />
+            {!$reduceMotion && (
+                <>
+                    <FloatingShape
+                        $reduceMotion={$reduceMotion}
+                        size="180px"
+                        bg="rgba(100, 255, 218, 0.05)"
+                        radius="60% 40% 30% 70% / 60% 30% 70% 40%"
+                        top="15%"
+                        left="5%"
+                        duration="22s"
+                        moveX2="-25px"
+                        moveY2="-35px"
+                    />
+                    <FloatingShape
+                        $reduceMotion={$reduceMotion}
+                        size="220px"
+                        bg="rgba(138, 43, 226, 0.04)"
+                        radius="30% 70% 70% 30% / 30% 30% 70% 70%"
+                        bottom="5%"
+                        right="8%"
+                        duration="28s"
+                        moveX2="35px"
+                        moveY2="-45px"
+                    />
+                    <FloatingShape
+                        $reduceMotion={$reduceMotion}
+                        size="120px"
+                        bg="rgba(25, 118, 210, 0.04)"
+                        radius="50%"
+                        top="55%"
+                        left="12%"
+                        duration="20s"
+                        moveX2="-20px"
+                        moveY2="40px"
+                    />
+                    <FloatingShape
+                        $reduceMotion={$reduceMotion}
+                        size="160px"
+                        bg="rgba(255, 20, 147, 0.03)"
+                        radius="40% 60% 60% 40% / 40% 40% 60% 60%"
+                        top="80%"
+                        right="25%"
+                        duration="24s"
+                        moveX2="-30px"
+                        moveY2="25px"
+                    />
+                    <FloatingShape
+                        $reduceMotion={$reduceMotion}
+                        size="140px"
+                        bg="rgba(0, 255, 255, 0.03)"
+                        radius="70% 30% 30% 70% / 70% 70% 30% 30%"
+                        top="35%"
+                        right="5%"
+                        duration="26s"
+                        moveX2="25px"
+                        moveY2="-35px"
+                    />
+                </>
+            )}
 
             <ProjectsContainer
-                variants={staggerContainer(0.1, 0.1)}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: false, amount: 0.25 }}
+                variants={!$reduceMotion ? staggerContainer(0.1, 0.1) : {}}
+                initial={!$reduceMotion ? "hidden" : false}
+                whileInView={!$reduceMotion ? "show" : false}
+                viewport={{ once: true, amount: 0.25 }}
+                $reduceMotion={$reduceMotion}
             >
                 <SectionTitle
-                    variants={textVariant(0.1)}
+                    variants={!$reduceMotion ? textVariant(0.1) : {}}
+                    $reduceMotion={$reduceMotion}
                 >
                     Featured Projects
                 </SectionTitle>
@@ -605,10 +572,11 @@ const Projects = () => {
                 </SectionSubtitle>
 
                 <ProjectsGrid>
-                    {projects.map((project, index) => (
+                    {projects.map((project) => (
                         <ProjectCard
                             key={project.id}
                             project={project}
+                            $reduceMotion={$reduceMotion}
                         />
                     ))}
                 </ProjectsGrid>
@@ -617,4 +585,17 @@ const Projects = () => {
     );
 };
 
-export default Projects;
+// Wrap with motion preference detection
+export default () => {
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    setReduceMotion(prefersReducedMotion());
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handler = () => setReduceMotion(mediaQuery.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
+
+  return <Projects $reduceMotion={reduceMotion} />;
+};
