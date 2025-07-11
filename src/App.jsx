@@ -7,11 +7,13 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import PerformanceIndicator from './components/PerformanceIndicator';
+import ParticleBackground from './components/ParticleBackground';
 import './App.css';
 
 const App = () => {
   return (
     <div className="App">
+      <ParticleBackground />
       <PerformanceIndicator />
       <Navbar />
       <main>

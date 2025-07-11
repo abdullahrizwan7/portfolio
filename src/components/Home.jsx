@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import styled, { keyframes } from 'styled-components';
-import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter, FaCodepen, FaDev } from 'react-icons/fa';
+import { motion, useAnimation } from 'framer-motion';
+import { FaGithub, FaLinkedin, FaTwitter, FaCodepen } from 'react-icons/fa';
 import { HiArrowDown, HiDocumentDownload } from 'react-icons/hi';
 import { Link } from 'react-scroll';
 import Typewriter from 'typewriter-effect';
@@ -11,39 +11,23 @@ import * as random from 'maath/random/dist/maath-random.esm';
 
 // Enhanced responsive breakpoints
 const breakpoints = {
-    xs: '320px',      // Small mobile
-    sm: '480px',      // Large mobile
-    md: '768px',      // Tablet portrait
-    lg: '1024px',     // Tablet landscape / Small desktop
-    xl: '1200px',     // Desktop
-    xxl: '1400px'     // Large desktop
+    xs: '320px',
+    sm: '480px',
+    md: '768px',
+    lg: '1024px',
+    xl: '1200px',
+    xxl: '1400px'
 };
 
-// Simple smooth animations
+// Simplified animations
 const float = keyframes`
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-8px); }
 `;
 
-const shimmer = keyframes`
-  0% { transform: translateX(-100%); opacity: 0; }
-  50% { opacity: 0.8; }
-  100% { transform: translateX(100%); opacity: 0; }
-`;
-
-const gradientShift = keyframes`
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-`;
-
 const pulse = keyframes`
   0%, 100% { opacity: 0.9; }
   50% { opacity: 1; }
-`;
-
-const glow = keyframes`
-  0%, 100% { box-shadow: 0 0 20px rgba(100, 255, 218, 0.3); }
-  50% { box-shadow: 0 0 30px rgba(100, 255, 218, 0.5); }
 `;
 
 const liquidMove = keyframes`
@@ -58,34 +42,37 @@ const liquidMove = keyframes`
 `;
 
 // Optimized particle system
-const ParticleField = ({ count = 500 }) => {
+const ParticleField = React.memo(({ count = 500, deviceType }) => {
     const points = useRef();
-    const [deviceType, setDeviceType] = useState('desktop');
     
-    // Adjust particle count based on device type and performance
-    const getParticleCount = () => {
-        if (deviceType === 'mobile') return Math.min(count * 0.2, 150);
-        if (deviceType === 'tablet') return Math.min(count * 0.4, 250);
-        return Math.min(count, 500);
-    };
-    
-    const sphere = random.inSphere(new Float32Array(getParticleCount() * 3), { radius: 15 });
-
-    useEffect(() => {
-        const checkDevice = () => {
-            const width = window.innerWidth;
-            if (width < 768) {
-                setDeviceType('mobile');
-            } else if (width < 1024) {
-                setDeviceType('tablet');
-            } else {
-                setDeviceType('desktop');
-            }
+    // Memoize particle calculations
+    const { particleCount, particleSize, particleOpacity } = useMemo(() => {
+        let countVal, sizeVal, opacityVal;
+        
+        if (deviceType === 'mobile') {
+            countVal = Math.min(count * 0.2, 150);
+            sizeVal = 0.015;
+            opacityVal = 0.4;
+        } else if (deviceType === 'tablet') {
+            countVal = Math.min(count * 0.4, 250);
+            sizeVal = 0.025;
+            opacityVal = 0.5;
+        } else {
+            countVal = Math.min(count, 500);
+            sizeVal = 0.035;
+            opacityVal = 0.6;
+        }
+        
+        return {
+            particleCount: countVal,
+            particleSize: sizeVal,
+            particleOpacity: opacityVal
         };
-        checkDevice();
-        window.addEventListener('resize', checkDevice);
-        return () => window.removeEventListener('resize', checkDevice);
-    }, []);
+    }, [deviceType, count]);
+    
+    const sphere = useMemo(() => {
+        return random.inSphere(new Float32Array(particleCount * 3), { radius: 15 });
+    }, [particleCount]);
 
     useFrame((state, delta) => {
         if (points.current) {
@@ -95,35 +82,23 @@ const ParticleField = ({ count = 500 }) => {
         }
     });
 
-    const getParticleSize = () => {
-        if (deviceType === 'mobile') return 0.015;
-        if (deviceType === 'tablet') return 0.025;
-        return 0.035;
-    };
-
-    const getOpacity = () => {
-        if (deviceType === 'mobile') return 0.4;
-        if (deviceType === 'tablet') return 0.5;
-        return 0.6;
-    };
-
     return (
         <Points ref={points} positions={sphere} stride={3} frustumCulled={false}>
             <PointMaterial
                 transparent
                 color="#64ffda"
-                size={getParticleSize()}
+                size={particleSize}
                 sizeAttenuation={true}
                 depthWrite={false}
-                opacity={getOpacity()}
+                opacity={particleOpacity}
             />
         </Points>
     );
-};
+});
 
 const HomeSection = styled.section`
   min-height: 100vh;
-  min-height: 100dvh; /* Dynamic viewport height for mobile */
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -131,11 +106,10 @@ const HomeSection = styled.section`
   padding: 0 2rem;
   position: relative;
   background: 
-    radial-gradient(ellipse at top, #1a365d 0%, #0a192f 50%, #000000 100%),
-    linear-gradient(135deg, #0a192f 0%, #1a202c 50%, #2d3748 100%);
+    radial-gradient(ellipse at top, #1a365d 0%, #0a192f 50%, #000000 100%);
   overflow: hidden;
   
-  /* Enhanced Starfield Background */
+  /* Simplified Starfield Background */
   &::before {
     content: '';
     position: absolute;
@@ -145,22 +119,14 @@ const HomeSection = styled.section`
     bottom: 0;
     background-image: 
       radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.9), transparent),
-      radial-gradient(2px 2px at 40px 70px, rgba(100,255,218,0.7), transparent),
-      radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,1), transparent),
-      radial-gradient(1px 1px at 130px 80px, rgba(100,255,218,0.5), transparent),
-      radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.7), transparent),
-      radial-gradient(1px 1px at 200px 90px, rgba(100,255,218,0.9), transparent),
-      radial-gradient(2px 2px at 240px 50px, rgba(255,255,255,0.8), transparent),
-      radial-gradient(1px 1px at 280px 10px, rgba(100,255,218,0.6), transparent),
-      radial-gradient(1px 1px at 320px 120px, rgba(255,255,255,0.5), transparent),
-      radial-gradient(2px 2px at 360px 60px, rgba(100,255,218,0.8), transparent);
+      radial-gradient(2px 2px at 40px 70px, rgba(100,255,218,0.7), transparent);
     background-repeat: repeat;
     background-size: 400px 200px;
     animation: ${float} 8s ease-in-out infinite alternate;
     pointer-events: none;
   }
   
-  /* Enhanced Nebula Effects */
+  /* Simplified Nebula Effects */
   &::after {
     content: '';
     position: absolute;
@@ -170,14 +136,11 @@ const HomeSection = styled.section`
     height: 200%;
     background: 
       radial-gradient(ellipse at 25% 25%, rgba(100, 255, 218, 0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 75% 75%, rgba(79, 172, 254, 0.12) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 10%, rgba(147, 51, 234, 0.1) 0%, transparent 40%),
-      radial-gradient(ellipse at 80% 30%, rgba(255, 107, 107, 0.08) 0%, transparent 45%);
+      radial-gradient(ellipse at 75% 75%, rgba(79, 172, 254, 0.12) 0%, transparent 50%);
     animation: ${float} 20s ease-in-out infinite;
     pointer-events: none;
   }
   
-  /* Enhanced responsive design with proper centering */
   @media (max-width: ${breakpoints.xxl}) {
     padding: 0 1.5rem;
   }
@@ -188,35 +151,22 @@ const HomeSection = styled.section`
   
   @media (max-width: ${breakpoints.lg}) {
     padding: 0 1rem;
-    justify-content: center;
-    align-items: center;
   }
   
   @media (max-width: ${breakpoints.md}) {
     padding: 0 1rem;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Fallback for older browsers */
   }
   
   @media (max-width: ${breakpoints.sm}) {
     padding: 0 0.75rem;
-    justify-content: center;
-    align-items: center;
   }
   
   @media (max-width: ${breakpoints.xs}) {
     padding: 0 0.5rem;
-    justify-content: center;
-    align-items: center;
   }
   
-  /* Landscape orientation adjustments */
   @media (max-height: 600px) and (orientation: landscape) {
-    justify-content: center;
-    align-items: center;
     padding: 1rem;
-    min-height: 100vh;
   }
 `;
 
@@ -227,6 +177,10 @@ const ParticleBackground = styled.div`
   width: 100%;
   height: 100%;
   z-index: 0;
+  
+  @media (max-width: ${breakpoints.md}) {
+    display: none;
+  }
 `;
 
 const HomeContainer = styled(motion.div)`
@@ -255,8 +209,9 @@ const HomeContainer = styled(motion.div)`
     inset 0 1px 0 rgba(255, 255, 255, 0.15),
     inset 0 -1px 0 rgba(255, 255, 255, 0.08);
   text-align: center;
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
   
-  /* Enhanced glass reflection with prismatic effect */
   &::before {
     content: '';
     position: absolute;
@@ -275,45 +230,6 @@ const HomeContainer = styled(motion.div)`
     border-radius: 32px 32px 0 0;
   }
   
-  /* Enhanced shimmer effect with rainbow gradient */
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.15),
-      rgba(100, 255, 218, 0.1),
-      rgba(79, 172, 254, 0.08),
-      rgba(255, 255, 255, 0.12),
-      transparent
-    );
-    transition: left 0.8s ease;
-    pointer-events: none;
-  }
-  
-  &:hover::after {
-    left: 100%;
-  }
-  
-  /* Pulsing glow effect */
-  &:hover {
-    box-shadow: 
-      0 15px 50px rgba(0, 0, 0, 0.5),
-      0 5px 25px rgba(0, 0, 0, 0.4),
-      0 0 100px rgba(100, 255, 218, 0.2),
-      0 0 150px rgba(100, 255, 218, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-    transition: all 0.3s ease;
-  }
-  
-  /* Comprehensive responsive design */
   @media (max-width: ${breakpoints.xxl}) {
     max-width: 1100px;
     padding: 2.8rem;
@@ -375,15 +291,9 @@ const HomeContainer = styled(motion.div)`
     }
   }
   
-  /* Landscape orientation on mobile */
   @media (max-height: 600px) and (orientation: landscape) {
     padding: 1.5rem;
     max-width: 95%;
-  }
-  
-  /* High DPI displays - enhanced for better visual quality */
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    backdrop-filter: blur(30px) saturate(200%);
   }
 `;
 
@@ -401,10 +311,8 @@ const Name = styled(motion.h1)`
   color: #e6f1ff;
   margin-bottom: 0.5rem;
   line-height: 1.1;
-  text-shadow: 0 0 10px rgba(230, 241, 255, 0.3);
   text-align: center;
   
-  /* Enhanced responsive typography */
   @media (max-width: ${breakpoints.xxl}) {
     font-size: 4.2rem;
   }
@@ -434,7 +342,6 @@ const Name = styled(motion.h1)`
     margin-bottom: 0.2rem;
   }
   
-  /* Landscape mobile adjustments */
   @media (max-height: 600px) and (orientation: landscape) {
     font-size: 2rem;
     margin-bottom: 0.2rem;
@@ -453,7 +360,6 @@ const TypewriterContainer = styled.div`
     color: #64ffda;
   }
   
-  /* Enhanced responsive typography */
   @media (max-width: ${breakpoints.xxl}) {
     font-size: 3.2rem;
   }
@@ -483,7 +389,6 @@ const TypewriterContainer = styled.div`
     margin-bottom: 0.8rem;
   }
   
-  /* Landscape mobile adjustments */
   @media (max-height: 600px) and (orientation: landscape) {
     font-size: 1.5rem;
     margin-bottom: 0.8rem;
@@ -500,7 +405,6 @@ const Description = styled(motion.p)`
   margin-left: auto;
   margin-right: auto;
   
-  /* Enhanced responsive typography */
   @media (max-width: ${breakpoints.xxl}) {
     font-size: 1.05rem;
     max-width: 580px;
@@ -536,7 +440,6 @@ const Description = styled(motion.p)`
     line-height: 1.4;
   }
   
-  /* Landscape mobile adjustments */
   @media (max-height: 600px) and (orientation: landscape) {
     font-size: 0.8rem;
     margin-bottom: 1rem;
@@ -550,7 +453,6 @@ const ButtonContainer = styled(motion.div)`
   flex-wrap: wrap;
   justify-content: center;
   
-  /* Enhanced responsive layout */
   @media (max-width: ${breakpoints.lg}) {
     gap: 1.2rem;
   }
@@ -570,7 +472,6 @@ const ButtonContainer = styled(motion.div)`
     gap: 0.6rem;
   }
   
-  /* Landscape mobile adjustments */
   @media (max-height: 600px) and (orientation: landscape) {
     flex-direction: row;
     gap: 1rem;
@@ -605,22 +506,8 @@ const CTAButton = styled(motion.a)`
     0 8px 25px rgba(100, 255, 218, 0.2),
     0 0 40px rgba(100, 255, 218, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  min-height: 48px; /* Touch target minimum */
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-      transparent, 
-      rgba(100, 255, 218, 0.3), 
-      transparent
-    );
-    transition: left 0.6s ease;
-  }
+  min-height: 48px;
+  will-change: transform, box-shadow;
   
   &:hover {
     background: 
@@ -635,17 +522,12 @@ const CTAButton = styled(motion.a)`
       0 15px 35px rgba(100, 255, 218, 0.35),
       0 0 60px rgba(100, 255, 218, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    
-    &::before {
-      left: 100%;
-    }
   }
   
   &:active {
     transform: translateY(-2px) scale(0.98);
   }
   
-  /* Enhanced responsive design */
   @media (max-width: ${breakpoints.xl}) {
     padding: 1.1rem 2.2rem;
     font-size: 1.05rem;
@@ -678,7 +560,6 @@ const CTAButton = styled(motion.a)`
     border-radius: 8px;
   }
   
-  /* Touch device optimizations */
   @media (hover: none) and (pointer: coarse) {
     min-height: 44px;
     padding: 0.8rem 1.5rem;
@@ -689,16 +570,9 @@ const CTAButton = styled(motion.a)`
     
     &:active {
       transform: scale(0.95);
-      background: 
-        linear-gradient(135deg, 
-          rgba(100, 255, 218, 0.25) 0%,
-          rgba(76, 209, 185, 0.18) 50%,
-          rgba(100, 255, 218, 0.25) 100%
-        );
     }
   }
   
-  /* Landscape mobile adjustments */
   @media (max-height: 600px) and (orientation: landscape) {
     padding: 0.6rem 1.2rem;
     font-size: 0.8rem;
@@ -734,14 +608,6 @@ const SecondaryButton = styled(CTAButton)`
       0 0 60px rgba(230, 241, 255, 0.15),
       inset 0 1px 0 rgba(255, 255, 255, 0.15);
   }
-  
-  &::before {
-    background: linear-gradient(90deg, 
-      transparent, 
-      rgba(230, 241, 255, 0.2), 
-      transparent
-    );
-  }
 `;
 
 const SocialLinks = styled(motion.div)`
@@ -751,7 +617,6 @@ const SocialLinks = styled(motion.div)`
   flex-wrap: wrap;
   justify-content: center;
   
-  /* Enhanced responsive layout */
   @media (max-width: ${breakpoints.xl}) {
     gap: 1.3rem;
     margin-top: 2.5rem;
@@ -779,7 +644,6 @@ const SocialLinks = styled(motion.div)`
     margin-top: 1.2rem;
   }
   
-  /* Landscape mobile adjustments */
   @media (max-height: 600px) and (orientation: landscape) {
     margin-top: 1rem;
     gap: 0.8rem;
@@ -808,24 +672,9 @@ const SocialIcon = styled(motion.a)`
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
   position: relative;
   overflow: hidden;
-  min-width: 48px; /* Touch target minimum */
+  min-width: 48px;
   min-height: 48px;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 50% 50%, 
-      rgba(100, 255, 218, 0.1) 0%, 
-      transparent 70%
-    );
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
+  will-change: transform;
   
   &:hover {
     color: #64ffda;
@@ -835,17 +684,12 @@ const SocialIcon = styled(motion.a)`
       0 15px 30px rgba(100, 255, 218, 0.3),
       0 0 50px rgba(100, 255, 218, 0.15),
       inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    
-    &::before {
-      opacity: 1;
-    }
   }
   
   &:active {
     transform: translateY(-2px) scale(1.05);
   }
   
-  /* Enhanced responsive design */
   @media (max-width: ${breakpoints.xl}) {
     padding: 0.9rem;
     font-size: 1.4rem;
@@ -881,7 +725,6 @@ const SocialIcon = styled(motion.a)`
     min-height: 36px;
   }
   
-  /* Touch device optimizations */
   @media (hover: none) and (pointer: coarse) {
     min-width: 44px;
     min-height: 44px;
@@ -894,14 +737,9 @@ const SocialIcon = styled(motion.a)`
       transform: scale(0.95);
       color: #64ffda;
       border-color: rgba(100, 255, 218, 0.6);
-      
-      &::before {
-        opacity: 1;
-      }
     }
   }
   
-  /* Landscape mobile adjustments */
   @media (max-height: 600px) and (orientation: landscape) {
     padding: 0.4rem;
     font-size: 1rem;
@@ -946,6 +784,10 @@ const LiquidBackground = styled.div`
   height: 100%;
   overflow: hidden;
   z-index: 0;
+  
+  @media (max-width: ${breakpoints.md}) {
+    display: none;
+  }
 `;
 
 const LiquidOrb = styled(motion.div)`
@@ -955,7 +797,6 @@ const LiquidOrb = styled(motion.div)`
       rgba(100, 255, 218, 0.18) 0%, 
       rgba(76, 209, 185, 0.12) 30%,
       rgba(79, 172, 254, 0.08) 60%,
-      rgba(100, 255, 218, 0.06) 80%,
       transparent 100%
     );
   backdrop-filter: blur(30px) saturate(180%);
@@ -964,10 +805,9 @@ const LiquidOrb = styled(motion.div)`
   box-shadow: 
     0 0 80px rgba(100, 255, 218, 0.2),
     0 0 160px rgba(100, 255, 218, 0.12),
-    0 0 240px rgba(100, 255, 218, 0.06),
-    inset 0 0 60px rgba(100, 255, 218, 0.08),
-    inset 0 0 120px rgba(76, 209, 185, 0.04);
+    inset 0 0 60px rgba(100, 255, 218, 0.08);
   border: 1px solid rgba(100, 255, 218, 0.1);
+  will-change: transform;
   
   &.orb1 {
     width: 350px;
@@ -975,13 +815,6 @@ const LiquidOrb = styled(motion.div)`
     top: 8%;
     right: 8%;
     animation-delay: 0s;
-    background: 
-      radial-gradient(circle at 30% 30%, 
-        rgba(100, 255, 218, 0.2) 0%, 
-        rgba(76, 209, 185, 0.14) 30%,
-        rgba(79, 172, 254, 0.1) 60%,
-        transparent 100%
-      );
   }
   
   &.orb2 {
@@ -990,13 +823,6 @@ const LiquidOrb = styled(motion.div)`
     bottom: 12%;
     left: 3%;
     animation-delay: -7s;
-    background: 
-      radial-gradient(circle at 30% 30%, 
-        rgba(79, 172, 254, 0.18) 0%, 
-        rgba(100, 255, 218, 0.12) 30%,
-        rgba(147, 51, 234, 0.08) 60%,
-        transparent 100%
-      );
   }
   
   &.orb3 {
@@ -1005,16 +831,8 @@ const LiquidOrb = styled(motion.div)`
     top: 55%;
     right: 35%;
     animation-delay: -14s;
-    background: 
-      radial-gradient(circle at 30% 30%, 
-        rgba(147, 51, 234, 0.16) 0%, 
-        rgba(79, 172, 254, 0.1) 30%,
-        rgba(100, 255, 218, 0.08) 60%,
-        transparent 100%
-      );
   }
   
-  /* Enhanced responsive scaling */
   @media (max-width: ${breakpoints.xl}) {
     &.orb1 { width: 300px; height: 300px; }
     &.orb2 { width: 220px; height: 220px; }
@@ -1025,61 +843,6 @@ const LiquidOrb = styled(motion.div)`
     &.orb1 { width: 250px; height: 250px; }
     &.orb2 { width: 180px; height: 180px; }
     &.orb3 { width: 120px; height: 120px; }
-  }
-  
-  @media (max-width: ${breakpoints.md}) {
-    &.orb1 { width: 200px; height: 200px; opacity: 0.8; }
-    &.orb2 { width: 150px; height: 150px; opacity: 0.7; }
-    &.orb3 { width: 100px; height: 100px; opacity: 0.6; }
-  }
-  
-  @media (max-width: ${breakpoints.sm}) {
-    &.orb1 { 
-      width: 150px; 
-      height: 150px; 
-      opacity: 0.6;
-      top: 5%;
-      right: 5%;
-    }
-    &.orb2 { 
-      width: 120px; 
-      height: 120px; 
-      opacity: 0.5;
-      bottom: 8%;
-      left: 2%;
-    }
-    &.orb3 { 
-      width: 80px; 
-      height: 80px; 
-      opacity: 0.4;
-      top: 50%;
-      right: 30%;
-    }
-  }
-  
-  @media (max-width: ${breakpoints.xs}) {
-    &.orb1 { 
-      width: 120px; 
-      height: 120px; 
-      opacity: 0.5;
-    }
-    &.orb2 { 
-      width: 100px; 
-      height: 100px; 
-      opacity: 0.4;
-    }
-    &.orb3 { 
-      width: 60px; 
-      height: 60px; 
-      opacity: 0.3;
-    }
-  }
-  
-  /* Landscape mobile adjustments */
-  @media (max-height: 600px) and (orientation: landscape) {
-    &.orb1 { width: 100px; height: 100px; opacity: 0.4; }
-    &.orb2 { width: 80px; height: 80px; opacity: 0.3; }
-    &.orb3 { width: 60px; height: 60px; opacity: 0.2; }
   }
 `;
 
@@ -1108,7 +871,6 @@ const AvailabilityBadge = styled(motion.div)`
     animation: ${pulse} 2s infinite;
   }
   
-  /* Enhanced responsive positioning */
   @media (max-width: ${breakpoints.xl}) {
     top: 1.8rem;
     right: 1.8rem;
@@ -1156,7 +918,6 @@ const AvailabilityBadge = styled(motion.div)`
     }
   }
   
-  /* Landscape mobile adjustments */
   @media (max-height: 600px) and (orientation: landscape) {
     top: 0.5rem;
     right: 0.5rem;
@@ -1165,18 +926,55 @@ const AvailabilityBadge = styled(motion.div)`
   }
 `;
 
+const MemoizedTypewriter = React.memo(() => (
+  <TypewriterContainer>
+    <Typewriter
+      options={{
+        strings: [
+          'I build things for the web.',
+          'I create digital experiences.',
+          'I love clean code.',
+          'I design with purpose.'
+        ],
+        autoStart: true,
+        loop: true,
+        delay: 75,
+        deleteSpeed: 50
+      }}
+    />
+  </TypewriterContainer>
+));
+
 const Home = () => {
-    const [playHover] = useState(false);
-    const [playClick] = useState(false);
-    const [playAmbient] = useState(false);
     const controls = useAnimation();
+    const [deviceType, setDeviceType] = useState('desktop');
+    const [showOrbs, setShowOrbs] = useState(true);
 
     useEffect(() => {
+        const checkDevice = () => {
+            const width = window.innerWidth;
+            if (width < 768) {
+                setDeviceType('mobile');
+                setShowOrbs(false);
+            } else if (width < 1024) {
+                setDeviceType('tablet');
+                setShowOrbs(true);
+            } else {
+                setDeviceType('desktop');
+                setShowOrbs(true);
+            }
+        };
+        
+        checkDevice();
+        window.addEventListener('resize', checkDevice);
+        
         controls.start({
             opacity: 1,
             y: 0,
             transition: { duration: 0.8, ease: 'easeOut' }
         });
+        
+        return () => window.removeEventListener('resize', checkDevice);
     }, [controls]);
 
     const containerVariants = {
@@ -1197,23 +995,31 @@ const Home = () => {
         visible: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.6, ease: 'easeOut' }
+            transition: { 
+                duration: 0.6, 
+                ease: [0.16, 1, 0.3, 1] // Smoother easing curve
+            }
         }
     };
 
     return (
-        <HomeSection>
+        <HomeSection id="hero">
             <ParticleBackground>
-                <Canvas camera={{ position: [0, 0, 1], fov: 75 }}>
-                    <ParticleField count={500} />
+                <Canvas 
+                    camera={{ position: [0, 0, 1], fov: 75 }}
+                    performance={{ min: 0.5 }}
+                >
+                    <ParticleField count={500} deviceType={deviceType} />
                 </Canvas>
             </ParticleBackground>
 
-            <LiquidBackground>
-                <LiquidOrb className="orb1" />
-                <LiquidOrb className="orb2" />
-                <LiquidOrb className="orb3" />
-            </LiquidBackground>
+            {showOrbs && (
+                <LiquidBackground>
+                    <LiquidOrb className="orb1" />
+                    <LiquidOrb className="orb2" />
+                    <LiquidOrb className="orb3" />
+                </LiquidBackground>
+            )}
 
             <AvailabilityBadge
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -1237,27 +1043,11 @@ const Home = () => {
                     Abdullah Rizwan
                 </Name>
                 
-                <TypewriterContainer>
-                    <Typewriter
-                        options={{
-                            strings: [
-                                'I build things for the web.',
-                                'I create digital experiences.',
-                                'I love clean code.',
-                                'I design with purpose.'
-                            ],
-                            autoStart: true,
-                            loop: true,
-                            delay: 75,
-                            deleteSpeed: 50
-                        }}
-                    />
-                </TypewriterContainer>
+                <MemoizedTypewriter />
                 
                 <Description variants={itemVariants}>
                     I'm a passionate Computer Science student and an enthusiastic developer in the making. 
                     While I'm still learning the ropes academically,I actively apply my skills by building real-world projects that blend creativity with code.
-                     
                 </Description>
                 
                 <ButtonContainer variants={itemVariants}>
@@ -1330,4 +1120,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default React.memo(Home);

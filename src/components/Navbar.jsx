@@ -256,7 +256,7 @@ const Navbar = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Link to="hero" smooth={true} duration={500} onClick={closeMenu}>
+          <Link to="home" smooth={true} duration={500} onClick={closeMenu}>
             <span>{'<Portfolio />'}</span>
           </Link>
         </Logo>
