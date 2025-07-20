@@ -6382,7 +6382,7 @@ No matching component was found for:
   @media (max-width: 480px) {
     gap: 1rem;
   }
-`,YQ=({$reduceMotion:t})=>{const e=[{id:1,title:"Personal Portfolio",description:"A modern, responsive portfolio website showcasing my projects, skills, and professional experience.",image:"https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",tags:["React","JavaScript","CSS3","HTML5"],github:"https://github.com/abdullahrizwan7/portfolio",link:"https://abdullahrizwan7.github.io/portfolio",current:!0},{id:2,title:"FitVision",description:"A comprehensive fitness tracking application with workout planning, progress monitoring, and health analytics.",image:"./fitvision.jpg",tags:["React","JavaScript","CSS3","HTML5"],github:"https://github.com/abdullahrizwan7/FitVision",link:"https://abdullahrizwan7.github.io/FitVision"},{id:3,title:"Comming Soon",description:"It will be available soon",image:"https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",tags:["XXX","XXXX","XXXX","XXXX"],github:"https://github.com",link:"https://example.com"}];return O.jsxs(GQ,{id:"projects",$reduceMotion:t,children:[!t&&O.jsxs(O.Fragment,{children:[O.jsx(Sd,{$reduceMotion:t,size:"180px",bg:"rgba(100, 255, 218, 0.05)",radius:"60% 40% 30% 70% / 60% 30% 70% 40%",top:"15%",left:"5%",duration:"22s",moveX2:"-25px",moveY2:"-35px"}),O.jsx(Sd,{$reduceMotion:t,size:"220px",bg:"rgba(138, 43, 226, 0.04)",radius:"30% 70% 70% 30% / 30% 30% 70% 70%",bottom:"5%",right:"8%",duration:"28s",moveX2:"35px",moveY2:"-45px"}),O.jsx(Sd,{$reduceMotion:t,size:"120px",bg:"rgba(25, 118, 210, 0.04)",radius:"50%",top:"55%",left:"12%",duration:"20s",moveX2:"-20px",moveY2:"40px"}),O.jsx(Sd,{$reduceMotion:t,size:"160px",bg:"rgba(255, 20, 147, 0.03)",radius:"40% 60% 60% 40% / 40% 40% 60% 60%",top:"80%",right:"25%",duration:"24s",moveX2:"-30px",moveY2:"25px"}),O.jsx(Sd,{$reduceMotion:t,size:"140px",bg:"rgba(0, 255, 255, 0.03)",radius:"70% 30% 30% 70% / 70% 70% 30% 30%",top:"35%",right:"5%",duration:"26s",moveX2:"25px",moveY2:"-35px"})]}),O.jsxs(WQ,{variants:t?{}:h8(.1,.1),initial:t?!1:"hidden",whileInView:t?!1:"show",viewport:{once:!0,amount:.25},$reduceMotion:t,children:[O.jsx(jQ,{variants:t?{}:vb(.1),$reduceMotion:t,children:"Featured Projects"}),O.jsx($Q,{children:"A showcase of my recent work featuring modern web applications built with cutting-edge technologies"}),O.jsx(XQ,{children:e.map(n=>O.jsx(RQ,{project:n,$reduceMotion:t},n.id))})]})]})},qQ=()=>{const[t,e]=X.useState(!1);return X.useEffect(()=>{e(HQ());const n=window.matchMedia("(prefers-reduced-motion: reduce)"),i=()=>e(n.matches);return n.addEventListener("change",i),()=>n.removeEventListener("change",i)},[]),O.jsx(YQ,{$reduceMotion:t})},ZQ=()=>{const[t,e]=X.useState({name:"",email:"",subject:"",message:""}),[n,i]=X.useState(!1),[r,s]=X.useState(!1),[o,a]=X.useState(""),[l,c]=X.useState({}),[f,h]=X.useState({}),[p,m]=X.useState(null),[v,S]=X.useState(!1),[_,g]=X.useState(!1),x=X.useRef(null),w={name:50,email:100,subject:100,message:500},M=()=>{S(!v)},C=()=>{S(!1)};X.useEffect(()=>{const A=new IntersectionObserver(([D])=>{g(D.isIntersecting)},{threshold:.3,rootMargin:"-50px 0px -50px 0px"});return x.current&&A.observe(x.current),()=>{x.current&&A.unobserve(x.current)}},[]);const T=A=>{const{name:D,value:G}=A.target;e($=>({...$,[D]:G})),h($=>({...$,[D]:!0})),p&&clearTimeout(p),m(setTimeout(()=>{h($=>({...$,[D]:!1}))},1e3)),P(D,G)},P=(A,D)=>{let G={...l};switch(A){case"email":D?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(D)?delete G.email:G.email="Invalid email format":G.email="Email is required";break;case"name":D?delete G.name:G.name="Name is required";break;case"message":D?delete G.message:G.message="Message is required";break}c(G)},L=()=>{const A={};return t.name.trim()||(A.name="Name is required"),t.email.trim()?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t.email)||(A.email="Invalid email format"):A.email="Email is required",t.message.trim()||(A.message="Message is required"),c(A),Object.keys(A).length===0},I=async A=>{if(A.preventDefault(),!!L()){i(!0),a("");try{if(!(await fetch("https://api.emailjs.com/api/v1.0/email/send",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({service_id:"service_e5e6hzw",template_id:"template_en9wpdk",user_id:"t7Am7q6O1RgYu_aCX",template_params:{from_name:t.name,from_email:t.email,subject:t.subject||"Message from Portfolio",message:t.message}})})).ok)throw new Error("Failed to send message");e({name:"",email:"",subject:"",message:""}),s(!0),setTimeout(()=>s(!1),5e3)}catch{a("Failed to send message. Please try again later.")}finally{i(!1)}}};return O.jsxs(O.Fragment,{children:[O.jsxs(rJ,{id:"contact",ref:x,children:[O.jsx(sJ,{children:"Get In Touch"}),O.jsx(oJ,{children:"I'm always open to discussing new opportunities, collaborations, or just chatting about technology. Use the floating chat button to send me a message!"})]}),O.jsx(KQ,{onClick:M,whileHover:{scale:_?1.2:1.1},whileTap:{scale:.9},initial:{scale:0,opacity:0},animate:{scale:_?1.3:1,opacity:1,rotate:_?[0,5,-5,0]:0},transition:{delay:.5,type:"spring",stiffness:300,damping:25,rotate:{duration:2,repeat:_?1/0:0,repeatDelay:3}},$isContactVisible:_,children:O.jsx($E,{})}),O.jsx(hI,{children:v&&O.jsxs(O.Fragment,{children:[O.jsx(QQ,{initial:{opacity:0},animate:{opacity:1},exit:{opacity:0},transition:{duration:.3},onClick:C}),O.jsxs(JQ,{initial:{opacity:0,scale:.8,x:window.innerWidth<=768?0:20,y:window.innerWidth<=768?0:20},animate:{opacity:1,scale:1,x:0,y:0},exit:{opacity:0,scale:.8,x:window.innerWidth<=768?0:20,y:window.innerWidth<=768?0:20},transition:{type:"spring",damping:25,stiffness:300,duration:.4},children:[O.jsxs(eJ,{children:[O.jsxs(tJ,{children:[O.jsx($E,{}),O.jsx("span",{children:"Let's Chat!"})]}),O.jsx(nJ,{onClick:C,children:O.jsx(GI,{})})]}),O.jsxs(iJ,{children:[r?O.jsxs(dJ,{initial:{opacity:0,scale:.8},animate:{opacity:1,scale:1},transition:{duration:.3},children:[O.jsx(fJ,{children:O.jsx(xV,{})}),O.jsxs("div",{children:[O.jsx("h3",{children:"Message Sent!"}),O.jsx("p",{children:"Thank you for reaching out. I'll get back to you soon."})]})]}):O.jsxs(aJ,{onSubmit:I,children:[O.jsxs(Wm,{children:[O.jsx(d2,{type:"text",name:"name",value:t.name,onChange:T,required:!0,placeholder:"Your name",disabled:n,maxLength:w.name}),l.name&&O.jsxs(u2,{children:[O.jsx(dx,{})," ",l.name]})]}),O.jsxs(Wm,{children:[O.jsx(d2,{type:"email",name:"email",value:t.email,onChange:T,required:!0,placeholder:"your.email@example.com",disabled:n,maxLength:w.email}),l.email&&O.jsxs(u2,{children:[O.jsx(dx,{})," ",l.email]})]}),O.jsx(Wm,{children:O.jsx(d2,{type:"text",name:"subject",value:t.subject,onChange:T,placeholder:"Subject (optional)",disabled:n,maxLength:w.subject})}),O.jsxs(Wm,{children:[O.jsx(lJ,{name:"message",rows:"4",value:t.message,onChange:T,required:!0,placeholder:"Your message here...",disabled:n,maxLength:w.message}),l.message&&O.jsxs(u2,{children:[O.jsx(dx,{})," ",l.message]})]}),o&&O.jsx(hJ,{initial:{opacity:0,height:0},animate:{opacity:1,height:"auto"},transition:{duration:.3},children:o}),O.jsx(cJ,{type:"submit",disabled:n,whileHover:{scale:1.02},whileTap:{scale:.98},children:n?O.jsxs(r4,{children:[O.jsx(uJ,{}),O.jsx("span",{children:"Sending..."})]}):O.jsxs(r4,{children:[O.jsx(SV,{}),O.jsx("span",{children:"Send Message"})]})})]}),O.jsx(pJ,{children:O.jsxs(mJ,{children:[O.jsx(jm,{href:"https://github.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:O.jsx(UI,{})}),O.jsx(jm,{href:"https://linkedin.com/in/yourprofile",target:"_blank",rel:"noopener noreferrer",children:O.jsx(FI,{})}),O.jsx(jm,{href:"https://twitter.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:O.jsx(VI,{})}),O.jsx(jm,{href:"https://instagram.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:O.jsx(mV,{})})]})})]})]})]})})]})},KQ=re(gt.button)`
+`,YQ=({$reduceMotion:t})=>{const e=[{id:1,title:"Personal Portfolio",description:"A modern, responsive portfolio website showcasing my projects, skills, and professional experience.",image:"https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",tags:["React","JavaScript","CSS3","HTML5"],github:"https://github.com/abdullahrizwan7/portfolio",link:"https://abdullahrizwan7.github.io/portfolio",current:!0},{id:2,title:"FitVision",description:"A comprehensive fitness tracking application with workout planning, progress monitoring, and health analytics.",image:"./fitvision.jpg",tags:["React","JavaScript","CSS3","HTML5"],github:"https://github.com/abdullahrizwan7/FitVision",link:"https://abdullahrizwan7.github.io/FitVision"},{id:3,title:"Comming Soon",description:"It will be available soon",image:"https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",tags:["----","----","----","----"],github:"https://github.com",link:"https://example.com"},{id:4,title:"Comming Soon",description:"It will be available soon",image:"https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",tags:["----","----","----","----"],github:"https://github.com",link:"https://example.com"}];return O.jsxs(GQ,{id:"projects",$reduceMotion:t,children:[!t&&O.jsxs(O.Fragment,{children:[O.jsx(Sd,{$reduceMotion:t,size:"180px",bg:"rgba(100, 255, 218, 0.05)",radius:"60% 40% 30% 70% / 60% 30% 70% 40%",top:"15%",left:"5%",duration:"22s",moveX2:"-25px",moveY2:"-35px"}),O.jsx(Sd,{$reduceMotion:t,size:"220px",bg:"rgba(138, 43, 226, 0.04)",radius:"30% 70% 70% 30% / 30% 30% 70% 70%",bottom:"5%",right:"8%",duration:"28s",moveX2:"35px",moveY2:"-45px"}),O.jsx(Sd,{$reduceMotion:t,size:"120px",bg:"rgba(25, 118, 210, 0.04)",radius:"50%",top:"55%",left:"12%",duration:"20s",moveX2:"-20px",moveY2:"40px"}),O.jsx(Sd,{$reduceMotion:t,size:"160px",bg:"rgba(255, 20, 147, 0.03)",radius:"40% 60% 60% 40% / 40% 40% 60% 60%",top:"80%",right:"25%",duration:"24s",moveX2:"-30px",moveY2:"25px"}),O.jsx(Sd,{$reduceMotion:t,size:"140px",bg:"rgba(0, 255, 255, 0.03)",radius:"70% 30% 30% 70% / 70% 70% 30% 30%",top:"35%",right:"5%",duration:"26s",moveX2:"25px",moveY2:"-35px"})]}),O.jsxs(WQ,{variants:t?{}:h8(.1,.1),initial:t?!1:"hidden",whileInView:t?!1:"show",viewport:{once:!0,amount:.25},$reduceMotion:t,children:[O.jsx(jQ,{variants:t?{}:vb(.1),$reduceMotion:t,children:"Featured Projects"}),O.jsx($Q,{children:"A showcase of my recent work featuring modern web applications built with cutting-edge technologies"}),O.jsx(XQ,{children:e.map(n=>O.jsx(RQ,{project:n,$reduceMotion:t},n.id))})]})]})},qQ=()=>{const[t,e]=X.useState(!1);return X.useEffect(()=>{e(HQ());const n=window.matchMedia("(prefers-reduced-motion: reduce)"),i=()=>e(n.matches);return n.addEventListener("change",i),()=>n.removeEventListener("change",i)},[]),O.jsx(YQ,{$reduceMotion:t})},ZQ=()=>{const[t,e]=X.useState({name:"",email:"",subject:"",message:""}),[n,i]=X.useState(!1),[r,s]=X.useState(!1),[o,a]=X.useState(""),[l,c]=X.useState({}),[f,h]=X.useState({}),[p,m]=X.useState(null),[v,S]=X.useState(!1),[_,g]=X.useState(!1),x=X.useRef(null),w={name:50,email:100,subject:100,message:500},M=()=>{S(!v)},C=()=>{S(!1)};X.useEffect(()=>{const A=new IntersectionObserver(([D])=>{g(D.isIntersecting)},{threshold:.3,rootMargin:"-50px 0px -50px 0px"});return x.current&&A.observe(x.current),()=>{x.current&&A.unobserve(x.current)}},[]);const T=A=>{const{name:D,value:G}=A.target;e($=>({...$,[D]:G})),h($=>({...$,[D]:!0})),p&&clearTimeout(p),m(setTimeout(()=>{h($=>({...$,[D]:!1}))},1e3)),P(D,G)},P=(A,D)=>{let G={...l};switch(A){case"email":D?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(D)?delete G.email:G.email="Invalid email format":G.email="Email is required";break;case"name":D?delete G.name:G.name="Name is required";break;case"message":D?delete G.message:G.message="Message is required";break}c(G)},L=()=>{const A={};return t.name.trim()||(A.name="Name is required"),t.email.trim()?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t.email)||(A.email="Invalid email format"):A.email="Email is required",t.message.trim()||(A.message="Message is required"),c(A),Object.keys(A).length===0},I=async A=>{if(A.preventDefault(),!!L()){i(!0),a("");try{if(!(await fetch("https://api.emailjs.com/api/v1.0/email/send",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({service_id:"service_e5e6hzw",template_id:"template_en9wpdk",user_id:"t7Am7q6O1RgYu_aCX",template_params:{from_name:t.name,from_email:t.email,subject:t.subject||"Message from Portfolio",message:t.message}})})).ok)throw new Error("Failed to send message");e({name:"",email:"",subject:"",message:""}),s(!0),setTimeout(()=>s(!1),5e3)}catch{a("Failed to send message. Please try again later.")}finally{i(!1)}}};return O.jsxs(O.Fragment,{children:[O.jsxs(rJ,{id:"contact",ref:x,children:[O.jsx(sJ,{children:"Get In Touch"}),O.jsxs(oJ,{children:["I'm always open to discussing new opportunities, collaborations, or just chatting about technology.",O.jsx(aJ,{children:"Use the floating chat button to send me a message!"})]})]}),O.jsx(KQ,{onClick:M,whileHover:{scale:_?1.2:1.1},whileTap:{scale:.9},initial:{scale:0,opacity:0},animate:{scale:_?1.3:1,opacity:1,rotate:_?[0,5,-5,0]:0},transition:{delay:.5,type:"spring",stiffness:300,damping:25,rotate:{duration:2,repeat:_?1/0:0,repeatDelay:3}},$isContactVisible:_,children:O.jsx($E,{})}),O.jsx(hI,{children:v&&O.jsxs(O.Fragment,{children:[O.jsx(QQ,{initial:{opacity:0},animate:{opacity:1},exit:{opacity:0},transition:{duration:.3},onClick:C}),O.jsxs(JQ,{initial:{opacity:0,scale:.8,x:window.innerWidth<=768?0:20,y:window.innerWidth<=768?0:20},animate:{opacity:1,scale:1,x:0,y:0},exit:{opacity:0,scale:.8,x:window.innerWidth<=768?0:20,y:window.innerWidth<=768?0:20},transition:{type:"spring",damping:25,stiffness:300,duration:.4},children:[O.jsxs(eJ,{children:[O.jsxs(tJ,{children:[O.jsx($E,{}),O.jsx("span",{children:"Let's Chat!"})]}),O.jsx(nJ,{onClick:C,children:O.jsx(GI,{})})]}),O.jsxs(iJ,{children:[r?O.jsxs(fJ,{initial:{opacity:0,scale:.8},animate:{opacity:1,scale:1},transition:{duration:.3},children:[O.jsx(hJ,{children:O.jsx(xV,{})}),O.jsxs("div",{children:[O.jsx("h3",{children:"Message Sent!"}),O.jsx("p",{children:"Thank you for reaching out. I'll get back to you soon."})]})]}):O.jsxs(lJ,{onSubmit:I,children:[O.jsxs(Wm,{children:[O.jsx(d2,{type:"text",name:"name",value:t.name,onChange:T,required:!0,placeholder:"Your name",disabled:n,maxLength:w.name}),l.name&&O.jsxs(u2,{children:[O.jsx(dx,{})," ",l.name]})]}),O.jsxs(Wm,{children:[O.jsx(d2,{type:"email",name:"email",value:t.email,onChange:T,required:!0,placeholder:"your.email@example.com",disabled:n,maxLength:w.email}),l.email&&O.jsxs(u2,{children:[O.jsx(dx,{})," ",l.email]})]}),O.jsx(Wm,{children:O.jsx(d2,{type:"text",name:"subject",value:t.subject,onChange:T,placeholder:"Subject (optional)",disabled:n,maxLength:w.subject})}),O.jsxs(Wm,{children:[O.jsx(cJ,{name:"message",rows:"4",value:t.message,onChange:T,required:!0,placeholder:"Your message here...",disabled:n,maxLength:w.message}),l.message&&O.jsxs(u2,{children:[O.jsx(dx,{})," ",l.message]})]}),o&&O.jsx(pJ,{initial:{opacity:0,height:0},animate:{opacity:1,height:"auto"},transition:{duration:.3},children:o}),O.jsx(uJ,{type:"submit",disabled:n,whileHover:{scale:1.02},whileTap:{scale:.98},children:n?O.jsxs(r4,{children:[O.jsx(dJ,{}),O.jsx("span",{children:"Sending..."})]}):O.jsxs(r4,{children:[O.jsx(SV,{}),O.jsx("span",{children:"Send Message"})]})})]}),O.jsx(mJ,{children:O.jsxs(gJ,{children:[O.jsx(jm,{href:"https://github.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:O.jsx(UI,{})}),O.jsx(jm,{href:"https://linkedin.com/in/yourprofile",target:"_blank",rel:"noopener noreferrer",children:O.jsx(FI,{})}),O.jsx(jm,{href:"https://twitter.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:O.jsx(VI,{})}),O.jsx(jm,{href:"https://instagram.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:O.jsx(mV,{})})]})})]})]})]})})]})},KQ=re(gt.button)`
   position: fixed !important;
   bottom: 32px !important;
   right: 32px !important;
@@ -6772,6 +6772,45 @@ No matching component was found for:
   line-height: 1.6;
   text-shadow: 1px 1px 2px ${t=>t.shadowDark||"#a3b1c6"}, 
                -1px -1px 2px ${t=>t.shadowLight||"#ffffff"};
+`,aJ=re.span`
+  background: linear-gradient(135deg, 
+    rgba(102, 126, 234, 0.15) 0%, 
+    rgba(118, 75, 162, 0.12) 50%,
+    rgba(102, 126, 234, 0.15) 100%
+  );
+  color: #4a5568;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  border: 1px solid rgba(102, 126, 234, 0.25);
+  backdrop-filter: blur(10px);
+  display: inline-block;
+  margin-top: 8px;
+  box-shadow: 
+    0 4px 15px rgba(102, 126, 234, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  animation: glow 2s ease-in-out infinite alternate;
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+    to {
+      box-shadow: 0 6px 25px rgba(102, 126, 234, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    padding: 3px 10px;
+    margin-top: 6px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    padding: 2px 8px;
+    margin-top: 4px;
+  }
 `;re(gt.div)`
   display: flex;
   flex-wrap: wrap;
@@ -6818,7 +6857,7 @@ No matching component was found for:
     box-shadow: 2px 2px 4px ${t=>t.shadowDark||"#a3b1c6"}, 
                 -2px -2px 4px ${t=>t.shadowLight||"#ffffff"};
   }
-`;const aJ=re.form`
+`;const lJ=re.form`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -6911,7 +6950,7 @@ No matching component was found for:
     padding: 14px 16px;
     font-size: 16px; /* Prevents zoom on iOS */
   }
-`,lJ=re.textarea`
+`,cJ=re.textarea`
   width: 100%;
   padding: 16px 20px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -6957,7 +6996,7 @@ No matching component was found for:
     font-size: 16px; /* Prevents zoom on iOS */
     min-height: 100px;
   }
-`,cJ=re(gt.button)`
+`,uJ=re(gt.button)`
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -7025,7 +7064,7 @@ No matching component was found for:
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-`,uJ=re.div`
+`,dJ=re.div`
   width: 18px;
   height: 18px;
   border: 2px solid rgba(255, 255, 255, 0.3);
@@ -7038,7 +7077,7 @@ No matching component was found for:
       transform: rotate(360deg);
     }
   }
-`,dJ=re(gt.div)`
+`,fJ=re(gt.div)`
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -7062,7 +7101,7 @@ No matching component was found for:
     margin: 0;
     line-height: 1.5;
   }
-`,fJ=re.div`
+`,hJ=re.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7073,7 +7112,7 @@ No matching component was found for:
   border-radius: 50%;
   font-size: 1.2rem;
   font-weight: bold;
-`,hJ=re(gt.div)`
+`,pJ=re(gt.div)`
   background: rgba(255, 227, 227, 0.8);
   backdrop-filter: blur(10px);
   color: #d32f2f;
@@ -7155,7 +7194,7 @@ No matching component was found for:
   font-size: 1rem;
   margin-bottom: 0.5rem;
   color: ${t=>t.textColor||"#4a5568"};
-`;const pJ=re.div`
+`;const mJ=re.div`
   margin-top: 24px;
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
@@ -7181,7 +7220,7 @@ No matching component was found for:
     margin-top: 20px;
     padding-top: 16px;
   }
-`,mJ=re.div`
+`,gJ=re.div`
   display: flex;
   gap: 16px;
   justify-content: center;
@@ -7295,11 +7334,11 @@ No matching component was found for:
   height: 10px;
   background-color: #34c759;
   border-radius: 50%;
-`;const gJ=()=>{const t=new Date().getFullYear();return O.jsxs(vJ,{children:[O.jsxs(yJ,{children:[O.jsxs(s4,{children:[O.jsx(o4,{children:"Navigation"}),O.jsxs(xJ,{children:[O.jsx(wd,{href:"#home",children:"Home"}),O.jsx(wd,{href:"#about",children:"About"}),O.jsx(wd,{href:"#projects",children:"Projects"}),O.jsx(wd,{href:"#skills",children:"Skills"}),O.jsx(wd,{href:"#contact",children:"Contact"})]})]}),O.jsxs(s4,{children:[O.jsx(o4,{children:"Connect"}),O.jsxs(_J,{children:[O.jsx(f2,{href:"https://github.com/ayazmallick007",target:"_blank",rel:"noopener noreferrer",children:"GitHub"}),O.jsx(f2,{href:"https://linkedin.com/in/yourprofile",target:"_blank",rel:"noopener noreferrer",children:"LinkedIn"}),O.jsx(f2,{href:"https://twitter.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:"Twitter"})]})]})]}),O.jsxs(SJ,{children:[O.jsxs("p",{children:["© ",t," Your Name. All rights reserved."]}),O.jsx("p",{children:"Built with React and ❤️"})]})]})},vJ=re.footer`
+`;const vJ=()=>{const t=new Date().getFullYear();return O.jsxs(yJ,{children:[O.jsxs(xJ,{children:[O.jsxs(s4,{children:[O.jsx(o4,{children:"Navigation"}),O.jsxs(_J,{children:[O.jsx(wd,{href:"#home",children:"Home"}),O.jsx(wd,{href:"#about",children:"About"}),O.jsx(wd,{href:"#projects",children:"Projects"}),O.jsx(wd,{href:"#skills",children:"Skills"}),O.jsx(wd,{href:"#contact",children:"Contact"})]})]}),O.jsxs(s4,{children:[O.jsx(o4,{children:"Connect"}),O.jsxs(SJ,{children:[O.jsx(f2,{href:"https://github.com/ayazmallick007",target:"_blank",rel:"noopener noreferrer",children:"GitHub"}),O.jsx(f2,{href:"https://linkedin.com/in/yourprofile",target:"_blank",rel:"noopener noreferrer",children:"LinkedIn"}),O.jsx(f2,{href:"https://twitter.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:"Twitter"})]})]})]}),O.jsxs(wJ,{children:[O.jsxs("p",{children:["© ",t," Your Name. All rights reserved."]}),O.jsx("p",{children:"Built with React and ❤️"})]})]})},yJ=re.footer`
   background-color: #222;
   color: #fff;
   padding: 3rem 2rem 1.5rem;
-`,yJ=re.div`
+`,xJ=re.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -7333,7 +7372,7 @@ No matching component was found for:
       transform: translateX(-50%);
     }
   }
-`,xJ=re.div`
+`,_J=re.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -7345,7 +7384,7 @@ No matching component was found for:
   &:hover {
     color: #fff;
   }
-`,_J=re.div`
+`,SJ=re.div`
   display: flex;
   gap: 1rem;
   
@@ -7360,7 +7399,7 @@ No matching component was found for:
   &:hover {
     color: #fff;
   }
-`,SJ=re.div`
+`,wJ=re.div`
   text-align: center;
   padding-top: 1.5rem;
   border-top: 1px solid #444;
@@ -7370,7 +7409,7 @@ No matching component was found for:
   p {
     margin: 0.5rem 0;
   }
-`,wJ=()=>{const t=X.useMemo(()=>_h(),[]),e=X.useMemo(()=>xb(),[]),n=X.useMemo(()=>p8(),[]);return X.useEffect(()=>{if(t.isDesktop&&!t.isLowPerformance){const i=document.createElement("link");i.rel="preload",i.as="script",document.head.appendChild(i)}},[t]),{deviceCapabilities:t,shouldDisableEffects:e,optimizedFrameRate:n,getOptimizedVariants:dQ,isMobile:t.isMobile,isTablet:t.isTablet,isDesktop:t.isDesktop,isLowPerformance:t.isLowPerformance}},bJ=re(gt.div)`
+`,bJ=()=>{const t=X.useMemo(()=>_h(),[]),e=X.useMemo(()=>xb(),[]),n=X.useMemo(()=>p8(),[]);return X.useEffect(()=>{if(t.isDesktop&&!t.isLowPerformance){const i=document.createElement("link");i.rel="preload",i.as="script",document.head.appendChild(i)}},[t]),{deviceCapabilities:t,shouldDisableEffects:e,optimizedFrameRate:n,getOptimizedVariants:dQ,isMobile:t.isMobile,isTablet:t.isTablet,isDesktop:t.isDesktop,isLowPerformance:t.isLowPerformance}},MJ=re(gt.div)`
   position: fixed;
   top: 20px;
   right: 20px;
@@ -7386,7 +7425,7 @@ No matching component was found for:
   gap: 8px;
   max-width: 300px;
   font-size: 14px;
-`,MJ=re.button`
+`,EJ=re.button`
   background: none;
   border: none;
   color: white;
@@ -7399,7 +7438,7 @@ No matching component was found for:
   &:hover {
     opacity: 1;
   }
-`,EJ=re.span`
+`,TJ=re.span`
   background: ${t=>t.mode==="optimized"?"#4CAF50":"#FF9800"};
   color: white;
   padding: 2px 6px;
@@ -7407,7 +7446,7 @@ No matching component was found for:
   font-size: 12px;
   font-weight: bold;
   margin-left: 8px;
-`,TJ=()=>{const[t,e]=X.useState(!1),[n,i]=X.useState(!1),{shouldDisableEffects:r,deviceCapabilities:s}=wJ();X.useEffect(()=>{r&&!n&&(e(!0),i(!0),setTimeout(()=>{e(!1)},5e3))},[r,n]);const o=()=>{e(!1)};return O.jsx(hI,{children:t&&O.jsxs(bJ,{initial:{opacity:0,y:-20,scale:.8},animate:{opacity:1,y:0,scale:1},exit:{opacity:0,y:-20,scale:.8},transition:{duration:.3},children:[O.jsx(bV,{}),O.jsxs("span",{children:["Performance mode active for better experience",s.isMobile&&" on mobile"]}),O.jsx(EJ,{mode:"optimized",children:"OPTIMIZED"}),O.jsx(MJ,{onClick:o,children:O.jsx(GI,{})})]})})},AJ=()=>{const t=X.useRef(null);return X.useEffect(()=>{if(!t.current||xb())return;const e=new V1,n=new Vn(75,window.innerWidth/window.innerHeight,.1,1e3),i=new hb({alpha:!0,antialias:window.innerWidth>768,powerPreference:"high-performance"});i.setSize(window.innerWidth,window.innerHeight),i.setPixelRatio(Math.min(window.devicePixelRatio,2)),t.current.appendChild(i.domElement);const r=new bt,s=uQ(1200),o=new Float32Array(s*3),a=new Float32Array(s*3);for(let S=0;S<s*3;S++)o[S]=(Math.random()-.5)*5,a[S]=Math.random();r.setAttribute("position",new qt(o,3)),r.setAttribute("color",new qt(a,3));const l=new dh({size:window.innerWidth<768?.015:.02,vertexColors:!0,transparent:!0,blending:ng,alphaTest:.1}),c=new jw(r,l);e.add(c),n.position.z=2;let f=0;const h=p8(),p=1e3/h,m=S=>{if(requestAnimationFrame(m),S-f>=p){const _=h===30?3e-4:5e-4;c.rotation.x+=_,c.rotation.y+=_,i.render(e,n),f=S}},v=()=>{n.aspect=window.innerWidth/window.innerHeight,n.updateProjectionMatrix(),i.setSize(window.innerWidth,window.innerHeight)};return window.addEventListener("resize",v),m(),()=>{window.removeEventListener("resize",v),t.current&&t.current.removeChild(i.domElement),r.dispose(),l.dispose(),i.dispose()}},[]),O.jsx("div",{ref:t,style:{position:"fixed",top:0,left:0,width:"100%",height:"100%",zIndex:-1,overflow:"hidden"}})};const CJ=()=>O.jsxs("div",{className:"App",children:[O.jsx(AJ,{}),O.jsx(TJ,{}),O.jsx(uV,{}),O.jsxs("main",{children:[O.jsx(_K,{}),O.jsx(rQ,{}),O.jsx(PQ,{}),O.jsx(qQ,{}),O.jsx(ZQ,{})]}),O.jsx(gJ,{})]}),PJ=PO`
+`,AJ=()=>{const[t,e]=X.useState(!1),[n,i]=X.useState(!1),{shouldDisableEffects:r,deviceCapabilities:s}=bJ();X.useEffect(()=>{r&&!n&&(e(!0),i(!0),setTimeout(()=>{e(!1)},5e3))},[r,n]);const o=()=>{e(!1)};return O.jsx(hI,{children:t&&O.jsxs(MJ,{initial:{opacity:0,y:-20,scale:.8},animate:{opacity:1,y:0,scale:1},exit:{opacity:0,y:-20,scale:.8},transition:{duration:.3},children:[O.jsx(bV,{}),O.jsxs("span",{children:["Performance mode active for better experience",s.isMobile&&" on mobile"]}),O.jsx(TJ,{mode:"optimized",children:"OPTIMIZED"}),O.jsx(EJ,{onClick:o,children:O.jsx(GI,{})})]})})},CJ=()=>{const t=X.useRef(null);return X.useEffect(()=>{if(!t.current||xb())return;const e=new V1,n=new Vn(75,window.innerWidth/window.innerHeight,.1,1e3),i=new hb({alpha:!0,antialias:window.innerWidth>768,powerPreference:"high-performance"});i.setSize(window.innerWidth,window.innerHeight),i.setPixelRatio(Math.min(window.devicePixelRatio,2)),t.current.appendChild(i.domElement);const r=new bt,s=uQ(1200),o=new Float32Array(s*3),a=new Float32Array(s*3);for(let S=0;S<s*3;S++)o[S]=(Math.random()-.5)*5,a[S]=Math.random();r.setAttribute("position",new qt(o,3)),r.setAttribute("color",new qt(a,3));const l=new dh({size:window.innerWidth<768?.015:.02,vertexColors:!0,transparent:!0,blending:ng,alphaTest:.1}),c=new jw(r,l);e.add(c),n.position.z=2;let f=0;const h=p8(),p=1e3/h,m=S=>{if(requestAnimationFrame(m),S-f>=p){const _=h===30?3e-4:5e-4;c.rotation.x+=_,c.rotation.y+=_,i.render(e,n),f=S}},v=()=>{n.aspect=window.innerWidth/window.innerHeight,n.updateProjectionMatrix(),i.setSize(window.innerWidth,window.innerHeight)};return window.addEventListener("resize",v),m(),()=>{window.removeEventListener("resize",v),t.current&&t.current.removeChild(i.domElement),r.dispose(),l.dispose(),i.dispose()}},[]),O.jsx("div",{ref:t,style:{position:"fixed",top:0,left:0,width:"100%",height:"100%",zIndex:-1,overflow:"hidden"}})};const PJ=()=>O.jsxs("div",{className:"App",children:[O.jsx(CJ,{}),O.jsx(AJ,{}),O.jsx(uV,{}),O.jsxs("main",{children:[O.jsx(_K,{}),O.jsx(rQ,{}),O.jsx(PQ,{}),O.jsx(qQ,{}),O.jsx(ZQ,{})]}),O.jsx(vJ,{})]}),RJ=PO`
   * {
     margin: 0;
     padding: 0;
@@ -7455,4 +7494,4 @@ No matching component was found for:
     background: ${t=>t.theme.primary};
     border-radius: 10px;
   }
-`,RJ={background:"#0f0f0f",backgroundAlt:"#1a1a1a",text:"#ffffff",textAlt:"#b3b3b3",primary:"#8a2be2",secondary:"#00bfff",accent:"#ff4500",success:"#4caf50",error:"#f44336",cardBg:"rgba(26, 26, 26, 0.8)",gradientPrimary:"linear-gradient(45deg, #8a2be2, #00bfff)",shadow:"0 4px 20px rgba(0, 0, 0, 0.5)",glassMorphism:"rgba(26, 26, 26, 0.25)",glassBorder:"1px solid rgba(255, 255, 255, 0.1)",glassBlur:"blur(10px)"};h2.createRoot(document.getElementById("root")).render(O.jsx(en.StrictMode,{children:O.jsxs(TO,{theme:RJ,children:[O.jsx(PJ,{}),O.jsx(CJ,{})]})}));
+`,IJ={background:"#0f0f0f",backgroundAlt:"#1a1a1a",text:"#ffffff",textAlt:"#b3b3b3",primary:"#8a2be2",secondary:"#00bfff",accent:"#ff4500",success:"#4caf50",error:"#f44336",cardBg:"rgba(26, 26, 26, 0.8)",gradientPrimary:"linear-gradient(45deg, #8a2be2, #00bfff)",shadow:"0 4px 20px rgba(0, 0, 0, 0.5)",glassMorphism:"rgba(26, 26, 26, 0.25)",glassBorder:"1px solid rgba(255, 255, 255, 0.1)",glassBlur:"blur(10px)"};h2.createRoot(document.getElementById("root")).render(O.jsx(en.StrictMode,{children:O.jsxs(TO,{theme:IJ,children:[O.jsx(RJ,{}),O.jsx(PJ,{})]})}));
