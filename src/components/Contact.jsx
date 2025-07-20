@@ -402,7 +402,7 @@ const Contact = () => {
                                 {/* Social Links */}
                                 <SocialSection>
                                     <SocialLinks>
-                                        <SocialLink href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+                                        <SocialLink href="https://github.com/abdullahrizwan7" target="_blank" rel="noopener noreferrer">
                                             <FaGithub />
                                         </SocialLink>
                                         <SocialLink href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
@@ -411,7 +411,7 @@ const Contact = () => {
                                         <SocialLink href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
                                             <FaTwitter />
                                         </SocialLink>
-                                        <SocialLink href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer">
+                                        <SocialLink href="https://instagram.com/build.1080p" target="_blank" rel="noopener noreferrer">
                                             <FaInstagram />
                                         </SocialLink>
                                     </SocialLinks>
