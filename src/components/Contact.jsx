@@ -213,7 +213,7 @@ const Contact = () => {
                 <SectionTitle>Get In Touch</SectionTitle>
                 <SectionSubtitle>
                     I'm always open to discussing new opportunities, collaborations, or just chatting about technology. 
-                    Use the floating chat button to send me a message!
+                    <HighlightText>Use the floating chat button to send me a message!</HighlightText>
                 </SectionSubtitle>
             </ContactSection>
 
@@ -845,6 +845,47 @@ const SectionSubtitle = styled.p`
   line-height: 1.6;
   text-shadow: 1px 1px 2px ${props => props.shadowDark || '#a3b1c6'}, 
                -1px -1px 2px ${props => props.shadowLight || '#ffffff'};
+`;
+
+const HighlightText = styled.span`
+  background: linear-gradient(135deg, 
+    rgba(102, 126, 234, 0.15) 0%, 
+    rgba(118, 75, 162, 0.12) 50%,
+    rgba(102, 126, 234, 0.15) 100%
+  );
+  color: #4a5568;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  border: 1px solid rgba(102, 126, 234, 0.25);
+  backdrop-filter: blur(10px);
+  display: inline-block;
+  margin-top: 8px;
+  box-shadow: 
+    0 4px 15px rgba(102, 126, 234, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  animation: glow 2s ease-in-out infinite alternate;
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+    to {
+      box-shadow: 0 6px 25px rgba(102, 126, 234, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    padding: 3px 10px;
+    margin-top: 6px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    padding: 2px 8px;
+    margin-top: 4px;
+  }
 `;
 
 const ContactContainer = styled(motion.div)`
