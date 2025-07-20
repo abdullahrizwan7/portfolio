@@ -866,7 +866,7 @@ const About = () => {
       description: 'Completed a 3-year Diploma in Computer Science Engineering focused on fundamental concepts of programming and software development.'
     },
     {
-      title: '10th',
+      title: '10th(Matriculation)',
       institution: "S.Raza High School",
       duration: '2020 - 2021',
       description: 'Completed secondary education (CBSE) from S.Raza High School'
