@@ -8,6 +8,8 @@ import Typewriter from 'typewriter-effect';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as random from 'maath/random/dist/maath-random.esm';
+// import { usePerformanceOptimization } from '../hooks/usePerformanceOptimization';
+// import { FrameRateMonitor } from '../utils/performanceOptimizer';
 
 // Enhanced responsive breakpoints
 const breakpoints = {
