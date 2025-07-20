@@ -482,8 +482,8 @@ const Projects = ({ $reduceMotion }) => {
         },
         {
             id: 3,
-            title: 'Task Management App',
-            description: 'A collaborative task management application with real-time updates and team collaboration features.',
+            title: 'Comming Soon',
+            description: 'It will be available soon',
             image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80',
             tags: ['React', 'TypeScript', 'Socket.io', 'Express'],
             github: 'https://github.com',
