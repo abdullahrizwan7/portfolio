@@ -183,6 +183,15 @@ const Contact = () => {
 
     return (
         <>
+            {/* Contact Section */}
+            <ContactSection id="contact">
+                <SectionTitle>Get In Touch</SectionTitle>
+                <SectionSubtitle>
+                    I'm always open to discussing new opportunities, collaborations, or just chatting about technology. 
+                    Use the floating chat button to send me a message!
+                </SectionSubtitle>
+            </ContactSection>
+
             {/* Floating Chat Button */}
             <FloatingChatButton
                 onClick={togglePopup}

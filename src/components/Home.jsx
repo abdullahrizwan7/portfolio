@@ -1052,7 +1052,10 @@ const Home = () => {
                 
                 <ButtonContainer variants={itemVariants}>
                     <CTAButton
-                        href="#contact"
+                        as={Link}
+                        to="contact"
+                        smooth={true}
+                        duration={500}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
