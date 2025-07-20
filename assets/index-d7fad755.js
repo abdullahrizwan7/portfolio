@@ -5674,7 +5674,7 @@ No matching component was found for:
   font-size: 0.8rem;
   color: #64ffda;
   font-weight: 700;
-`,n4={frontend:[{name:"HTML5",icon:O.jsx(pV,{}),level:95,color:"#e44d26"},{name:"CSS3",icon:O.jsx(fV,{}),level:92,color:"#264de4"},{name:"JavaScript",icon:O.jsx(gV,{}),level:90,color:"#f0db4f"},{name:"React",icon:O.jsx(BI,{}),level:93,color:"#61dbfb"},{name:"TypeScript",icon:O.jsx(cQ,{}),level:87,color:"#007acc"},{name:"Redux",icon:O.jsx(aQ,{}),level:88,color:"#764abc"},{name:"Tailwind",icon:O.jsx(lQ,{}),level:90,color:"#38b2ac"}],backend:[{name:"Node.js",icon:O.jsx(zI,{}),level:90,color:"#68a063"},{name:"Express",icon:O.jsx(sQ,{}),level:88,color:"#ffffff"},{name:"MongoDB",icon:O.jsx(oQ,{}),level:85,color:"#4db33d"},{name:"REST APIs",icon:O.jsx(HI,{}),level:92,color:"#009688"},{name:"SQL",icon:O.jsx(R_,{}),level:82,color:"#00758f"}],tools:[{name:"Git",icon:O.jsx(hV,{}),level:93,color:"#f14e32"},{name:"Responsive",icon:O.jsx(EV,{}),level:95,color:"#7d7d7d"},{name:"DevOps",icon:O.jsx(tg,{}),level:80,color:"#2496ed"}]},CQ={frontend:O.jsx(BI,{}),backend:O.jsx(zI,{}),tools:O.jsx(tg,{})},PQ=()=>{const[t,e]=X.useState(!1),n=X.useRef(null),i=xb()||window.innerWidth<768;X.useEffect(()=>{if(i){e(!0);return}const s=new window.IntersectionObserver(([o])=>{o.isIntersecting&&e(!0)},{threshold:.2});return n.current&&s.observe(n.current),()=>s.disconnect()},[i]);const r=X.useMemo(()=>s=>n4[s].map((o,a)=>O.jsxs(wQ,{initial:i?!1:{opacity:0,y:20},animate:t?{opacity:1,y:0}:{},transition:i?{}:{duration:.3,delay:a*.07},children:[O.jsx(bQ,{style:{color:o.color},children:o.icon}),O.jsx(MQ,{children:o.name}),O.jsx(EQ,{children:O.jsx(TQ,{style:{background:`linear-gradient(90deg, ${o.color} 70%, #232526 100%)`},initial:i?!1:{width:0},animate:t?{width:`${o.level}%`}:{width:0},transition:i?{}:{duration:.7,delay:.2+a*.09}})}),O.jsxs(AQ,{children:[o.level,"%"]})]},o.name)),[t,i]);return O.jsx(pQ,{id:"skills",ref:n,children:O.jsxs(mQ,{variants:i?void 0:h8(.1,.1),initial:i?void 0:"hidden",whileInView:i?void 0:"show",viewport:i?void 0:{once:!0,amount:.2},children:[O.jsx(gQ,{variants:i?void 0:vb(.1),children:"TECHNICAL EXPERTISE"}),O.jsx(vQ,{children:"My technical skills with proficiency levels"}),O.jsx(yQ,{children:Object.keys(n4).map((s,o)=>O.jsxs(xQ,{initial:i?!1:{opacity:0,y:30},animate:t?{opacity:1,y:0}:{},transition:i?{}:{duration:.4,delay:o*.15},children:[O.jsxs(_Q,{children:[O.jsx("span",{className:"category-icon-bg",children:CQ[s]}),O.jsx("span",{className:"category-title",children:s.charAt(0).toUpperCase()+s.slice(1)})]}),O.jsx(SQ,{children:r(s)})]},s))})]})})},RQ=({project:t})=>{const{title:e,description:n,image:i,tags:r,link:s,github:o}=t;return O.jsxs(IQ,{whileHover:{y:-10,boxShadow:"0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)"},transition:{type:"spring",stiffness:300},children:[O.jsxs(m8,{children:[O.jsx(LQ,{src:i,alt:e}),O.jsx(DQ,{children:O.jsx(kQ,{children:O.jsxs(NQ,{children:[s&&O.jsx(i4,{href:s,target:"_blank",rel:"noopener noreferrer",whileHover:{scale:1.05},whileTap:{scale:.95},children:"View Live"}),o&&O.jsx(i4,{href:o,target:"_blank",rel:"noopener noreferrer",whileHover:{scale:1.05},whileTap:{scale:.95},children:"View Code"})]})})})]}),O.jsxs(OQ,{children:[O.jsx(UQ,{children:e}),O.jsx(FQ,{children:n}),O.jsx(zQ,{children:r.map((a,l)=>O.jsx(BQ,{children:a},l))})]})]})},IQ=re(gt.div)`
+`,n4={frontend:[{name:"HTML5",icon:O.jsx(pV,{}),level:95,color:"#e44d26"},{name:"CSS3",icon:O.jsx(fV,{}),level:92,color:"#264de4"},{name:"JavaScript",icon:O.jsx(gV,{}),level:90,color:"#f0db4f"},{name:"React",icon:O.jsx(BI,{}),level:93,color:"#61dbfb"},{name:"TypeScript",icon:O.jsx(cQ,{}),level:87,color:"#007acc"},{name:"Redux",icon:O.jsx(aQ,{}),level:88,color:"#764abc"},{name:"Tailwind",icon:O.jsx(lQ,{}),level:90,color:"#38b2ac"}],backend:[{name:"Node.js",icon:O.jsx(zI,{}),level:90,color:"#68a063"},{name:"Express",icon:O.jsx(sQ,{}),level:88,color:"#ffffff"},{name:"MongoDB",icon:O.jsx(oQ,{}),level:85,color:"#4db33d"},{name:"REST APIs",icon:O.jsx(HI,{}),level:92,color:"#009688"},{name:"SQL",icon:O.jsx(R_,{}),level:82,color:"#00758f"}],tools:[{name:"Git",icon:O.jsx(hV,{}),level:93,color:"#f14e32"},{name:"Responsive",icon:O.jsx(EV,{}),level:95,color:"#7d7d7d"},{name:"DevOps",icon:O.jsx(tg,{}),level:80,color:"#2496ed"}]},CQ={frontend:O.jsx(BI,{}),backend:O.jsx(zI,{}),tools:O.jsx(tg,{})},PQ=()=>{const[t,e]=X.useState(!1),n=X.useRef(null),i=xb()||window.innerWidth<768;X.useEffect(()=>{if(i){e(!0);return}const s=new window.IntersectionObserver(([o])=>{o.isIntersecting&&e(!0)},{threshold:.2});return n.current&&s.observe(n.current),()=>s.disconnect()},[i]);const r=X.useMemo(()=>s=>n4[s].map((o,a)=>O.jsxs(wQ,{initial:i?!1:{opacity:0,y:20},animate:t?{opacity:1,y:0}:{},transition:i?{}:{duration:.3,delay:a*.07},children:[O.jsx(bQ,{style:{color:o.color},children:o.icon}),O.jsx(MQ,{children:o.name}),O.jsx(EQ,{children:O.jsx(TQ,{style:{background:`linear-gradient(90deg, ${o.color} 70%, #232526 100%)`},initial:i?!1:{width:0},animate:t?{width:`${o.level}%`}:{width:0},transition:i?{}:{duration:.7,delay:.2+a*.09}})}),O.jsxs(AQ,{children:[o.level,"%"]})]},o.name)),[t,i]);return O.jsx(pQ,{id:"skills",ref:n,children:O.jsxs(mQ,{variants:i?void 0:h8(.1,.1),initial:i?void 0:"hidden",whileInView:i?void 0:"show",viewport:i?void 0:{once:!0,amount:.2},children:[O.jsx(gQ,{variants:i?void 0:vb(.1),children:"TECHNICAL EXPERTISE"}),O.jsx(vQ,{children:"My technical skills with proficiency levels"}),O.jsx(yQ,{children:Object.keys(n4).map((s,o)=>O.jsxs(xQ,{initial:i?!1:{opacity:0,y:30},animate:t?{opacity:1,y:0}:{},transition:i?{}:{duration:.4,delay:o*.15},children:[O.jsxs(_Q,{children:[O.jsx("span",{className:"category-icon-bg",children:CQ[s]}),O.jsx("span",{className:"category-title",children:s.charAt(0).toUpperCase()+s.slice(1)})]}),O.jsx(SQ,{children:r(s)})]},s))})]})})},RQ=({project:t})=>{const{title:e,description:n,image:i,tags:r,link:s,github:o,current:a}=t;return O.jsxs(IQ,{whileHover:{y:-10,boxShadow:"0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)"},transition:{type:"spring",stiffness:300},children:[O.jsxs(m8,{children:[O.jsx(LQ,{src:i,alt:e}),a&&O.jsx(kQ,{children:"Current"}),O.jsx(DQ,{children:O.jsx(NQ,{children:O.jsxs(OQ,{children:[s&&O.jsx(i4,{href:s,target:"_blank",rel:"noopener noreferrer",whileHover:{scale:1.05},whileTap:{scale:.95},children:"View Live"}),o&&O.jsx(i4,{href:o,target:"_blank",rel:"noopener noreferrer",whileHover:{scale:1.05},whileTap:{scale:.95},children:"View Code"})]})})})]}),O.jsxs(UQ,{children:[O.jsx(FQ,{children:e}),O.jsx(zQ,{children:n}),O.jsx(BQ,{children:r.map((l,c)=>O.jsx(VQ,{children:l},c))})]})]})},IQ=re(gt.div)`
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(25px) saturate(160%);
   -webkit-backdrop-filter: blur(25px) saturate(160%);
@@ -5803,9 +5803,24 @@ No matching component was found for:
     pointer-events: none;
   }
 `,kQ=re.div`
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(100, 255, 218, 0.9);
+  color: #0a192f;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(100, 255, 218, 0.3);
+  box-shadow: 0 2px 8px rgba(100, 255, 218, 0.3);
+`,NQ=re.div`
   text-align: center;
   padding: 1rem;
-`,NQ=re.div`
+`,OQ=re.div`
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -5859,7 +5874,7 @@ No matching component was found for:
       inset 0 1px 0 rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(25px) saturate(170%);
   }
-`,OQ=re.div`
+`,UQ=re.div`
   padding: 1.5rem;
   flex: 1;
   display: flex;
@@ -5874,21 +5889,21 @@ No matching component was found for:
   @media (max-width: 480px) {
     padding: 1rem;
   }
-`,UQ=re.h3`
+`,FQ=re.h3`
   font-size: 1.5rem;
   margin-bottom: 0.75rem;
   color: #e6f1ff;
-`,FQ=re.p`
+`,zQ=re.p`
   color: #8892b0;
   margin-bottom: 1.5rem;
   line-height: 1.6;
   flex: 1;
-`,zQ=re.div`
+`,BQ=re.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: auto;
-`,BQ=re.span`
+`,VQ=re.span`
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px) saturate(150%);
   -webkit-backdrop-filter: blur(20px) saturate(150%);
@@ -5931,7 +5946,7 @@ No matching component was found for:
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(25px) saturate(170%);
   }
-`,VQ=()=>typeof window<"u"?window.matchMedia("(prefers-reduced-motion: reduce)").matches:!1,HQ=re.section`
+`,HQ=()=>typeof window<"u"?window.matchMedia("(prefers-reduced-motion: reduce)").matches:!1,GQ=re.section`
   min-height: 100vh;
   padding: 4rem 2rem;
   background: 
@@ -6149,7 +6164,7 @@ No matching component was found for:
       animation: ${({$reduceMotion:t})=>t?"none":"shimmer 1.5s ease-in-out infinite"};
     }
   }
-`,GQ=re(gt.div)`
+`,WQ=re(gt.div)`
   max-width: 1300px;
   margin: 0 auto;
   position: relative;
@@ -6292,7 +6307,7 @@ No matching component was found for:
       border-radius: 16px;
     }
   }
-`,WQ=re(gt.h2)`
+`,jQ=re(gt.h2)`
   font-size: 3.2rem;
   font-weight: 700;
   margin-bottom: 1.2rem;
@@ -6324,7 +6339,7 @@ No matching component was found for:
     margin-bottom: 0.6rem;
     letter-spacing: 0.5px;
   }
-`,jQ=re.p`
+`,$Q=re.p`
   color: #8892b0;
   font-size: 1.2rem;
   max-width: 700px;
@@ -6347,7 +6362,7 @@ No matching component was found for:
     line-height: 1.4;
     margin-bottom: 1.5rem;
   }
-`,$Q=re(gt.div)`
+`,XQ=re(gt.div)`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2rem;
@@ -6367,7 +6382,7 @@ No matching component was found for:
   @media (max-width: 480px) {
     gap: 1rem;
   }
-`,XQ=({$reduceMotion:t})=>{const e=[{id:1,title:"Personal Portfolio",description:"A modern, responsive portfolio website showcasing my projects, skills, and professional experience.",image:"https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",tags:["React","JavaScript","CSS3","HTML5"],github:"https://github.com/abdullahrizwan7/portfolio",link:"https://abdullahrizwan7.github.io/portfolio"},{id:2,title:"FitVision",description:"A comprehensive fitness tracking application with workout planning, progress monitoring, and health analytics.",image:"https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",tags:["React","JavaScript","CSS3","HTML5"],github:"https://github.com/abdullahrizwan7/FitVision",link:"https://abdullahrizwan7.github.io/FitVision"},{id:3,title:"Task Management App",description:"A collaborative task management application with real-time updates and team collaboration features.",image:"https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",tags:["React","TypeScript","Socket.io","Express"],github:"https://github.com",link:"https://example.com"}];return O.jsxs(HQ,{id:"projects",$reduceMotion:t,children:[!t&&O.jsxs(O.Fragment,{children:[O.jsx(_d,{$reduceMotion:t,size:"180px",bg:"rgba(100, 255, 218, 0.05)",radius:"60% 40% 30% 70% / 60% 30% 70% 40%",top:"15%",left:"5%",duration:"22s",moveX2:"-25px",moveY2:"-35px"}),O.jsx(_d,{$reduceMotion:t,size:"220px",bg:"rgba(138, 43, 226, 0.04)",radius:"30% 70% 70% 30% / 30% 30% 70% 70%",bottom:"5%",right:"8%",duration:"28s",moveX2:"35px",moveY2:"-45px"}),O.jsx(_d,{$reduceMotion:t,size:"120px",bg:"rgba(25, 118, 210, 0.04)",radius:"50%",top:"55%",left:"12%",duration:"20s",moveX2:"-20px",moveY2:"40px"}),O.jsx(_d,{$reduceMotion:t,size:"160px",bg:"rgba(255, 20, 147, 0.03)",radius:"40% 60% 60% 40% / 40% 40% 60% 60%",top:"80%",right:"25%",duration:"24s",moveX2:"-30px",moveY2:"25px"}),O.jsx(_d,{$reduceMotion:t,size:"140px",bg:"rgba(0, 255, 255, 0.03)",radius:"70% 30% 30% 70% / 70% 70% 30% 30%",top:"35%",right:"5%",duration:"26s",moveX2:"25px",moveY2:"-35px"})]}),O.jsxs(GQ,{variants:t?{}:h8(.1,.1),initial:t?!1:"hidden",whileInView:t?!1:"show",viewport:{once:!0,amount:.25},$reduceMotion:t,children:[O.jsx(WQ,{variants:t?{}:vb(.1),$reduceMotion:t,children:"Featured Projects"}),O.jsx(jQ,{children:"A showcase of my recent work featuring modern web applications built with cutting-edge technologies"}),O.jsx($Q,{children:e.map(n=>O.jsx(RQ,{project:n,$reduceMotion:t},n.id))})]})]})},YQ=()=>{const[t,e]=X.useState(!1);return X.useEffect(()=>{e(VQ());const n=window.matchMedia("(prefers-reduced-motion: reduce)"),i=()=>e(n.matches);return n.addEventListener("change",i),()=>n.removeEventListener("change",i)},[]),O.jsx(XQ,{$reduceMotion:t})},qQ=()=>{const[t,e]=X.useState({name:"",email:"",subject:"",message:""}),[n,i]=X.useState(!1),[r,s]=X.useState(!1),[o,a]=X.useState(""),[l,c]=X.useState({}),[f,h]=X.useState({}),[p,m]=X.useState(null),[v,_]=X.useState(!1),S={name:50,email:100,subject:100,message:500},g=()=>{_(!v)},x=()=>{_(!1)},w=P=>{const{name:L,value:R}=P.target;e(A=>({...A,[L]:R})),h(A=>({...A,[L]:!0})),p&&clearTimeout(p),m(setTimeout(()=>{h(A=>({...A,[L]:!1}))},1e3)),M(L,R)},M=(P,L)=>{let R={...l};switch(P){case"email":L?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(L)?delete R.email:R.email="Invalid email format":R.email="Email is required";break;case"name":L?delete R.name:R.name="Name is required";break;case"message":L?delete R.message:R.message="Message is required";break}c(R)},C=()=>{const P={};return t.name.trim()||(P.name="Name is required"),t.email.trim()?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t.email)||(P.email="Invalid email format"):P.email="Email is required",t.message.trim()||(P.message="Message is required"),c(P),Object.keys(P).length===0},T=async P=>{if(P.preventDefault(),!!C()){i(!0),a("");try{if(!(await fetch("https://api.emailjs.com/api/v1.0/email/send",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({service_id:"service_e5e6hzw",template_id:"template_en9wpdk",user_id:"t7Am7q6O1RgYu_aCX",template_params:{from_name:t.name,from_email:t.email,subject:t.subject||"Message from Portfolio",message:t.message}})})).ok)throw new Error("Failed to send message");e({name:"",email:"",subject:"",message:""}),s(!0),setTimeout(()=>s(!1),5e3)}catch{a("Failed to send message. Please try again later.")}finally{i(!1)}}};return O.jsxs(O.Fragment,{children:[O.jsx(ZQ,{onClick:g,whileHover:{scale:1.1},whileTap:{scale:.9},initial:{scale:0,opacity:0},animate:{scale:1,opacity:1},transition:{delay:.5,type:"spring",stiffness:300,damping:25},children:O.jsx($5,{})}),O.jsx(hI,{children:v&&O.jsxs(O.Fragment,{children:[O.jsx(KQ,{initial:{opacity:0},animate:{opacity:1},exit:{opacity:0},transition:{duration:.3},onClick:x}),O.jsxs(QQ,{initial:{opacity:0,scale:.8,x:window.innerWidth<=768?0:20,y:window.innerWidth<=768?0:20},animate:{opacity:1,scale:1,x:0,y:0},exit:{opacity:0,scale:.8,x:window.innerWidth<=768?0:20,y:window.innerWidth<=768?0:20},transition:{type:"spring",damping:25,stiffness:300,duration:.4},children:[O.jsxs(JQ,{children:[O.jsxs(eJ,{children:[O.jsx($5,{}),O.jsx("span",{children:"Let's Chat!"})]}),O.jsx(tJ,{onClick:x,children:O.jsx(GI,{})})]}),O.jsxs(nJ,{children:[r?O.jsxs(aJ,{initial:{opacity:0,scale:.8},animate:{opacity:1,scale:1},transition:{duration:.3},children:[O.jsx(lJ,{children:O.jsx(xV,{})}),O.jsxs("div",{children:[O.jsx("h3",{children:"Message Sent!"}),O.jsx("p",{children:"Thank you for reaching out. I'll get back to you soon."})]})]}):O.jsxs(iJ,{onSubmit:T,children:[O.jsxs(Wm,{children:[O.jsx(d2,{type:"text",name:"name",value:t.name,onChange:w,required:!0,placeholder:"Your name",disabled:n,maxLength:S.name}),l.name&&O.jsxs(u2,{children:[O.jsx(dx,{})," ",l.name]})]}),O.jsxs(Wm,{children:[O.jsx(d2,{type:"email",name:"email",value:t.email,onChange:w,required:!0,placeholder:"your.email@example.com",disabled:n,maxLength:S.email}),l.email&&O.jsxs(u2,{children:[O.jsx(dx,{})," ",l.email]})]}),O.jsx(Wm,{children:O.jsx(d2,{type:"text",name:"subject",value:t.subject,onChange:w,placeholder:"Subject (optional)",disabled:n,maxLength:S.subject})}),O.jsxs(Wm,{children:[O.jsx(rJ,{name:"message",rows:"4",value:t.message,onChange:w,required:!0,placeholder:"Your message here...",disabled:n,maxLength:S.message}),l.message&&O.jsxs(u2,{children:[O.jsx(dx,{})," ",l.message]})]}),o&&O.jsx(cJ,{initial:{opacity:0,height:0},animate:{opacity:1,height:"auto"},transition:{duration:.3},children:o}),O.jsx(sJ,{type:"submit",disabled:n,whileHover:{scale:1.02},whileTap:{scale:.98},children:n?O.jsxs(r4,{children:[O.jsx(oJ,{}),O.jsx("span",{children:"Sending..."})]}):O.jsxs(r4,{children:[O.jsx(SV,{}),O.jsx("span",{children:"Send Message"})]})})]}),O.jsx(uJ,{children:O.jsxs(dJ,{children:[O.jsx(jm,{href:"https://github.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:O.jsx(UI,{})}),O.jsx(jm,{href:"https://linkedin.com/in/yourprofile",target:"_blank",rel:"noopener noreferrer",children:O.jsx(FI,{})}),O.jsx(jm,{href:"https://twitter.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:O.jsx(VI,{})}),O.jsx(jm,{href:"https://instagram.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:O.jsx(mV,{})})]})})]})]})]})})]})},ZQ=re(gt.button)`
+`,YQ=({$reduceMotion:t})=>{const e=[{id:1,title:"Personal Portfolio",description:"A modern, responsive portfolio website showcasing my projects, skills, and professional experience.",image:"https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",tags:["React","JavaScript","CSS3","HTML5"],github:"https://github.com/abdullahrizwan7/portfolio",link:"https://abdullahrizwan7.github.io/portfolio",current:!0},{id:2,title:"FitVision",description:"A comprehensive fitness tracking application with workout planning, progress monitoring, and health analytics.",image:"./fitvision.jpg",tags:["React","JavaScript","CSS3","HTML5"],github:"https://github.com/abdullahrizwan7/FitVision",link:"https://abdullahrizwan7.github.io/FitVision"},{id:3,title:"Comming Soon",description:"It will be available soon",image:"https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",tags:["React","TypeScript","Socket.io","Express"],github:"https://github.com",link:"https://example.com"}];return O.jsxs(GQ,{id:"projects",$reduceMotion:t,children:[!t&&O.jsxs(O.Fragment,{children:[O.jsx(_d,{$reduceMotion:t,size:"180px",bg:"rgba(100, 255, 218, 0.05)",radius:"60% 40% 30% 70% / 60% 30% 70% 40%",top:"15%",left:"5%",duration:"22s",moveX2:"-25px",moveY2:"-35px"}),O.jsx(_d,{$reduceMotion:t,size:"220px",bg:"rgba(138, 43, 226, 0.04)",radius:"30% 70% 70% 30% / 30% 30% 70% 70%",bottom:"5%",right:"8%",duration:"28s",moveX2:"35px",moveY2:"-45px"}),O.jsx(_d,{$reduceMotion:t,size:"120px",bg:"rgba(25, 118, 210, 0.04)",radius:"50%",top:"55%",left:"12%",duration:"20s",moveX2:"-20px",moveY2:"40px"}),O.jsx(_d,{$reduceMotion:t,size:"160px",bg:"rgba(255, 20, 147, 0.03)",radius:"40% 60% 60% 40% / 40% 40% 60% 60%",top:"80%",right:"25%",duration:"24s",moveX2:"-30px",moveY2:"25px"}),O.jsx(_d,{$reduceMotion:t,size:"140px",bg:"rgba(0, 255, 255, 0.03)",radius:"70% 30% 30% 70% / 70% 70% 30% 30%",top:"35%",right:"5%",duration:"26s",moveX2:"25px",moveY2:"-35px"})]}),O.jsxs(WQ,{variants:t?{}:h8(.1,.1),initial:t?!1:"hidden",whileInView:t?!1:"show",viewport:{once:!0,amount:.25},$reduceMotion:t,children:[O.jsx(jQ,{variants:t?{}:vb(.1),$reduceMotion:t,children:"Featured Projects"}),O.jsx($Q,{children:"A showcase of my recent work featuring modern web applications built with cutting-edge technologies"}),O.jsx(XQ,{children:e.map(n=>O.jsx(RQ,{project:n,$reduceMotion:t},n.id))})]})]})},qQ=()=>{const[t,e]=X.useState(!1);return X.useEffect(()=>{e(HQ());const n=window.matchMedia("(prefers-reduced-motion: reduce)"),i=()=>e(n.matches);return n.addEventListener("change",i),()=>n.removeEventListener("change",i)},[]),O.jsx(YQ,{$reduceMotion:t})},ZQ=()=>{const[t,e]=X.useState({name:"",email:"",subject:"",message:""}),[n,i]=X.useState(!1),[r,s]=X.useState(!1),[o,a]=X.useState(""),[l,c]=X.useState({}),[f,h]=X.useState({}),[p,m]=X.useState(null),[v,_]=X.useState(!1),S={name:50,email:100,subject:100,message:500},g=()=>{_(!v)},x=()=>{_(!1)},w=P=>{const{name:L,value:R}=P.target;e(A=>({...A,[L]:R})),h(A=>({...A,[L]:!0})),p&&clearTimeout(p),m(setTimeout(()=>{h(A=>({...A,[L]:!1}))},1e3)),M(L,R)},M=(P,L)=>{let R={...l};switch(P){case"email":L?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(L)?delete R.email:R.email="Invalid email format":R.email="Email is required";break;case"name":L?delete R.name:R.name="Name is required";break;case"message":L?delete R.message:R.message="Message is required";break}c(R)},C=()=>{const P={};return t.name.trim()||(P.name="Name is required"),t.email.trim()?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t.email)||(P.email="Invalid email format"):P.email="Email is required",t.message.trim()||(P.message="Message is required"),c(P),Object.keys(P).length===0},T=async P=>{if(P.preventDefault(),!!C()){i(!0),a("");try{if(!(await fetch("https://api.emailjs.com/api/v1.0/email/send",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({service_id:"service_e5e6hzw",template_id:"template_en9wpdk",user_id:"t7Am7q6O1RgYu_aCX",template_params:{from_name:t.name,from_email:t.email,subject:t.subject||"Message from Portfolio",message:t.message}})})).ok)throw new Error("Failed to send message");e({name:"",email:"",subject:"",message:""}),s(!0),setTimeout(()=>s(!1),5e3)}catch{a("Failed to send message. Please try again later.")}finally{i(!1)}}};return O.jsxs(O.Fragment,{children:[O.jsx(KQ,{onClick:g,whileHover:{scale:1.1},whileTap:{scale:.9},initial:{scale:0,opacity:0},animate:{scale:1,opacity:1},transition:{delay:.5,type:"spring",stiffness:300,damping:25},children:O.jsx($5,{})}),O.jsx(hI,{children:v&&O.jsxs(O.Fragment,{children:[O.jsx(QQ,{initial:{opacity:0},animate:{opacity:1},exit:{opacity:0},transition:{duration:.3},onClick:x}),O.jsxs(JQ,{initial:{opacity:0,scale:.8,x:window.innerWidth<=768?0:20,y:window.innerWidth<=768?0:20},animate:{opacity:1,scale:1,x:0,y:0},exit:{opacity:0,scale:.8,x:window.innerWidth<=768?0:20,y:window.innerWidth<=768?0:20},transition:{type:"spring",damping:25,stiffness:300,duration:.4},children:[O.jsxs(eJ,{children:[O.jsxs(tJ,{children:[O.jsx($5,{}),O.jsx("span",{children:"Let's Chat!"})]}),O.jsx(nJ,{onClick:x,children:O.jsx(GI,{})})]}),O.jsxs(iJ,{children:[r?O.jsxs(lJ,{initial:{opacity:0,scale:.8},animate:{opacity:1,scale:1},transition:{duration:.3},children:[O.jsx(cJ,{children:O.jsx(xV,{})}),O.jsxs("div",{children:[O.jsx("h3",{children:"Message Sent!"}),O.jsx("p",{children:"Thank you for reaching out. I'll get back to you soon."})]})]}):O.jsxs(rJ,{onSubmit:T,children:[O.jsxs(Wm,{children:[O.jsx(d2,{type:"text",name:"name",value:t.name,onChange:w,required:!0,placeholder:"Your name",disabled:n,maxLength:S.name}),l.name&&O.jsxs(u2,{children:[O.jsx(dx,{})," ",l.name]})]}),O.jsxs(Wm,{children:[O.jsx(d2,{type:"email",name:"email",value:t.email,onChange:w,required:!0,placeholder:"your.email@example.com",disabled:n,maxLength:S.email}),l.email&&O.jsxs(u2,{children:[O.jsx(dx,{})," ",l.email]})]}),O.jsx(Wm,{children:O.jsx(d2,{type:"text",name:"subject",value:t.subject,onChange:w,placeholder:"Subject (optional)",disabled:n,maxLength:S.subject})}),O.jsxs(Wm,{children:[O.jsx(sJ,{name:"message",rows:"4",value:t.message,onChange:w,required:!0,placeholder:"Your message here...",disabled:n,maxLength:S.message}),l.message&&O.jsxs(u2,{children:[O.jsx(dx,{})," ",l.message]})]}),o&&O.jsx(uJ,{initial:{opacity:0,height:0},animate:{opacity:1,height:"auto"},transition:{duration:.3},children:o}),O.jsx(oJ,{type:"submit",disabled:n,whileHover:{scale:1.02},whileTap:{scale:.98},children:n?O.jsxs(r4,{children:[O.jsx(aJ,{}),O.jsx("span",{children:"Sending..."})]}):O.jsxs(r4,{children:[O.jsx(SV,{}),O.jsx("span",{children:"Send Message"})]})})]}),O.jsx(dJ,{children:O.jsxs(fJ,{children:[O.jsx(jm,{href:"https://github.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:O.jsx(UI,{})}),O.jsx(jm,{href:"https://linkedin.com/in/yourprofile",target:"_blank",rel:"noopener noreferrer",children:O.jsx(FI,{})}),O.jsx(jm,{href:"https://twitter.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:O.jsx(VI,{})}),O.jsx(jm,{href:"https://instagram.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:O.jsx(mV,{})})]})})]})]})]})})]})},KQ=re(gt.button)`
   position: fixed !important;
   bottom: 32px !important;
   right: 32px !important;
@@ -6475,7 +6490,7 @@ No matching component was found for:
     right: 20px !important;
     font-size: 20px;
   }
-`,KQ=re(gt.div)`
+`,QQ=re(gt.div)`
   position: fixed;
   top: 0;
   left: 0;
@@ -6491,7 +6506,7 @@ No matching component was found for:
     backdrop-filter: blur(30px) saturate(180%);
     -webkit-backdrop-filter: blur(30px) saturate(180%);
   }
-`,QQ=re(gt.div)`
+`,JQ=re(gt.div)`
   position: fixed !important;
   bottom: 100px !important;
   right: 24px !important;
@@ -6585,7 +6600,7 @@ No matching component was found for:
     backdrop-filter: blur(60px) saturate(220%) !important;
     -webkit-backdrop-filter: blur(60px) saturate(220%) !important;
   }
-`,JQ=re.div`
+`,eJ=re.div`
   background: 
     linear-gradient(135deg, 
       rgba(102, 126, 234, 0.8) 0%, 
@@ -6646,7 +6661,7 @@ No matching component was found for:
   @media (max-width: 480px) {
     padding: 20px 16px;
   }
-`,eJ=re.div`
+`,tJ=re.div`
   display: flex;
   align-items: center;
   gap: 12px;
@@ -6656,7 +6671,7 @@ No matching component was found for:
   svg {
     font-size: 18px;
   }
-`,tJ=re.button`
+`,nJ=re.button`
   background: transparent;
   border: none;
   color: white;
@@ -6688,7 +6703,7 @@ No matching component was found for:
     padding: 10px;
     font-size: 20px;
   }
-`,nJ=re.div`
+`,iJ=re.div`
   padding: 24px;
   flex: 1;
   overflow-y: auto;
@@ -6810,7 +6825,7 @@ No matching component was found for:
     box-shadow: 2px 2px 4px ${t=>t.shadowDark||"#a3b1c6"}, 
                 -2px -2px 4px ${t=>t.shadowLight||"#ffffff"};
   }
-`;const iJ=re.form`
+`;const rJ=re.form`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -6903,7 +6918,7 @@ No matching component was found for:
     padding: 14px 16px;
     font-size: 16px; /* Prevents zoom on iOS */
   }
-`,rJ=re.textarea`
+`,sJ=re.textarea`
   width: 100%;
   padding: 16px 20px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -6949,7 +6964,7 @@ No matching component was found for:
     font-size: 16px; /* Prevents zoom on iOS */
     min-height: 100px;
   }
-`,sJ=re(gt.button)`
+`,oJ=re(gt.button)`
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -7017,7 +7032,7 @@ No matching component was found for:
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-`,oJ=re.div`
+`,aJ=re.div`
   width: 18px;
   height: 18px;
   border: 2px solid rgba(255, 255, 255, 0.3);
@@ -7030,7 +7045,7 @@ No matching component was found for:
       transform: rotate(360deg);
     }
   }
-`,aJ=re(gt.div)`
+`,lJ=re(gt.div)`
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -7054,7 +7069,7 @@ No matching component was found for:
     margin: 0;
     line-height: 1.5;
   }
-`,lJ=re.div`
+`,cJ=re.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7065,7 +7080,7 @@ No matching component was found for:
   border-radius: 50%;
   font-size: 1.2rem;
   font-weight: bold;
-`,cJ=re(gt.div)`
+`,uJ=re(gt.div)`
   background: rgba(255, 227, 227, 0.8);
   backdrop-filter: blur(10px);
   color: #d32f2f;
@@ -7147,7 +7162,7 @@ No matching component was found for:
   font-size: 1rem;
   margin-bottom: 0.5rem;
   color: ${t=>t.textColor||"#4a5568"};
-`;const uJ=re.div`
+`;const dJ=re.div`
   margin-top: 24px;
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
@@ -7173,7 +7188,7 @@ No matching component was found for:
     margin-top: 20px;
     padding-top: 16px;
   }
-`,dJ=re.div`
+`,fJ=re.div`
   display: flex;
   gap: 16px;
   justify-content: center;
@@ -7287,11 +7302,11 @@ No matching component was found for:
   height: 10px;
   background-color: #34c759;
   border-radius: 50%;
-`;const fJ=()=>{const t=new Date().getFullYear();return O.jsxs(hJ,{children:[O.jsxs(pJ,{children:[O.jsxs(s4,{children:[O.jsx(o4,{children:"Navigation"}),O.jsxs(mJ,{children:[O.jsx(Sd,{href:"#home",children:"Home"}),O.jsx(Sd,{href:"#about",children:"About"}),O.jsx(Sd,{href:"#projects",children:"Projects"}),O.jsx(Sd,{href:"#skills",children:"Skills"}),O.jsx(Sd,{href:"#contact",children:"Contact"})]})]}),O.jsxs(s4,{children:[O.jsx(o4,{children:"Connect"}),O.jsxs(gJ,{children:[O.jsx(f2,{href:"https://github.com/ayazmallick007",target:"_blank",rel:"noopener noreferrer",children:"GitHub"}),O.jsx(f2,{href:"https://linkedin.com/in/yourprofile",target:"_blank",rel:"noopener noreferrer",children:"LinkedIn"}),O.jsx(f2,{href:"https://twitter.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:"Twitter"})]})]})]}),O.jsxs(vJ,{children:[O.jsxs("p",{children:["© ",t," Your Name. All rights reserved."]}),O.jsx("p",{children:"Built with React and ❤️"})]})]})},hJ=re.footer`
+`;const hJ=()=>{const t=new Date().getFullYear();return O.jsxs(pJ,{children:[O.jsxs(mJ,{children:[O.jsxs(s4,{children:[O.jsx(o4,{children:"Navigation"}),O.jsxs(gJ,{children:[O.jsx(Sd,{href:"#home",children:"Home"}),O.jsx(Sd,{href:"#about",children:"About"}),O.jsx(Sd,{href:"#projects",children:"Projects"}),O.jsx(Sd,{href:"#skills",children:"Skills"}),O.jsx(Sd,{href:"#contact",children:"Contact"})]})]}),O.jsxs(s4,{children:[O.jsx(o4,{children:"Connect"}),O.jsxs(vJ,{children:[O.jsx(f2,{href:"https://github.com/ayazmallick007",target:"_blank",rel:"noopener noreferrer",children:"GitHub"}),O.jsx(f2,{href:"https://linkedin.com/in/yourprofile",target:"_blank",rel:"noopener noreferrer",children:"LinkedIn"}),O.jsx(f2,{href:"https://twitter.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:"Twitter"})]})]})]}),O.jsxs(yJ,{children:[O.jsxs("p",{children:["© ",t," Your Name. All rights reserved."]}),O.jsx("p",{children:"Built with React and ❤️"})]})]})},pJ=re.footer`
   background-color: #222;
   color: #fff;
   padding: 3rem 2rem 1.5rem;
-`,pJ=re.div`
+`,mJ=re.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -7325,7 +7340,7 @@ No matching component was found for:
       transform: translateX(-50%);
     }
   }
-`,mJ=re.div`
+`,gJ=re.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -7337,7 +7352,7 @@ No matching component was found for:
   &:hover {
     color: #fff;
   }
-`,gJ=re.div`
+`,vJ=re.div`
   display: flex;
   gap: 1rem;
   
@@ -7352,7 +7367,7 @@ No matching component was found for:
   &:hover {
     color: #fff;
   }
-`,vJ=re.div`
+`,yJ=re.div`
   text-align: center;
   padding-top: 1.5rem;
   border-top: 1px solid #444;
@@ -7362,7 +7377,7 @@ No matching component was found for:
   p {
     margin: 0.5rem 0;
   }
-`,yJ=()=>{const t=X.useMemo(()=>_h(),[]),e=X.useMemo(()=>xb(),[]),n=X.useMemo(()=>p8(),[]);return X.useEffect(()=>{if(t.isDesktop&&!t.isLowPerformance){const i=document.createElement("link");i.rel="preload",i.as="script",document.head.appendChild(i)}},[t]),{deviceCapabilities:t,shouldDisableEffects:e,optimizedFrameRate:n,getOptimizedVariants:dQ,isMobile:t.isMobile,isTablet:t.isTablet,isDesktop:t.isDesktop,isLowPerformance:t.isLowPerformance}},xJ=re(gt.div)`
+`,xJ=()=>{const t=X.useMemo(()=>_h(),[]),e=X.useMemo(()=>xb(),[]),n=X.useMemo(()=>p8(),[]);return X.useEffect(()=>{if(t.isDesktop&&!t.isLowPerformance){const i=document.createElement("link");i.rel="preload",i.as="script",document.head.appendChild(i)}},[t]),{deviceCapabilities:t,shouldDisableEffects:e,optimizedFrameRate:n,getOptimizedVariants:dQ,isMobile:t.isMobile,isTablet:t.isTablet,isDesktop:t.isDesktop,isLowPerformance:t.isLowPerformance}},_J=re(gt.div)`
   position: fixed;
   top: 20px;
   right: 20px;
@@ -7378,7 +7393,7 @@ No matching component was found for:
   gap: 8px;
   max-width: 300px;
   font-size: 14px;
-`,_J=re.button`
+`,SJ=re.button`
   background: none;
   border: none;
   color: white;
@@ -7391,7 +7406,7 @@ No matching component was found for:
   &:hover {
     opacity: 1;
   }
-`,SJ=re.span`
+`,wJ=re.span`
   background: ${t=>t.mode==="optimized"?"#4CAF50":"#FF9800"};
   color: white;
   padding: 2px 6px;
@@ -7399,7 +7414,7 @@ No matching component was found for:
   font-size: 12px;
   font-weight: bold;
   margin-left: 8px;
-`,wJ=()=>{const[t,e]=X.useState(!1),[n,i]=X.useState(!1),{shouldDisableEffects:r,deviceCapabilities:s}=yJ();X.useEffect(()=>{r&&!n&&(e(!0),i(!0),setTimeout(()=>{e(!1)},5e3))},[r,n]);const o=()=>{e(!1)};return O.jsx(hI,{children:t&&O.jsxs(xJ,{initial:{opacity:0,y:-20,scale:.8},animate:{opacity:1,y:0,scale:1},exit:{opacity:0,y:-20,scale:.8},transition:{duration:.3},children:[O.jsx(bV,{}),O.jsxs("span",{children:["Performance mode active for better experience",s.isMobile&&" on mobile"]}),O.jsx(SJ,{mode:"optimized",children:"OPTIMIZED"}),O.jsx(_J,{onClick:o,children:O.jsx(GI,{})})]})})},bJ=()=>{const t=X.useRef(null);return X.useEffect(()=>{if(!t.current||xb())return;const e=new V1,n=new Vn(75,window.innerWidth/window.innerHeight,.1,1e3),i=new hb({alpha:!0,antialias:window.innerWidth>768,powerPreference:"high-performance"});i.setSize(window.innerWidth,window.innerHeight),i.setPixelRatio(Math.min(window.devicePixelRatio,2)),t.current.appendChild(i.domElement);const r=new bt,s=uQ(1200),o=new Float32Array(s*3),a=new Float32Array(s*3);for(let _=0;_<s*3;_++)o[_]=(Math.random()-.5)*5,a[_]=Math.random();r.setAttribute("position",new qt(o,3)),r.setAttribute("color",new qt(a,3));const l=new dh({size:window.innerWidth<768?.015:.02,vertexColors:!0,transparent:!0,blending:ng,alphaTest:.1}),c=new jw(r,l);e.add(c),n.position.z=2;let f=0;const h=p8(),p=1e3/h,m=_=>{if(requestAnimationFrame(m),_-f>=p){const S=h===30?3e-4:5e-4;c.rotation.x+=S,c.rotation.y+=S,i.render(e,n),f=_}},v=()=>{n.aspect=window.innerWidth/window.innerHeight,n.updateProjectionMatrix(),i.setSize(window.innerWidth,window.innerHeight)};return window.addEventListener("resize",v),m(),()=>{window.removeEventListener("resize",v),t.current&&t.current.removeChild(i.domElement),r.dispose(),l.dispose(),i.dispose()}},[]),O.jsx("div",{ref:t,style:{position:"fixed",top:0,left:0,width:"100%",height:"100%",zIndex:-1,overflow:"hidden"}})};const MJ=()=>O.jsxs("div",{className:"App",children:[O.jsx(bJ,{}),O.jsx(wJ,{}),O.jsx(uV,{}),O.jsxs("main",{children:[O.jsx(_K,{}),O.jsx(rQ,{}),O.jsx(PQ,{}),O.jsx(YQ,{}),O.jsx(qQ,{})]}),O.jsx(fJ,{})]}),EJ=PO`
+`,bJ=()=>{const[t,e]=X.useState(!1),[n,i]=X.useState(!1),{shouldDisableEffects:r,deviceCapabilities:s}=xJ();X.useEffect(()=>{r&&!n&&(e(!0),i(!0),setTimeout(()=>{e(!1)},5e3))},[r,n]);const o=()=>{e(!1)};return O.jsx(hI,{children:t&&O.jsxs(_J,{initial:{opacity:0,y:-20,scale:.8},animate:{opacity:1,y:0,scale:1},exit:{opacity:0,y:-20,scale:.8},transition:{duration:.3},children:[O.jsx(bV,{}),O.jsxs("span",{children:["Performance mode active for better experience",s.isMobile&&" on mobile"]}),O.jsx(wJ,{mode:"optimized",children:"OPTIMIZED"}),O.jsx(SJ,{onClick:o,children:O.jsx(GI,{})})]})})},MJ=()=>{const t=X.useRef(null);return X.useEffect(()=>{if(!t.current||xb())return;const e=new V1,n=new Vn(75,window.innerWidth/window.innerHeight,.1,1e3),i=new hb({alpha:!0,antialias:window.innerWidth>768,powerPreference:"high-performance"});i.setSize(window.innerWidth,window.innerHeight),i.setPixelRatio(Math.min(window.devicePixelRatio,2)),t.current.appendChild(i.domElement);const r=new bt,s=uQ(1200),o=new Float32Array(s*3),a=new Float32Array(s*3);for(let _=0;_<s*3;_++)o[_]=(Math.random()-.5)*5,a[_]=Math.random();r.setAttribute("position",new qt(o,3)),r.setAttribute("color",new qt(a,3));const l=new dh({size:window.innerWidth<768?.015:.02,vertexColors:!0,transparent:!0,blending:ng,alphaTest:.1}),c=new jw(r,l);e.add(c),n.position.z=2;let f=0;const h=p8(),p=1e3/h,m=_=>{if(requestAnimationFrame(m),_-f>=p){const S=h===30?3e-4:5e-4;c.rotation.x+=S,c.rotation.y+=S,i.render(e,n),f=_}},v=()=>{n.aspect=window.innerWidth/window.innerHeight,n.updateProjectionMatrix(),i.setSize(window.innerWidth,window.innerHeight)};return window.addEventListener("resize",v),m(),()=>{window.removeEventListener("resize",v),t.current&&t.current.removeChild(i.domElement),r.dispose(),l.dispose(),i.dispose()}},[]),O.jsx("div",{ref:t,style:{position:"fixed",top:0,left:0,width:"100%",height:"100%",zIndex:-1,overflow:"hidden"}})};const EJ=()=>O.jsxs("div",{className:"App",children:[O.jsx(MJ,{}),O.jsx(bJ,{}),O.jsx(uV,{}),O.jsxs("main",{children:[O.jsx(_K,{}),O.jsx(rQ,{}),O.jsx(PQ,{}),O.jsx(qQ,{}),O.jsx(ZQ,{})]}),O.jsx(hJ,{})]}),TJ=PO`
   * {
     margin: 0;
     padding: 0;
@@ -7447,4 +7462,4 @@ No matching component was found for:
     background: ${t=>t.theme.primary};
     border-radius: 10px;
   }
-`,TJ={background:"#0f0f0f",backgroundAlt:"#1a1a1a",text:"#ffffff",textAlt:"#b3b3b3",primary:"#8a2be2",secondary:"#00bfff",accent:"#ff4500",success:"#4caf50",error:"#f44336",cardBg:"rgba(26, 26, 26, 0.8)",gradientPrimary:"linear-gradient(45deg, #8a2be2, #00bfff)",shadow:"0 4px 20px rgba(0, 0, 0, 0.5)",glassMorphism:"rgba(26, 26, 26, 0.25)",glassBorder:"1px solid rgba(255, 255, 255, 0.1)",glassBlur:"blur(10px)"};h2.createRoot(document.getElementById("root")).render(O.jsx(en.StrictMode,{children:O.jsxs(TO,{theme:TJ,children:[O.jsx(EJ,{}),O.jsx(MJ,{})]})}));
+`,AJ={background:"#0f0f0f",backgroundAlt:"#1a1a1a",text:"#ffffff",textAlt:"#b3b3b3",primary:"#8a2be2",secondary:"#00bfff",accent:"#ff4500",success:"#4caf50",error:"#f44336",cardBg:"rgba(26, 26, 26, 0.8)",gradientPrimary:"linear-gradient(45deg, #8a2be2, #00bfff)",shadow:"0 4px 20px rgba(0, 0, 0, 0.5)",glassMorphism:"rgba(26, 26, 26, 0.25)",glassBorder:"1px solid rgba(255, 255, 255, 0.1)",glassBlur:"blur(10px)"};h2.createRoot(document.getElementById("root")).render(O.jsx(en.StrictMode,{children:O.jsxs(TO,{theme:AJ,children:[O.jsx(TJ,{}),O.jsx(EJ,{})]})}));
