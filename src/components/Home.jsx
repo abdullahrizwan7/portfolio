@@ -1003,7 +1003,7 @@ const Home = () => {
     };
 
     return (
-        <HomeSection id="hero">
+        <HomeSection id="home">
             <ParticleBackground>
                 <Canvas 
                     camera={{ position: [0, 0, 1], fov: 75 }}

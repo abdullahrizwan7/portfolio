@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaEnvelope, FaPhone, FaMapMarkerAlt, FaCheck, FaExclamationCircle, FaComments, FaTimes } from 'react-icons/fa';
@@ -17,6 +17,8 @@ const Contact = () => {
     const [typingStatus, setTypingStatus] = useState({});
     const [typingTimeout, setTypingTimeout] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
+    const [isContactVisible, setIsContactVisible] = useState(false);
+    const contactSectionRef = useRef(null);
 
     // Character limits
     const charLimits = {
@@ -33,6 +35,29 @@ const Contact = () => {
     const closePopup = () => {
         setIsOpen(false);
     };
+
+    // Intersection Observer for contact section visibility
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsContactVisible(entry.isIntersecting);
+            },
+            {
+                threshold: 0.3, // Trigger when 30% of the section is visible
+                rootMargin: '-50px 0px -50px 0px'
+            }
+        );
+
+        if (contactSectionRef.current) {
+            observer.observe(contactSectionRef.current);
+        }
+
+        return () => {
+            if (contactSectionRef.current) {
+                observer.unobserve(contactSectionRef.current);
+            }
+        };
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -184,7 +209,7 @@ const Contact = () => {
     return (
         <>
             {/* Contact Section */}
-            <ContactSection id="contact">
+            <ContactSection id="contact" ref={contactSectionRef}>
                 <SectionTitle>Get In Touch</SectionTitle>
                 <SectionSubtitle>
                     I'm always open to discussing new opportunities, collaborations, or just chatting about technology. 
@@ -195,11 +220,22 @@ const Contact = () => {
             {/* Floating Chat Button */}
             <FloatingChatButton
                 onClick={togglePopup}
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: isContactVisible ? 1.2 : 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.5, type: "spring", stiffness: 300, damping: 25 }}
+                animate={{ 
+                    scale: isContactVisible ? 1.3 : 1, 
+                    opacity: 1,
+                    rotate: isContactVisible ? [0, 5, -5, 0] : 0
+                }}
+                transition={{ 
+                    delay: 0.5, 
+                    type: "spring", 
+                    stiffness: 300, 
+                    damping: 25,
+                    rotate: { duration: 2, repeat: isContactVisible ? Infinity : 0, repeatDelay: 3 }
+                }}
+                $isContactVisible={isContactVisible}
             >
                 <FaComments />
             </FloatingChatButton>
@@ -396,26 +432,27 @@ const FloatingChatButton = styled(motion.button)`
   right: 32px !important;
   left: auto !important;
   top: auto !important;
-  width: 64px;
-  height: 64px;
+  width: ${props => props.$isContactVisible ? '80px' : '64px'};
+  height: ${props => props.$isContactVisible ? '80px' : '64px'};
   border-radius: 50%;
   background: 
     linear-gradient(135deg, 
-      rgba(102, 126, 234, 0.9) 0%, 
-      rgba(118, 75, 162, 0.8) 50%,
-      rgba(102, 126, 234, 1) 100%
+      ${props => props.$isContactVisible 
+        ? 'rgba(102, 126, 234, 1) 0%, rgba(118, 75, 162, 0.9) 50%, rgba(102, 126, 234, 1) 100%'
+        : 'rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.8) 50%, rgba(102, 126, 234, 1) 100%'
+      }
     );
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: ${props => props.$isContactVisible ? '2px' : '1px'} solid rgba(255, 255, 255, 0.3);
   color: white;
-  font-size: 26px;
+  font-size: ${props => props.$isContactVisible ? '32px' : '26px'};
   cursor: pointer;
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   box-shadow: 
-    0 12px 40px rgba(102, 126, 234, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    0 4px 12px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
+    ${props => props.$isContactVisible 
+      ? '0 20px 60px rgba(102, 126, 234, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 8px 20px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.15)'
+      : '0 12px 40px rgba(102, 126, 234, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1)'
+    };
   z-index: 9999 !important;
   display: flex;
   align-items: center;
@@ -466,9 +503,10 @@ const FloatingChatButton = styled(motion.button)`
   &:hover {
     transform: translateY(-2px) scale(1.05);
     box-shadow: 
-      0 16px 50px rgba(102, 126, 234, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3),
-      0 8px 25px rgba(0, 0, 0, 0.15);
+      ${props => props.$isContactVisible 
+        ? '0 25px 70px rgba(102, 126, 234, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 12px 35px rgba(0, 0, 0, 0.2)'
+        : '0 16px 50px rgba(102, 126, 234, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 8px 25px rgba(0, 0, 0, 0.15)'
+      };
   }
 
   &:active {
