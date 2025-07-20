@@ -12,7 +12,7 @@ const theme = {
 };
 
 const ProjectCard = ({ project }) => {
-    const { title, description, image, tags, link, github } = project;
+    const { title, description, image, tags, link, github, current } = project;
 
     return (
         <Card
@@ -24,6 +24,9 @@ const ProjectCard = ({ project }) => {
         >
             <ImageContainer>
                 <ProjectImage src={image} alt={title} />
+                {current && (
+                    <CurrentBadge>Current</CurrentBadge>
+                )}
                 <Overlay>
                     <OverlayContent>
                         <ButtonGroup>
@@ -201,6 +204,23 @@ const Overlay = styled.div`
     );
     pointer-events: none;
   }
+`;
+
+const CurrentBadge = styled.div`
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(100, 255, 218, 0.9);
+  color: #0a192f;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(100, 255, 218, 0.3);
+  box-shadow: 0 2px 8px rgba(100, 255, 218, 0.3);
 `;
 
 const OverlayContent = styled.div`
