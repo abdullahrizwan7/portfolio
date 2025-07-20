@@ -476,7 +476,7 @@ const Projects = ({ $reduceMotion }) => {
             title: 'FitVision',
             description: 'AI-powered fitness web app that uses real-time pose detection to guide workouts, count reps, and track posture — all through your webcam. Built with React and MediaPipe, its your personal trainer in the browser.',
             image: './fitvision.jpg',
-            tags: ['React', 'JavaScript', 'CSS3', 'HTML5'],
+            tags: ['React', 'JavaScript', 'TypeScript', 'CSS3', 'HTML5'],
             github: 'https://github.com/abdullahrizwan7/FitVision',
             link: 'https://abdullahrizwan7.github.io/FitVision',
         },
