@@ -64,7 +64,7 @@ const GradientBackground = () => {
       lastTime = currentTime;
     };
     
-    animate();
+    animate(performance.now());
     
     // Cleanup
     return () => {
