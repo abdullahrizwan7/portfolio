@@ -35,6 +35,7 @@ interface ProjectData {
   github: string;
   link: string;
   current?: boolean;
+  progress?: number; // 0-100 for completion percentage
 }
 
 // Helper for motion preference - memoized
@@ -515,21 +516,23 @@ const PROJECTS_DATA: ProjectData[] = [
     },
     {
         id: 3,
-        title: 'Coming Soon',
-        description: 'It will be available soon',
-        image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80',
-        tags: ['----', '----', '----', '----'],
+        title: 'Project Nexus',
+        description: 'Something big is coming... A revolutionary platform that will change how you interact with digital commerce.',
+        image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80',
+        tags: ['?????', '?????', '?????', '?????'],
         github: 'https://github.com',
         link: 'https://example.com',
+        progress: 75,
     },
     {
         id: 4,
-        title: 'Coming Soon',
-        description: 'It will be available soon',
-        image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80',
-        tags: ['----', '----', '----', '----'],
+        title: 'Project Echo',
+        description: 'The future of intelligent conversation awaits... An AI companion that understands you better than you understand yourself.',
+        image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80',
+        tags: ['?????', '?????', '?????', '?????'],
         github: 'https://github.com',
         link: 'https://example.com',
+        progress: 35,
     }
 ];
 
