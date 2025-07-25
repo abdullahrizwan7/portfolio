@@ -11,7 +11,7 @@ import { shouldDisableHeavyEffects } from '../utils/performanceOptimizer'; // Ad
 
 // Remove LiquidBackground styled component and its usage
 
-// Add keyframes and SkillsSection from About.jsx
+// Add keyframes and SkillsSection from About.tsx
 const float = keyframes`
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-10px) rotate(180deg); }
