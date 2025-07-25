@@ -193,37 +193,6 @@ const MobileMenu = styled(motion.div)`
   }
 `;
 
-const MobileCloseButton = styled.button`
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: transparent;
-  border: none;
-  color: #64ffda;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  z-index: 101;
-  
-  &:hover {
-    background: rgba(100, 255, 218, 0.1);
-    transform: scale(1.1);
-  }
-  
-  &:active {
-    transform: scale(0.95);
-  }
-  
-  @media (max-width: 480px) {
-    top: 15px;
-    right: 15px;
-    font-size: 1.3rem;
-    padding: 0.4rem;
-  }
-`;
-
 const MobileNavLinks = styled.div`
   display: flex;
   flex-direction: column;
@@ -448,10 +417,6 @@ const Navbar = () => {
               onDrag={handleSwipe}
               onDragEnd={handleSwipeEnd}
             >
-              <MobileCloseButton onClick={closeMenu}>
-                <FiX />
-              </MobileCloseButton>
-              
             <MobileNavLinks>
               {navItems.map((item, index) => (
                 <MobileNavLink
