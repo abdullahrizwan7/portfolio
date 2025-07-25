@@ -6382,7 +6382,7 @@ No matching component was found for:
   @media (max-width: 480px) {
     gap: 1rem;
   }
-`,YQ=({$reduceMotion:t})=>{const e=[{id:1,title:"Personal Portfolio",description:"A modern, responsive portfolio website showcasing my projects, skills, and professional experience.",image:"https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",tags:["React","JavaScript","CSS3","HTML5"],github:"https://github.com/abdullahrizwan7/portfolio",link:"https://abdullahrizwan7.github.io/portfolio",current:!0},{id:2,title:"FitVision",description:"AI-powered fitness web app that uses real-time pose detection to guide workouts, count reps, and track posture — all through your webcam. Built with React and MediaPipe, its your personal trainer in the browser.",image:"./fitvision.gif",tags:["React","JavaScript","TypeScript","CSS3","HTML5"],github:"https://github.com/abdullahrizwan7/FitVision",link:"https://abdullahrizwan7.github.io/FitVision"},{id:3,title:"Comming Soon",description:"It will be available soon",image:"https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",tags:["----","----","----","----"],github:"https://github.com",link:"https://example.com"},{id:4,title:"Comming Soon",description:"It will be available soon",image:"https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",tags:["----","----","----","----"],github:"https://github.com",link:"https://example.com"}];return O.jsxs(GQ,{id:"projects",$reduceMotion:t,children:[!t&&O.jsxs(O.Fragment,{children:[O.jsx(Sd,{$reduceMotion:t,size:"180px",bg:"rgba(100, 255, 218, 0.05)",radius:"60% 40% 30% 70% / 60% 30% 70% 40%",top:"15%",left:"5%",duration:"22s",moveX2:"-25px",moveY2:"-35px"}),O.jsx(Sd,{$reduceMotion:t,size:"220px",bg:"rgba(138, 43, 226, 0.04)",radius:"30% 70% 70% 30% / 30% 30% 70% 70%",bottom:"5%",right:"8%",duration:"28s",moveX2:"35px",moveY2:"-45px"}),O.jsx(Sd,{$reduceMotion:t,size:"120px",bg:"rgba(25, 118, 210, 0.04)",radius:"50%",top:"55%",left:"12%",duration:"20s",moveX2:"-20px",moveY2:"40px"}),O.jsx(Sd,{$reduceMotion:t,size:"160px",bg:"rgba(255, 20, 147, 0.03)",radius:"40% 60% 60% 40% / 40% 40% 60% 60%",top:"80%",right:"25%",duration:"24s",moveX2:"-30px",moveY2:"25px"}),O.jsx(Sd,{$reduceMotion:t,size:"140px",bg:"rgba(0, 255, 255, 0.03)",radius:"70% 30% 30% 70% / 70% 70% 30% 30%",top:"35%",right:"5%",duration:"26s",moveX2:"25px",moveY2:"-35px"})]}),O.jsxs(WQ,{variants:t?{}:d8(.1,.1),initial:t?!1:"hidden",whileInView:t?!1:"show",viewport:{once:!0,amount:.25},$reduceMotion:t,children:[O.jsx(jQ,{variants:t?{}:gb(.1),$reduceMotion:t,children:"Featured Projects"}),O.jsx($Q,{children:"A showcase of my recent work featuring modern web applications built with cutting-edge technologies"}),O.jsx(XQ,{children:e.map(n=>O.jsx(RQ,{project:n,$reduceMotion:t},n.id))})]})]})},qQ=()=>{const[t,e]=X.useState(!1);return X.useEffect(()=>{e(HQ());const n=window.matchMedia("(prefers-reduced-motion: reduce)"),i=()=>e(n.matches);return n.addEventListener("change",i),()=>n.removeEventListener("change",i)},[]),O.jsx(YQ,{$reduceMotion:t})},ZQ=()=>{const[t,e]=X.useState({name:"",email:"",subject:"",message:""}),[n,i]=X.useState(!1),[r,s]=X.useState(!1),[o,a]=X.useState(""),[l,c]=X.useState({}),[f,h]=X.useState({}),[p,m]=X.useState(null),[v,S]=X.useState(!1),[_,g]=X.useState(!1),x=X.useRef(null),w={name:50,email:100,subject:100,message:500},M=()=>{S(!v)},C=()=>{S(!1)};X.useEffect(()=>{const A=new IntersectionObserver(([D])=>{g(D.isIntersecting)},{threshold:.3,rootMargin:"-50px 0px -50px 0px"});return x.current&&A.observe(x.current),()=>{x.current&&A.unobserve(x.current)}},[]);const T=A=>{const{name:D,value:G}=A.target;e($=>({...$,[D]:G})),h($=>({...$,[D]:!0})),p&&clearTimeout(p),m(setTimeout(()=>{h($=>({...$,[D]:!1}))},1e3)),P(D,G)},P=(A,D)=>{let G={...l};switch(A){case"email":D?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(D)?delete G.email:G.email="Invalid email format":G.email="Email is required";break;case"name":D?delete G.name:G.name="Name is required";break;case"message":D?delete G.message:G.message="Message is required";break}c(G)},L=()=>{const A={};return t.name.trim()||(A.name="Name is required"),t.email.trim()?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t.email)||(A.email="Invalid email format"):A.email="Email is required",t.message.trim()||(A.message="Message is required"),c(A),Object.keys(A).length===0},I=async A=>{if(A.preventDefault(),!!L()){i(!0),a("");try{if(!(await fetch("https://api.emailjs.com/api/v1.0/email/send",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({service_id:"service_e5e6hzw",template_id:"template_en9wpdk",user_id:"t7Am7q6O1RgYu_aCX",template_params:{from_name:t.name,from_email:t.email,subject:t.subject||"Message from Portfolio",message:t.message}})})).ok)throw new Error("Failed to send message");e({name:"",email:"",subject:"",message:""}),s(!0),setTimeout(()=>s(!1),5e3)}catch{a("Failed to send message. Please try again later.")}finally{i(!1)}}};return O.jsxs(O.Fragment,{children:[O.jsxs(rJ,{id:"contact",ref:x,children:[O.jsx(sJ,{children:"Get In Touch"}),O.jsxs(oJ,{children:["I'm always open to discussing new opportunities, collaborations, or just chatting about technology.",O.jsx(aJ,{children:"Use the floating chat button to send me a message!"})]})]}),O.jsx(KQ,{onClick:M,whileHover:{scale:_?1.2:1.1},whileTap:{scale:.9},initial:{scale:0,opacity:0},animate:{scale:_?1.3:1,opacity:1,rotate:_?[0,5,-5,0]:0},transition:{delay:.5,type:"spring",stiffness:300,damping:25,rotate:{duration:2,repeat:_?1/0:0,repeatDelay:3}},$isContactVisible:_,children:O.jsx(WE,{})}),O.jsx(dI,{children:v&&O.jsxs(O.Fragment,{children:[O.jsx(QQ,{initial:{opacity:0},animate:{opacity:1},exit:{opacity:0},transition:{duration:.3},onClick:C}),O.jsxs(JQ,{initial:{opacity:0,scale:.8,x:window.innerWidth<=768?0:20,y:window.innerWidth<=768?0:20},animate:{opacity:1,scale:1,x:0,y:0},exit:{opacity:0,scale:.8,x:window.innerWidth<=768?0:20,y:window.innerWidth<=768?0:20},transition:{type:"spring",damping:25,stiffness:300,duration:.4},children:[O.jsxs(eJ,{children:[O.jsxs(tJ,{children:[O.jsx(WE,{}),O.jsx("span",{children:"Let's Chat!"})]}),O.jsx(nJ,{onClick:C,children:O.jsx(VI,{})})]}),O.jsxs(iJ,{children:[r?O.jsxs(fJ,{initial:{opacity:0,scale:.8},animate:{opacity:1,scale:1},transition:{duration:.3},children:[O.jsx(hJ,{children:O.jsx(vV,{})}),O.jsxs("div",{children:[O.jsx("h3",{children:"Message Sent!"}),O.jsx("p",{children:"Thank you for reaching out. I'll get back to you soon."})]})]}):O.jsxs(lJ,{onSubmit:I,children:[O.jsxs(Hm,{children:[O.jsx(u2,{type:"text",name:"name",value:t.name,onChange:T,required:!0,placeholder:"Your name",disabled:n,maxLength:w.name}),l.name&&O.jsxs(c2,{children:[O.jsx(ux,{})," ",l.name]})]}),O.jsxs(Hm,{children:[O.jsx(u2,{type:"email",name:"email",value:t.email,onChange:T,required:!0,placeholder:"your.email@example.com",disabled:n,maxLength:w.email}),l.email&&O.jsxs(c2,{children:[O.jsx(ux,{})," ",l.email]})]}),O.jsx(Hm,{children:O.jsx(u2,{type:"text",name:"subject",value:t.subject,onChange:T,placeholder:"Subject (optional)",disabled:n,maxLength:w.subject})}),O.jsxs(Hm,{children:[O.jsx(cJ,{name:"message",rows:"4",value:t.message,onChange:T,required:!0,placeholder:"Your message here...",disabled:n,maxLength:w.message}),l.message&&O.jsxs(c2,{children:[O.jsx(ux,{})," ",l.message]})]}),o&&O.jsx(pJ,{initial:{opacity:0,height:0},animate:{opacity:1,height:"auto"},transition:{duration:.3},children:o}),O.jsx(uJ,{type:"submit",disabled:n,whileHover:{scale:1.02},whileTap:{scale:.98},children:n?O.jsxs(n4,{children:[O.jsx(dJ,{}),O.jsx("span",{children:"Sending..."})]}):O.jsxs(n4,{children:[O.jsx(xV,{}),O.jsx("span",{children:"Send Message"})]})})]}),O.jsx(mJ,{children:O.jsxs(gJ,{children:[O.jsx(Gm,{href:"https://github.com/abdullahrizwan7",target:"_blank",rel:"noopener noreferrer",children:O.jsx(NI,{})}),O.jsx(Gm,{href:"https://linkedin.com/in/yourprofile",target:"_blank",rel:"noopener noreferrer",children:O.jsx(OI,{})}),O.jsx(Gm,{href:"https://twitter.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:O.jsx(zI,{})}),O.jsx(Gm,{href:"https://instagram.com/build.1080p",target:"_blank",rel:"noopener noreferrer",children:O.jsx(hV,{})})]})})]})]})]})})]})},KQ=re(gt.button)`
+`,YQ=[{id:1,title:"Personal Portfolio",description:"A modern, responsive portfolio website showcasing my projects, skills, and professional experience.",image:"https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",tags:["React","JavaScript","CSS3","HTML5"],github:"https://github.com/abdullahrizwan7/portfolio",link:"https://abdullahrizwan7.github.io/portfolio",current:!0},{id:2,title:"FitVision",description:"AI-powered fitness web app that uses real-time pose detection to guide workouts, count reps, and track posture — all through your webcam. Built with React and MediaPipe, its your personal trainer in the browser.",image:"./fitvision.gif",tags:["React","JavaScript","TypeScript","CSS3","HTML5"],github:"https://github.com/abdullahrizwan7/FitVision",link:"https://abdullahrizwan7.github.io/FitVision"},{id:3,title:"Coming Soon",description:"It will be available soon",image:"https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",tags:["----","----","----","----"],github:"https://github.com",link:"https://example.com"},{id:4,title:"Coming Soon",description:"It will be available soon",image:"https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",tags:["----","----","----","----"],github:"https://github.com",link:"https://example.com"}],qQ=({$reduceMotion:t})=>{const e=X.useMemo(()=>t?{}:d8(.1,.1),[t]),n=X.useMemo(()=>t?{}:gb(.1),[t]);return O.jsxs(GQ,{id:"projects",$reduceMotion:t,children:[!t&&O.jsxs(O.Fragment,{children:[O.jsx(Sd,{$reduceMotion:t,size:"180px",bg:"rgba(100, 255, 218, 0.05)",radius:"60% 40% 30% 70% / 60% 30% 70% 40%",top:"15%",left:"5%",duration:"22s",moveX2:"-25px",moveY2:"-35px"}),O.jsx(Sd,{$reduceMotion:t,size:"220px",bg:"rgba(138, 43, 226, 0.04)",radius:"30% 70% 70% 30% / 30% 30% 70% 70%",bottom:"5%",right:"8%",duration:"28s",moveX2:"35px",moveY2:"-45px"}),O.jsx(Sd,{$reduceMotion:t,size:"120px",bg:"rgba(25, 118, 210, 0.04)",radius:"50%",top:"55%",left:"12%",duration:"20s",moveX2:"-20px",moveY2:"40px"}),O.jsx(Sd,{$reduceMotion:t,size:"160px",bg:"rgba(255, 20, 147, 0.03)",radius:"40% 60% 60% 40% / 40% 40% 60% 60%",top:"80%",right:"25%",duration:"24s",moveX2:"-30px",moveY2:"25px"}),O.jsx(Sd,{$reduceMotion:t,size:"140px",bg:"rgba(0, 255, 255, 0.03)",radius:"70% 30% 30% 70% / 70% 70% 30% 30%",top:"35%",right:"5%",duration:"26s",moveX2:"25px",moveY2:"-35px"})]}),O.jsxs(WQ,{variants:e,initial:t?void 0:"hidden",whileInView:t?void 0:"show",viewport:{once:!0,amount:.25},$reduceMotion:t,children:[O.jsx(jQ,{variants:n,$reduceMotion:t,children:"Featured Projects"}),O.jsx($Q,{children:"A showcase of my recent work featuring modern web applications built with cutting-edge technologies"}),O.jsx(XQ,{children:YQ.map(i=>O.jsx(RQ,{project:i},i.id))})]})]})},ZQ=()=>{const[t,e]=X.useState(!1);return X.useEffect(()=>{e(HQ());const n=window.matchMedia("(prefers-reduced-motion: reduce)"),i=()=>e(n.matches);return n.addEventListener("change",i),()=>n.removeEventListener("change",i)},[]),O.jsx(qQ,{$reduceMotion:t})},KQ=()=>{const[t,e]=X.useState({name:"",email:"",subject:"",message:""}),[n,i]=X.useState(!1),[r,s]=X.useState(!1),[o,a]=X.useState(""),[l,c]=X.useState({}),[f,h]=X.useState({}),[p,m]=X.useState(null),[v,S]=X.useState(!1),[_,g]=X.useState(!1),x=X.useRef(null),w={name:50,email:100,subject:100,message:500},M=()=>{S(!v)},C=()=>{S(!1)};X.useEffect(()=>{const A=new IntersectionObserver(([D])=>{g(D.isIntersecting)},{threshold:.3,rootMargin:"-50px 0px -50px 0px"});return x.current&&A.observe(x.current),()=>{x.current&&A.unobserve(x.current)}},[]);const T=A=>{const{name:D,value:G}=A.target;e($=>({...$,[D]:G})),h($=>({...$,[D]:!0})),p&&clearTimeout(p),m(setTimeout(()=>{h($=>({...$,[D]:!1}))},1e3)),P(D,G)},P=(A,D)=>{let G={...l};switch(A){case"email":D?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(D)?delete G.email:G.email="Invalid email format":G.email="Email is required";break;case"name":D?delete G.name:G.name="Name is required";break;case"message":D?delete G.message:G.message="Message is required";break}c(G)},L=()=>{const A={};return t.name.trim()||(A.name="Name is required"),t.email.trim()?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t.email)||(A.email="Invalid email format"):A.email="Email is required",t.message.trim()||(A.message="Message is required"),c(A),Object.keys(A).length===0},I=async A=>{if(A.preventDefault(),!!L()){i(!0),a("");try{if(!(await fetch("https://api.emailjs.com/api/v1.0/email/send",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({service_id:"service_e5e6hzw",template_id:"template_en9wpdk",user_id:"t7Am7q6O1RgYu_aCX",template_params:{from_name:t.name,from_email:t.email,subject:t.subject||"Message from Portfolio",message:t.message}})})).ok)throw new Error("Failed to send message");e({name:"",email:"",subject:"",message:""}),s(!0),setTimeout(()=>s(!1),5e3)}catch{a("Failed to send message. Please try again later.")}finally{i(!1)}}};return O.jsxs(O.Fragment,{children:[O.jsxs(sJ,{id:"contact",ref:x,children:[O.jsx(oJ,{children:"Get In Touch"}),O.jsxs(aJ,{children:["I'm always open to discussing new opportunities, collaborations, or just chatting about technology.",O.jsx(lJ,{children:"Use the floating chat button to send me a message!"})]})]}),O.jsx(QQ,{onClick:M,whileHover:{scale:_?1.2:1.1},whileTap:{scale:.9},initial:{scale:0,opacity:0},animate:{scale:_?1.3:1,opacity:1,rotate:_?[0,5,-5,0]:0},transition:{delay:.5,type:"spring",stiffness:300,damping:25,rotate:{duration:2,repeat:_?1/0:0,repeatDelay:3}},$isContactVisible:_,children:O.jsx(WE,{})}),O.jsx(dI,{children:v&&O.jsxs(O.Fragment,{children:[O.jsx(JQ,{initial:{opacity:0},animate:{opacity:1},exit:{opacity:0},transition:{duration:.3},onClick:C}),O.jsxs(eJ,{initial:{opacity:0,scale:.8,x:window.innerWidth<=768?0:20,y:window.innerWidth<=768?0:20},animate:{opacity:1,scale:1,x:0,y:0},exit:{opacity:0,scale:.8,x:window.innerWidth<=768?0:20,y:window.innerWidth<=768?0:20},transition:{type:"spring",damping:25,stiffness:300,duration:.4},children:[O.jsxs(tJ,{children:[O.jsxs(nJ,{children:[O.jsx(WE,{}),O.jsx("span",{children:"Let's Chat!"})]}),O.jsx(iJ,{onClick:C,children:O.jsx(VI,{})})]}),O.jsxs(rJ,{children:[r?O.jsxs(hJ,{initial:{opacity:0,scale:.8},animate:{opacity:1,scale:1},transition:{duration:.3},children:[O.jsx(pJ,{children:O.jsx(vV,{})}),O.jsxs("div",{children:[O.jsx("h3",{children:"Message Sent!"}),O.jsx("p",{children:"Thank you for reaching out. I'll get back to you soon."})]})]}):O.jsxs(cJ,{onSubmit:I,children:[O.jsxs(Hm,{children:[O.jsx(u2,{type:"text",name:"name",value:t.name,onChange:T,required:!0,placeholder:"Your name",disabled:n,maxLength:w.name}),l.name&&O.jsxs(c2,{children:[O.jsx(ux,{})," ",l.name]})]}),O.jsxs(Hm,{children:[O.jsx(u2,{type:"email",name:"email",value:t.email,onChange:T,required:!0,placeholder:"your.email@example.com",disabled:n,maxLength:w.email}),l.email&&O.jsxs(c2,{children:[O.jsx(ux,{})," ",l.email]})]}),O.jsx(Hm,{children:O.jsx(u2,{type:"text",name:"subject",value:t.subject,onChange:T,placeholder:"Subject (optional)",disabled:n,maxLength:w.subject})}),O.jsxs(Hm,{children:[O.jsx(uJ,{name:"message",rows:"4",value:t.message,onChange:T,required:!0,placeholder:"Your message here...",disabled:n,maxLength:w.message}),l.message&&O.jsxs(c2,{children:[O.jsx(ux,{})," ",l.message]})]}),o&&O.jsx(mJ,{initial:{opacity:0,height:0},animate:{opacity:1,height:"auto"},transition:{duration:.3},children:o}),O.jsx(dJ,{type:"submit",disabled:n,whileHover:{scale:1.02},whileTap:{scale:.98},children:n?O.jsxs(n4,{children:[O.jsx(fJ,{}),O.jsx("span",{children:"Sending..."})]}):O.jsxs(n4,{children:[O.jsx(xV,{}),O.jsx("span",{children:"Send Message"})]})})]}),O.jsx(gJ,{children:O.jsxs(vJ,{children:[O.jsx(Gm,{href:"https://github.com/abdullahrizwan7",target:"_blank",rel:"noopener noreferrer",children:O.jsx(NI,{})}),O.jsx(Gm,{href:"https://linkedin.com/in/yourprofile",target:"_blank",rel:"noopener noreferrer",children:O.jsx(OI,{})}),O.jsx(Gm,{href:"https://twitter.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:O.jsx(zI,{})}),O.jsx(Gm,{href:"https://instagram.com/build.1080p",target:"_blank",rel:"noopener noreferrer",children:O.jsx(hV,{})})]})})]})]})]})})]})},QQ=re(gt.button)`
   position: fixed !important;
   bottom: 32px !important;
   right: 32px !important;
@@ -6483,7 +6483,7 @@ No matching component was found for:
     right: 20px !important;
     font-size: 20px;
   }
-`,QQ=re(gt.div)`
+`,JQ=re(gt.div)`
   position: fixed;
   top: 0;
   left: 0;
@@ -6499,7 +6499,7 @@ No matching component was found for:
     backdrop-filter: blur(30px) saturate(180%);
     -webkit-backdrop-filter: blur(30px) saturate(180%);
   }
-`,JQ=re(gt.div)`
+`,eJ=re(gt.div)`
   position: fixed !important;
   bottom: 100px !important;
   right: 24px !important;
@@ -6593,7 +6593,7 @@ No matching component was found for:
     backdrop-filter: blur(60px) saturate(220%) !important;
     -webkit-backdrop-filter: blur(60px) saturate(220%) !important;
   }
-`,eJ=re.div`
+`,tJ=re.div`
   background: 
     linear-gradient(135deg, 
       rgba(102, 126, 234, 0.8) 0%, 
@@ -6654,7 +6654,7 @@ No matching component was found for:
   @media (max-width: 480px) {
     padding: 20px 16px;
   }
-`,tJ=re.div`
+`,nJ=re.div`
   display: flex;
   align-items: center;
   gap: 12px;
@@ -6664,7 +6664,7 @@ No matching component was found for:
   svg {
     font-size: 18px;
   }
-`,nJ=re.button`
+`,iJ=re.button`
   background: transparent;
   border: none;
   color: white;
@@ -6696,7 +6696,7 @@ No matching component was found for:
     padding: 10px;
     font-size: 20px;
   }
-`,iJ=re.div`
+`,rJ=re.div`
   padding: 24px;
   flex: 1;
   overflow-y: auto;
@@ -6739,7 +6739,7 @@ No matching component was found for:
   color: #ef4444;
   font-size: 0.85rem;
   margin-top: 0.5rem;
-`,rJ=re.section`
+`,sJ=re.section`
   padding: 6rem 0;
   position: relative;
   overflow: hidden;
@@ -6749,7 +6749,7 @@ No matching component was found for:
   justify-content: center;
   background-color: ${t=>t.bgColor||"#e0e5ec"};
   color: #5e6878;
-`,sJ=re.h2`
+`,oJ=re.h2`
   font-size: 2.8rem;
   text-align: center;
   margin-bottom: 0.5rem;
@@ -6759,7 +6759,7 @@ No matching component was found for:
   color: ${t=>t.textColor||"#4a5568"};
   text-shadow: 3px 3px 6px ${t=>t.shadowDark||"#a3b1c6"}, 
                -3px -3px 6px ${t=>t.shadowLight||"#ffffff"};
-`,oJ=re.p`
+`,aJ=re.p`
   text-align: center;
   color: ${t=>t.textColor||"#5e6878"};
   font-size: 1.2rem;
@@ -6772,7 +6772,7 @@ No matching component was found for:
   line-height: 1.6;
   text-shadow: 1px 1px 2px ${t=>t.shadowDark||"#a3b1c6"}, 
                -1px -1px 2px ${t=>t.shadowLight||"#ffffff"};
-`,aJ=re.span`
+`,lJ=re.span`
   background: linear-gradient(135deg, 
     rgba(102, 126, 234, 0.15) 0%, 
     rgba(118, 75, 162, 0.12) 50%,
@@ -6857,7 +6857,7 @@ No matching component was found for:
     box-shadow: 2px 2px 4px ${t=>t.shadowDark||"#a3b1c6"}, 
                 -2px -2px 4px ${t=>t.shadowLight||"#ffffff"};
   }
-`;const lJ=re.form`
+`;const cJ=re.form`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -6950,7 +6950,7 @@ No matching component was found for:
     padding: 14px 16px;
     font-size: 16px; /* Prevents zoom on iOS */
   }
-`,cJ=re.textarea`
+`,uJ=re.textarea`
   width: 100%;
   padding: 16px 20px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -6996,7 +6996,7 @@ No matching component was found for:
     font-size: 16px; /* Prevents zoom on iOS */
     min-height: 100px;
   }
-`,uJ=re(gt.button)`
+`,dJ=re(gt.button)`
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -7064,7 +7064,7 @@ No matching component was found for:
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-`,dJ=re.div`
+`,fJ=re.div`
   width: 18px;
   height: 18px;
   border: 2px solid rgba(255, 255, 255, 0.3);
@@ -7077,7 +7077,7 @@ No matching component was found for:
       transform: rotate(360deg);
     }
   }
-`,fJ=re(gt.div)`
+`,hJ=re(gt.div)`
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -7101,7 +7101,7 @@ No matching component was found for:
     margin: 0;
     line-height: 1.5;
   }
-`,hJ=re.div`
+`,pJ=re.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7112,7 +7112,7 @@ No matching component was found for:
   border-radius: 50%;
   font-size: 1.2rem;
   font-weight: bold;
-`,pJ=re(gt.div)`
+`,mJ=re(gt.div)`
   background: rgba(255, 227, 227, 0.8);
   backdrop-filter: blur(10px);
   color: #d32f2f;
@@ -7194,7 +7194,7 @@ No matching component was found for:
   font-size: 1rem;
   margin-bottom: 0.5rem;
   color: ${t=>t.textColor||"#4a5568"};
-`;const mJ=re.div`
+`;const gJ=re.div`
   margin-top: 24px;
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
@@ -7220,7 +7220,7 @@ No matching component was found for:
     margin-top: 20px;
     padding-top: 16px;
   }
-`,gJ=re.div`
+`,vJ=re.div`
   display: flex;
   gap: 16px;
   justify-content: center;
@@ -7334,11 +7334,11 @@ No matching component was found for:
   height: 10px;
   background-color: #34c759;
   border-radius: 50%;
-`;const vJ=()=>{const t=new Date().getFullYear();return O.jsxs(yJ,{children:[O.jsxs(xJ,{children:[O.jsxs(i4,{children:[O.jsx(r4,{children:"Navigation"}),O.jsxs(_J,{children:[O.jsx(wd,{href:"#home",children:"Home"}),O.jsx(wd,{href:"#about",children:"About"}),O.jsx(wd,{href:"#projects",children:"Projects"}),O.jsx(wd,{href:"#skills",children:"Skills"}),O.jsx(wd,{href:"#contact",children:"Contact"})]})]}),O.jsxs(i4,{children:[O.jsx(r4,{children:"Connect"}),O.jsxs(SJ,{children:[O.jsx(d2,{href:"https://github.com/abdullahrizwan7",target:"_blank",rel:"noopener noreferrer",children:"GitHub"}),O.jsx(d2,{href:"https://linkedin.com/in/yourprofile",target:"_blank",rel:"noopener noreferrer",children:"LinkedIn"}),O.jsx(d2,{href:"https://twitter.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:"Twitter"})]})]})]}),O.jsxs(wJ,{children:[O.jsxs("p",{children:["© ",t," Abdullah Rizwan. All rights reserved."]}),O.jsx("p",{children:"Built with React and ❤️"})]})]})},yJ=re.footer`
+`;const yJ=()=>{const t=new Date().getFullYear();return O.jsxs(xJ,{children:[O.jsxs(_J,{children:[O.jsxs(i4,{children:[O.jsx(r4,{children:"Navigation"}),O.jsxs(SJ,{children:[O.jsx(wd,{href:"#home",children:"Home"}),O.jsx(wd,{href:"#about",children:"About"}),O.jsx(wd,{href:"#projects",children:"Projects"}),O.jsx(wd,{href:"#skills",children:"Skills"}),O.jsx(wd,{href:"#contact",children:"Contact"})]})]}),O.jsxs(i4,{children:[O.jsx(r4,{children:"Connect"}),O.jsxs(wJ,{children:[O.jsx(d2,{href:"https://github.com/abdullahrizwan7",target:"_blank",rel:"noopener noreferrer",children:"GitHub"}),O.jsx(d2,{href:"https://linkedin.com/in/yourprofile",target:"_blank",rel:"noopener noreferrer",children:"LinkedIn"}),O.jsx(d2,{href:"https://twitter.com/yourusername",target:"_blank",rel:"noopener noreferrer",children:"Twitter"})]})]})]}),O.jsxs(bJ,{children:[O.jsxs("p",{children:["© ",t," Abdullah Rizwan. All rights reserved."]}),O.jsx("p",{children:"Built with React and ❤️"})]})]})},xJ=re.footer`
   background-color: #222;
   color: #fff;
   padding: 3rem 2rem 1.5rem;
-`,xJ=re.div`
+`,_J=re.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -7372,7 +7372,7 @@ No matching component was found for:
       transform: translateX(-50%);
     }
   }
-`,_J=re.div`
+`,SJ=re.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -7384,7 +7384,7 @@ No matching component was found for:
   &:hover {
     color: #fff;
   }
-`,SJ=re.div`
+`,wJ=re.div`
   display: flex;
   gap: 1rem;
   
@@ -7399,7 +7399,7 @@ No matching component was found for:
   &:hover {
     color: #fff;
   }
-`,wJ=re.div`
+`,bJ=re.div`
   text-align: center;
   padding-top: 1.5rem;
   border-top: 1px solid #444;
@@ -7409,7 +7409,7 @@ No matching component was found for:
   p {
     margin: 0.5rem 0;
   }
-`,bJ=()=>{const[t]=X.useState(()=>ov()),[e,n]=X.useState(()=>t.getEffectConfig()),[i,r]=X.useState(!1);X.useEffect(()=>{const l=new lQ;return l.start(),l.onFpsChange(c=>{if(c<25)r(!0),n(f=>({...f,particleCount:Math.max(f.particleCount*.7,50),blurIntensity:Math.max(f.blurIntensity*.5,5),frameRate:30}));else if(c>50&&i){r(!1);const f=t.getEffectConfig();n(h=>({...h,particleCount:Math.min(h.particleCount*1.2,f.particleCount),blurIntensity:Math.min(h.blurIntensity*1.5,f.blurIntensity)}))}}),()=>{}},[i,t]);const s=X.useCallback(l=>{const c=e.frameRate===60?16:33;return cQ(l,c)},[e.frameRate]),o=X.useCallback((l={})=>{var f,h;const c={...l,transition:{...l.transition,duration:e.animationQuality==="low"?(((f=l.transition)==null?void 0:f.duration)||.3)*.7:((h=l.transition)==null?void 0:h.duration)||.3}};return e.animationQuality==="low"&&(delete c.whileHover,delete c.whileTap),c},[e.animationQuality]),a=X.useCallback(l=>Math.min(l,e.blurIntensity),[e.blurIntensity]);return{deviceCapability:t,performanceConfig:e,isOptimizing:i,createOptimizedScrollHandler:s,getAnimationProps:o,getOptimizedBlur:a,shouldShowParticles:e.enableAllEffects||!t.isMobile,shouldUseReducedMotion:e.animationQuality==="low",optimalFrameRate:e.frameRate}},MJ=re(gt.div)`
+`,MJ=()=>{const[t]=X.useState(()=>ov()),[e,n]=X.useState(()=>t.getEffectConfig()),[i,r]=X.useState(!1);X.useEffect(()=>{const l=new lQ;return l.start(),l.onFpsChange(c=>{if(c<25)r(!0),n(f=>({...f,particleCount:Math.max(f.particleCount*.7,50),blurIntensity:Math.max(f.blurIntensity*.5,5),frameRate:30}));else if(c>50&&i){r(!1);const f=t.getEffectConfig();n(h=>({...h,particleCount:Math.min(h.particleCount*1.2,f.particleCount),blurIntensity:Math.min(h.blurIntensity*1.5,f.blurIntensity)}))}}),()=>{}},[i,t]);const s=X.useCallback(l=>{const c=e.frameRate===60?16:33;return cQ(l,c)},[e.frameRate]),o=X.useCallback((l={})=>{var f,h;const c={...l,transition:{...l.transition,duration:e.animationQuality==="low"?(((f=l.transition)==null?void 0:f.duration)||.3)*.7:((h=l.transition)==null?void 0:h.duration)||.3}};return e.animationQuality==="low"&&(delete c.whileHover,delete c.whileTap),c},[e.animationQuality]),a=X.useCallback(l=>Math.min(l,e.blurIntensity),[e.blurIntensity]);return{deviceCapability:t,performanceConfig:e,isOptimizing:i,createOptimizedScrollHandler:s,getAnimationProps:o,getOptimizedBlur:a,shouldShowParticles:e.enableAllEffects||!t.isMobile,shouldUseReducedMotion:e.animationQuality==="low",optimalFrameRate:e.frameRate}},EJ=re(gt.div)`
   position: fixed;
   top: 20px;
   right: 20px;
@@ -7425,7 +7425,7 @@ No matching component was found for:
   gap: 8px;
   max-width: 300px;
   font-size: 14px;
-`,EJ=re.button`
+`,TJ=re.button`
   background: none;
   border: none;
   color: white;
@@ -7438,7 +7438,7 @@ No matching component was found for:
   &:hover {
     opacity: 1;
   }
-`,TJ=re.span`
+`,AJ=re.span`
   background: ${t=>t.mode==="optimized"?"#4CAF50":"#FF9800"};
   color: white;
   padding: 2px 6px;
@@ -7446,7 +7446,7 @@ No matching component was found for:
   font-size: 12px;
   font-weight: bold;
   margin-left: 8px;
-`,AJ=()=>{const[t,e]=X.useState(!1),[n,i]=X.useState(!1),{shouldDisableEffects:r,deviceCapabilities:s}=bJ();X.useEffect(()=>{r&&!n&&(e(!0),i(!0),setTimeout(()=>{e(!1)},5e3))},[r,n]);const o=()=>{e(!1)};return O.jsx(dI,{children:t&&O.jsxs(MJ,{initial:{opacity:0,y:-20,scale:.8},animate:{opacity:1,y:0,scale:1},exit:{opacity:0,y:-20,scale:.8},transition:{duration:.3},children:[O.jsx(SV,{}),O.jsxs("span",{children:["Performance mode active for better experience",s.isMobile&&" on mobile"]}),O.jsx(TJ,{mode:"optimized",children:"OPTIMIZED"}),O.jsx(EJ,{onClick:o,children:O.jsx(VI,{})})]})})},CJ=()=>{const t=X.useRef(null);return X.useEffect(()=>{if(!t.current||f8())return;const e=new z1,n=new Vn(75,window.innerWidth/window.innerHeight,.1,1e3),i=new fb({alpha:!0,antialias:window.innerWidth>768,powerPreference:"high-performance"});i.setSize(window.innerWidth,window.innerHeight),i.setPixelRatio(Math.min(window.devicePixelRatio,2)),t.current.appendChild(i.domElement);const r=new bt,s=uQ(1200),o=new Float32Array(s*3),a=new Float32Array(s*3);for(let S=0;S<s*3;S++)o[S]=(Math.random()-.5)*5,a[S]=Math.random();r.setAttribute("position",new qt(o,3)),r.setAttribute("color",new qt(a,3));const l=new dh({size:window.innerWidth<768?.015:.02,vertexColors:!0,transparent:!0,blending:eg,alphaTest:.1}),c=new Ww(r,l);e.add(c),n.position.z=2;let f=0;const h=dQ(),p=1e3/h,m=S=>{if(requestAnimationFrame(m),S-f>=p){const _=h===30?3e-4:5e-4;c.rotation.x+=_,c.rotation.y+=_,i.render(e,n),f=S}},v=()=>{n.aspect=window.innerWidth/window.innerHeight,n.updateProjectionMatrix(),i.setSize(window.innerWidth,window.innerHeight)};return window.addEventListener("resize",v),m(),()=>{window.removeEventListener("resize",v),t.current&&t.current.removeChild(i.domElement),r.dispose(),l.dispose(),i.dispose()}},[]),O.jsx("div",{ref:t,style:{position:"fixed",top:0,left:0,width:"100%",height:"100%",zIndex:-1,overflow:"hidden"}})};const PJ=()=>O.jsxs("div",{className:"App",children:[O.jsx(CJ,{}),O.jsx(AJ,{}),O.jsx(lV,{}),O.jsxs("main",{children:[O.jsx(yK,{}),O.jsx(nQ,{}),O.jsx(PQ,{}),O.jsx(qQ,{}),O.jsx(ZQ,{})]}),O.jsx(vJ,{})]}),RJ=AO`
+`,CJ=()=>{const[t,e]=X.useState(!1),[n,i]=X.useState(!1),{shouldDisableEffects:r,deviceCapabilities:s}=MJ();X.useEffect(()=>{r&&!n&&(e(!0),i(!0),setTimeout(()=>{e(!1)},5e3))},[r,n]);const o=()=>{e(!1)};return O.jsx(dI,{children:t&&O.jsxs(EJ,{initial:{opacity:0,y:-20,scale:.8},animate:{opacity:1,y:0,scale:1},exit:{opacity:0,y:-20,scale:.8},transition:{duration:.3},children:[O.jsx(SV,{}),O.jsxs("span",{children:["Performance mode active for better experience",s.isMobile&&" on mobile"]}),O.jsx(AJ,{mode:"optimized",children:"OPTIMIZED"}),O.jsx(TJ,{onClick:o,children:O.jsx(VI,{})})]})})},PJ=()=>{const t=X.useRef(null);return X.useEffect(()=>{if(!t.current||f8())return;const e=new z1,n=new Vn(75,window.innerWidth/window.innerHeight,.1,1e3),i=new fb({alpha:!0,antialias:window.innerWidth>768,powerPreference:"high-performance"});i.setSize(window.innerWidth,window.innerHeight),i.setPixelRatio(Math.min(window.devicePixelRatio,2)),t.current.appendChild(i.domElement);const r=new bt,s=uQ(1200),o=new Float32Array(s*3),a=new Float32Array(s*3);for(let S=0;S<s*3;S++)o[S]=(Math.random()-.5)*5,a[S]=Math.random();r.setAttribute("position",new qt(o,3)),r.setAttribute("color",new qt(a,3));const l=new dh({size:window.innerWidth<768?.015:.02,vertexColors:!0,transparent:!0,blending:eg,alphaTest:.1}),c=new Ww(r,l);e.add(c),n.position.z=2;let f=0;const h=dQ(),p=1e3/h,m=S=>{if(requestAnimationFrame(m),S-f>=p){const _=h===30?3e-4:5e-4;c.rotation.x+=_,c.rotation.y+=_,i.render(e,n),f=S}},v=()=>{n.aspect=window.innerWidth/window.innerHeight,n.updateProjectionMatrix(),i.setSize(window.innerWidth,window.innerHeight)};return window.addEventListener("resize",v),m(),()=>{window.removeEventListener("resize",v),t.current&&t.current.removeChild(i.domElement),r.dispose(),l.dispose(),i.dispose()}},[]),O.jsx("div",{ref:t,style:{position:"fixed",top:0,left:0,width:"100%",height:"100%",zIndex:-1,overflow:"hidden"}})};const RJ=()=>O.jsxs("div",{className:"App",children:[O.jsx(PJ,{}),O.jsx(CJ,{}),O.jsx(lV,{}),O.jsxs("main",{children:[O.jsx(yK,{}),O.jsx(nQ,{}),O.jsx(PQ,{}),O.jsx(ZQ,{}),O.jsx(KQ,{})]}),O.jsx(yJ,{})]}),IJ=AO`
   * {
     margin: 0;
     padding: 0;
@@ -7494,4 +7494,4 @@ No matching component was found for:
     background: ${t=>t.theme.primary};
     border-radius: 10px;
   }
-`,IJ={background:"#0f0f0f",backgroundAlt:"#1a1a1a",text:"#ffffff",textAlt:"#b3b3b3",primary:"#8a2be2",secondary:"#00bfff",accent:"#ff4500",success:"#4caf50",error:"#f44336",cardBg:"rgba(26, 26, 26, 0.8)",gradientPrimary:"linear-gradient(45deg, #8a2be2, #00bfff)",shadow:"0 4px 20px rgba(0, 0, 0, 0.5)",glassMorphism:"rgba(26, 26, 26, 0.25)",glassBorder:"1px solid rgba(255, 255, 255, 0.1)",glassBlur:"blur(10px)"};f2.createRoot(document.getElementById("root")).render(O.jsx(en.StrictMode,{children:O.jsxs(MO,{theme:IJ,children:[O.jsx(RJ,{}),O.jsx(PJ,{})]})}));
+`,LJ={background:"#0f0f0f",backgroundAlt:"#1a1a1a",text:"#ffffff",textAlt:"#b3b3b3",primary:"#8a2be2",secondary:"#00bfff",accent:"#ff4500",success:"#4caf50",error:"#f44336",cardBg:"rgba(26, 26, 26, 0.8)",gradientPrimary:"linear-gradient(45deg, #8a2be2, #00bfff)",shadow:"0 4px 20px rgba(0, 0, 0, 0.5)",glassMorphism:"rgba(26, 26, 26, 0.25)",glassBorder:"1px solid rgba(255, 255, 255, 0.1)",glassBlur:"blur(10px)"};f2.createRoot(document.getElementById("root")).render(O.jsx(en.StrictMode,{children:O.jsxs(MO,{theme:LJ,children:[O.jsx(IJ,{}),O.jsx(RJ,{})]})}));
