@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
-import { motion, PanInfo } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { Link } from 'react-scroll';
 
@@ -182,8 +182,6 @@ const MobileMenu = styled(motion.div)`
     border-left: 1px solid rgba(100, 255, 218, 0.1);
     z-index: 100;
     overflow-y: auto;
-    touch-action: pan-x;
-    user-select: none;
   }
   
   @media (max-width: 480px) {
@@ -242,26 +240,9 @@ const MobileNavLink = styled(Link)`
   }
 `;
 
-const SwipeOverlay = styled(motion.div)`
-  display: none;
-  
-  @media (max-width: 768px) {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 99;
-    backdrop-filter: blur(5px);
-  }
-`;
-
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [dragX, setDragX] = useState(0);
   
   // Handle scroll event
   useEffect(() => {
@@ -302,31 +283,6 @@ const Navbar = () => {
   
   const closeMenu = () => setIsOpen(false);
   
-  // Handle swipe gestures
-  const handleSwipeStart = () => {
-    setDragX(0);
-  };
-  
-  const handleSwipe = (event: any, info: PanInfo) => {
-    setDragX(info.offset.x);
-  };
-  
-  const handleSwipeEnd = (event: any, info: PanInfo) => {
-    const swipeThreshold = 100;
-    const velocityThreshold = 500;
-    
-    // Swipe right to open menu (from left edge)
-    if (!isOpen && info.offset.x > swipeThreshold && info.velocity.x > 0) {
-      setIsOpen(true);
-    }
-    // Swipe left to close menu
-    else if (isOpen && (info.offset.x < -swipeThreshold || info.velocity.x < -velocityThreshold)) {
-      setIsOpen(false);
-    }
-    
-    setDragX(0);
-  };
-  
   const navItems = [
     { name: 'Home', to: 'home' },
     { name: 'About', to: 'about' },
@@ -336,16 +292,12 @@ const Navbar = () => {
   ];
   
   return (
-    <>
-      <NavbarContainer 
-        scrolled={scrolled}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ type: 'spring', stiffness: 100, damping: 20 }}
-        onPanStart={handleSwipeStart}
-        onPan={handleSwipe}
-        onPanEnd={handleSwipeEnd}
-      >
+    <NavbarContainer 
+      scrolled={scrolled}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+    >
       <NavContent>
         <Logo
           whileHover={{ scale: 1.05 }}
@@ -385,38 +337,19 @@ const Navbar = () => {
         <MobileMenuButton onClick={toggleMenu}>
           {isOpen ? <FiX /> : <FiMenu />}
         </MobileMenuButton>
-      </NavContent>
-    </NavbarContainer>
         
         {isOpen && (
-          <>
-            <SwipeOverlay
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={closeMenu}
-            />
-            <MobileMenu
-              initial={{ x: 300, opacity: 0, scale: 0.9 }}
-              animate={{ 
-                x: Math.max(0, dragX), 
-                opacity: 1, 
-                scale: 1 
-              }}
-              exit={{ x: 300, opacity: 0, scale: 0.9 }}
-              transition={{ 
-                type: 'spring', 
-                stiffness: 400, 
-                damping: 35,
-                duration: 0.3
-              }}
-              drag="x"
-              dragConstraints={{ left: -50, right: 300 }}
-              dragElastic={0.2}
-              onDragStart={handleSwipeStart}
-              onDrag={handleSwipe}
-              onDragEnd={handleSwipeEnd}
-            >
+          <MobileMenu
+            initial={{ x: 300, opacity: 0, scale: 0.9 }}
+            animate={{ x: 0, opacity: 1, scale: 1 }}
+            exit={{ x: 300, opacity: 0, scale: 0.9 }}
+            transition={{ 
+              type: 'spring', 
+              stiffness: 400, 
+              damping: 35,
+              duration: 0.3
+            }}
+          >
             <MobileNavLinks>
               {navItems.map((item, index) => (
                 <MobileNavLink
@@ -448,10 +381,10 @@ const Navbar = () => {
             >
               Resume
             </ResumeButton>
-            </MobileMenu>
-          </>
+          </MobileMenu>
         )}
-    </>
+      </NavContent>
+    </NavbarContainer>
   );
 };
 
