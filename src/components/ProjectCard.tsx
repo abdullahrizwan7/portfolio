@@ -2,6 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
+interface ProjectData {
+    id: number;
+    title: string;
+    description: string;
+    image: string;
+    tags: string[];
+    github: string;
+    link: string;
+    current?: boolean;
+}
+
+interface ProjectCardProps {
+    project: ProjectData;
+}
+
 const theme = {
     backgroundAlt: '#0a192f',
     cardBg: '#112240',
@@ -11,7 +26,7 @@ const theme = {
     shadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
 };
 
-const ProjectCard = ({ project }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     const { title, description, image, tags, link, github, current } = project;
 
     return (

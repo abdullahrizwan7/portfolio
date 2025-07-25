@@ -1,17 +1,50 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { fadeIn, staggerContainer, textVariant } from '../animations';
 import ProjectCard from './ProjectCard';
 
-// Helper for motion preference
-const prefersReducedMotion = () => {
+// TypeScript interfaces for styled component props
+interface ReducedMotionProps {
+  $reduceMotion?: boolean;
+}
+
+interface ParticleProps extends ReducedMotionProps {
+  size?: string;
+  bg?: string;
+  radius?: string;
+  top?: string;
+  left?: string;
+  right?: string;
+  bottom?: string;
+  moveX2?: string;
+  moveY2?: string;
+  duration?: string;
+}
+
+interface ProjectsProps {
+  $reduceMotion?: boolean;
+}
+
+interface ProjectData {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  github: string;
+  link: string;
+  current?: boolean;
+}
+
+// Helper for motion preference - memoized
+const prefersReducedMotion = (): boolean => {
   return typeof window !== 'undefined' 
     ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
     : false;
 };
 
-const ProjectsSection = styled.section`
+const ProjectsSection = styled.section<ReducedMotionProps>`
   min-height: 100vh;
   padding: 4rem 2rem;
   background: 
@@ -118,7 +151,7 @@ const ProjectsSection = styled.section`
   }
 `;
 
-const FloatingShape = styled.div`
+const FloatingShape = styled.div<ParticleProps>`
   position: absolute;
   width: ${props => props.size || '100px'};
   height: ${props => props.size || '100px'};
@@ -233,7 +266,7 @@ const FloatingShape = styled.div`
   }
 `;
 
-const ProjectsContainer = styled(motion.div)`
+const ProjectsContainer = styled(motion.div)<ReducedMotionProps>`
   max-width: 1300px;
   margin: 0 auto;
   position: relative;
@@ -378,7 +411,7 @@ const ProjectsContainer = styled(motion.div)`
   }
 `;
 
-const SectionTitle = styled(motion.h2)`
+const SectionTitle = styled(motion.h2)<ReducedMotionProps>`
   font-size: 3.2rem;
   font-weight: 700;
   margin-bottom: 1.2rem;
@@ -437,7 +470,7 @@ const SectionSubtitle = styled.p`
   }
 `;
 
-const ProjectsGrid = styled(motion.div)`
+const ProjectsGrid = styled(motion.div)<ReducedMotionProps>`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2rem;
@@ -459,46 +492,58 @@ const ProjectsGrid = styled(motion.div)`
   }
 `;
 
-const Projects = ({ $reduceMotion }) => {
-    const projects = [
-        {
-            id: 1,
-            title: 'Personal Portfolio',
-            description: 'A modern, responsive portfolio website showcasing my projects, skills, and professional experience.',
-            image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80',
-            tags: ['React', 'JavaScript', 'CSS3', 'HTML5'],
-            github: 'https://github.com/abdullahrizwan7/portfolio',
-            link: 'https://abdullahrizwan7.github.io/portfolio',
-            current: true,
-        },
-        {
-            id: 2,
-            title: 'FitVision',
-            description: 'AI-powered fitness web app that uses real-time pose detection to guide workouts, count reps, and track posture — all through your webcam. Built with React and MediaPipe, its your personal trainer in the browser.',
-            image: './fitvision.gif',
-            tags: ['React', 'JavaScript', 'TypeScript', 'CSS3', 'HTML5'],
-            github: 'https://github.com/abdullahrizwan7/FitVision',
-            link: 'https://abdullahrizwan7.github.io/FitVision',
-        },
-        {
-            id: 3,
-            title: 'Comming Soon',
-            description: 'It will be available soon',
-            image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80',
-            tags: ['----', '----', '----', '----'],
-            github: 'https://github.com',
-            link: 'https://example.com',
-        },
-        {
-            id: 4,
-            title: 'Comming Soon',
-            description: 'It will be available soon',
-            image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80',
-            tags: ['----', '----', '----', '----'],
-            github: 'https://github.com',
-            link: 'https://example.com',
-        }
-    ];
+// Projects data - extracted to prevent recreation on each render
+const PROJECTS_DATA: ProjectData[] = [
+    {
+        id: 1,
+        title: 'Personal Portfolio',
+        description: 'A modern, responsive portfolio website showcasing my projects, skills, and professional experience.',
+        image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80',
+        tags: ['React', 'JavaScript', 'CSS3', 'HTML5'],
+        github: 'https://github.com/abdullahrizwan7/portfolio',
+        link: 'https://abdullahrizwan7.github.io/portfolio',
+        current: true,
+    },
+    {
+        id: 2,
+        title: 'FitVision',
+        description: 'AI-powered fitness web app that uses real-time pose detection to guide workouts, count reps, and track posture — all through your webcam. Built with React and MediaPipe, its your personal trainer in the browser.',
+        image: './fitvision.gif',
+        tags: ['React', 'JavaScript', 'TypeScript', 'CSS3', 'HTML5'],
+        github: 'https://github.com/abdullahrizwan7/FitVision',
+        link: 'https://abdullahrizwan7.github.io/FitVision',
+    },
+    {
+        id: 3,
+        title: 'Coming Soon',
+        description: 'It will be available soon',
+        image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80',
+        tags: ['----', '----', '----', '----'],
+        github: 'https://github.com',
+        link: 'https://example.com',
+    },
+    {
+        id: 4,
+        title: 'Coming Soon',
+        description: 'It will be available soon',
+        image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80',
+        tags: ['----', '----', '----', '----'],
+        github: 'https://github.com',
+        link: 'https://example.com',
+    }
+];
+
+const Projects: React.FC<ProjectsProps> = ({ $reduceMotion }) => {
+    // Memoize animation variants to prevent recreation on each render
+    const containerVariants = useMemo(() => 
+        !$reduceMotion ? staggerContainer(0.1, 0.1) : {}, 
+        [$reduceMotion]
+    );
+    
+    const titleVariants = useMemo(() => 
+        !$reduceMotion ? textVariant(0.1) : {}, 
+        [$reduceMotion]
+    );
 
     return (
         <ProjectsSection id="projects" $reduceMotion={$reduceMotion}>
@@ -564,14 +609,14 @@ const Projects = ({ $reduceMotion }) => {
             )}
 
             <ProjectsContainer
-                variants={!$reduceMotion ? staggerContainer(0.1, 0.1) : {}}
-                initial={!$reduceMotion ? "hidden" : false}
-                whileInView={!$reduceMotion ? "show" : false}
+                variants={containerVariants}
+                initial={!$reduceMotion ? "hidden" : undefined}
+                whileInView={!$reduceMotion ? "show" : undefined}
                 viewport={{ once: true, amount: 0.25 }}
                 $reduceMotion={$reduceMotion}
             >
                 <SectionTitle
-                    variants={!$reduceMotion ? textVariant(0.1) : {}}
+                    variants={titleVariants}
                     $reduceMotion={$reduceMotion}
                 >
                     Featured Projects
@@ -582,11 +627,10 @@ const Projects = ({ $reduceMotion }) => {
                 </SectionSubtitle>
 
                 <ProjectsGrid>
-                    {projects.map((project) => (
+                    {PROJECTS_DATA.map((project) => (
                         <ProjectCard
                             key={project.id}
                             project={project}
-                            $reduceMotion={$reduceMotion}
                         />
                     ))}
                 </ProjectsGrid>
