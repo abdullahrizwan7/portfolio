@@ -37,7 +37,11 @@ const CloseButton = styled.button`
   }
 `;
 
-const StatusBadge = styled.span`
+interface StatusBadgeProps {
+  mode: 'optimized' | 'default';
+}
+
+const StatusBadge = styled.span<StatusBadgeProps>`
   background: ${props => props.mode === 'optimized' ? '#4CAF50' : '#FF9800'};
   color: white;
   padding: 2px 6px;
