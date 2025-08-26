@@ -1,9 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, memo } from 'react';
 import * as THREE from 'three';
-import { getOptimizedParticleCount, shouldDisableHeavyEffects, getOptimizedFrameRate } from '../utils/performanceOptimizer';
+import { getOptimizedParticleCount, shouldDisableHeavyEffects, getOptimizedFrameRate, createOptimizedResizeHandler } from '../utils/performanceOptimizer';
 
-const ParticleBackground = () => {
+const ParticleBackground = memo(() => {
   const containerRef = useRef(null);
+  const sceneRef = useRef(null);
+  const rendererRef = useRef(null);
+  const animationFrameRef = useRef(null);
   
   useEffect(() => {
     if (!containerRef.current) return;
@@ -25,6 +28,10 @@ const ParticleBackground = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio
     containerRef.current.appendChild(renderer.domElement);
+    
+    // Store refs for cleanup
+    sceneRef.current = scene;
+    rendererRef.current = renderer;
     
     // Create particles (optimized count)
     const particlesGeometry = new THREE.BufferGeometry();
@@ -66,7 +73,7 @@ const ParticleBackground = () => {
     const interval = 1000 / targetFPS;
     
     const animate = (currentTime) => {
-      requestAnimationFrame(animate);
+      animationFrameRef.current = requestAnimationFrame(animate);
       
       if (currentTime - lastTime >= interval) {
         const rotationSpeed = targetFPS === 30 ? 0.0003 : 0.0005;
@@ -78,12 +85,12 @@ const ParticleBackground = () => {
       }
     };
     
-    // Handle window resize
-    const handleResize = () => {
+    // Optimized resize handler
+    const handleResize = createOptimizedResizeHandler(() => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
-    };
+    });
     
     window.addEventListener('resize', handleResize);
     
@@ -91,8 +98,11 @@ const ParticleBackground = () => {
     
     // Cleanup
     return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
       window.removeEventListener('resize', handleResize);
-      if (containerRef.current) {
+      if (containerRef.current && renderer.domElement) {
         containerRef.current.removeChild(renderer.domElement);
       }
       particlesGeometry.dispose();
@@ -115,6 +125,8 @@ const ParticleBackground = () => {
       }}
     />
   );
-};
+});
+
+ParticleBackground.displayName = 'ParticleBackground';
 
 export default ParticleBackground;
