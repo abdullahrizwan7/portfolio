@@ -1,0 +1,16 @@
+{
+  "name": "Abdullah Rizwan Portfolio",
+  "short_name": "Portfolio",
+  "description": "Abdullah Rizwan's Portfolio Website",
+  "start_url": "/portfolio/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#64ffda",
+  "icons": [
+    {
+      "src": "/portfolio/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

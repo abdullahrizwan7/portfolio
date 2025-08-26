@@ -1,29 +1,56 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
 import PerformanceIndicator from './components/PerformanceIndicator';
-import ParticleBackground from './components/ParticleBackground';
 import './App.css';
+
+// Lazy load heavy components for better performance
+const About = lazy(() => import('./components/About'));
+const Skills = lazy(() => import('./components/Skills'));
+const Projects = lazy(() => import('./components/Projects'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
+const ParticleBackground = lazy(() => import('./components/ParticleBackground'));
+
+// Loading fallback component
+const LoadingFallback = () => (
+  <div style={{ 
+    display: 'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    height: '100px',
+    opacity: 0.7
+  }}>
+    <div>Loading...</div>
+  </div>
+);
 
 const App = () => {
   return (
     <div className="App">
-      <ParticleBackground />
+      <Suspense fallback={null}>
+        <ParticleBackground />
+      </Suspense>
       <PerformanceIndicator />
       <Navbar />
       <main>
         <Home />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
+        <Suspense fallback={<LoadingFallback />}>
+          <About />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <Skills />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <Projects />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <Contact />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   );
 };
